@@ -225,5 +225,10 @@
       track = "checkout --track";
     };
   };
+
+  home.file.".tigrc".text = ''
+    set vertical-split = horizontal
+  '';
+
 }
 
