@@ -7,7 +7,7 @@
       nixfmt git-lfs tig vim neovim tmux fzf corkscrew
 
       #rar #! this is unfree software, but we can't set allowunfree at this moment(2022-11-08)
-           #! enable it we must run `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure` to switch HOME
+           #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure` must be executed to switch home configuration.
 
       tree-sitter #generic ast parser
       deno
@@ -72,6 +72,7 @@
 
   #It works only when managed shell is enabled.
   home.shellAliases = {
+    ls = "ls --color";
     ll = "ls -l";
     ".." = "cd ..";
     "..." = "cd ../..";
