@@ -5,6 +5,7 @@
       fortune coreutils-full gnugrep openssh htop rsync ripgrep fd pstree jq tree watch help2man findutils
       m4 libtool autoconf automake cmake ninja
       nixfmt git-lfs tig vim neovim tmux fzf corkscrew
+      hyperfine
 
       #rar #! this is unfree software, but we can't set allowunfree at this moment(2022-11-08)
            #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure` must be executed to switch home configuration.
@@ -98,6 +99,16 @@
           repo = "ohmyzsh";
           rev = "6df14641ac48b380c56e1c72aa86b57861fbfb70";
           sha256 = "sha256-bfaeszprKsaiPUhR8+QOtrLC57Dy3JOhXzntokkhLSI=";
+        };
+      }
+      {
+        name = "zsh-autopair";
+        #file = "lib/completion.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "hlissner";
+          repo = "zsh-autopair";
+          rev = "396c38a7468458ba29011f2ad4112e4fd35f78e6";
+          sha256 = "sha256-PXHxPxFeoYXYMOC29YQKDdMnqTO0toyA7eJTSCV6PGE=";
         };
       }
     ];
