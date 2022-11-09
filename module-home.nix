@@ -123,12 +123,18 @@
 
       export GPG_TTY=$(tty)
       export SSH_AUTH_SOCK="$(gpgconf --homedir ${config.programs.gpg.homedir} --list-dirs agent-ssh-socket)"
+
+      if [[ -f $HOME/.zshlocal ]]; then
+        source $HOME/.zshlocal
+      fi
     '';
 
-    #debug performance
-    #initExtraFirst = ''
-    #  zmodload zsh/zprof 
-    #'';
+    #e.g. debug performance: zmodload zsh/zprof
+    initExtraFirst = ''
+      if [[ -f $HOME/.zshlocal-first ]]; then
+        source $HOME/.zshlocal-first
+      fi
+    '';
   };
 
   programs.zoxide.enable = true;
