@@ -175,10 +175,10 @@
         utc_time_offset = "+8";
         style = "yellow";
       };
-      character = {
-        success_symbol = "[λ](grey)";
-        error_symbol = "[λ](bold red)";
-      };
+      #character = {
+      #  success_symbol = "[λ](grey)";
+      #  error_symbol = "[λ](bold red)";
+      #};
       scan_timeout = 10;
     };
   };
