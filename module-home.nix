@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
   let
-    lang = "en_US.UTF-8";
     packages = (with pkgs; [
       fortune coreutils-full gnugrep openssh htop rsync ripgrep fd pstree jq tree watch help2man findutils
       m4 libtool autoconf automake cmake ninja
@@ -67,14 +66,18 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  home.language.base = "en_US.UTF-8";
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   #It works only when managed shell is enabled.
   home.shellAliases = {
     ls = "ls --color";
-    ll = "ls -l";
+    ll = "ls -lh";
     ".." = "cd ..";
     "..." = "cd ../..";
     "...." = "cd ../../..";
@@ -112,9 +115,7 @@
         };
       }
     ];
-    envExtra = ''
-      export LANG="${lang}";
-    '';
+    envExtra = '''';
     initExtra = ''
       #unset PATH introduced by plugins
       ${lib.concatStrings (map (plugin: ''
@@ -196,7 +197,7 @@
       #  success_symbol = "[λ](grey)";
       #  error_symbol = "[λ](bold red)";
       #};
-      scan_timeout = 10;
+      scan_timeout = 300;
     };
   };
 
@@ -246,6 +247,20 @@
   home.file.".tigrc".text = ''
     set vertical-split = horizontal
   '';
+
+  launchd.agents.skhd = {
+    enable = true;
+
+    config = {
+      ProgramArguments = [ "${pkgs.skhd}/bin/skhd" ];
+      EnvironmentVariables = {
+        "PATH" = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+      };
+      KeepAlive = true;
+      RunAtLoad = true;
+    };
+
+  };
 
 }
 
