@@ -248,6 +248,7 @@
     set vertical-split = horizontal
   '';
 
+  # https://ss64.com/osx/launchctl.html
   launchd.agents.skhd = {
     enable = true;
 
