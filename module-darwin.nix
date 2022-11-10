@@ -32,6 +32,7 @@
       wget
       yq-go fx
       zellij
+      (nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "Monoid"]; })
     ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
 
     zshcfg = import ./zshcfg.nix {inherit config lib;};
@@ -294,5 +295,6 @@
 
   };
 
+  fonts.fontconfig.enable = true;
 }
 

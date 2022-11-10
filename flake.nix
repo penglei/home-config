@@ -24,7 +24,10 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./module-home.nix ];
+        modules = [
+          ./module-darwin.nix
+          ./hm-modules/darwin-application.nix
+        ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
