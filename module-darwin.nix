@@ -5,6 +5,7 @@
       m4 libtool autoconf automake cmake ninja
       nixfmt git-lfs tig vim neovim tmux fzf corkscrew
       hyperfine
+      binutils
 
       #rar #! this is unfree software, but we can't set allowunfree at this moment(2022-11-08)
            #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure` must be executed to switch home configuration.
@@ -38,6 +39,7 @@
     zshcfg = import ./zshcfg.nix {inherit config lib;};
     gitaliases = import ./git-aliases.nix;
 
+    homeLocalBin = ".local/bin";
   in {
 
   # **************************installation**********************************#
@@ -67,12 +69,16 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  home.language.base = "en_US.UTF-8";
+  home.language = rec {
+    base = "en_US.UTF-8";
+    ctype = base;
+    time = base;
+  };
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-  home.sessionPath = [
-    "$HOME/.local/bin"
+  home.sessionPath = [ 
+    "$HOME/${homeLocalBin}"
   ];
 
   #It works only when managed shell is enabled.
@@ -263,7 +269,6 @@
       };
       key_bindings = [
         { key = "Space"; mods = "Control"; mode = "~Search"; action = "ToggleViMode"; }
-        { key = "Q"; mode = "Vi|~Search"; action = "ToggleViMode"; }
         { key = "T"; mods = "Command"; action = "CreateNewWindow"; }
         { key = "F"; mods = "Alt"; chars = "\\x1bf"; }
         { key = "B"; mods = "Alt"; chars = "\\x1bb"; }
@@ -287,10 +292,12 @@
     config = {
       ProgramArguments = [ "${pkgs.skhd}/bin/skhd" ];
       EnvironmentVariables = {
-        "PATH" = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+        "PATH" = "${config.home.homeDirectory}/${homeLocalBin}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
+        "SHELL" = "/bin/sh";
       };
       KeepAlive = true;
       RunAtLoad = true;
+      ProcessType = "Interactive";
     };
 
   };
