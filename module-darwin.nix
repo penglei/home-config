@@ -34,12 +34,15 @@
       yq-go fx
       zellij
       (nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "Monoid"]; })
+      dejavu_fonts
+
     ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
 
     zshcfg = import ./zshcfg.nix {inherit config lib;};
     gitaliases = import ./git-aliases.nix;
 
     homeLocalBin = ".local/bin";
+
   in {
 
   # **************************installation**********************************#
