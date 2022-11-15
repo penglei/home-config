@@ -36,6 +36,8 @@
       (nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "Monoid"]; })
       dejavu_fonts
 
+      jetbrains.pycharm-community
+
     ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
 
     zshcfg = import ./zshcfg.nix {inherit config lib;};
