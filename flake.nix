@@ -19,6 +19,14 @@
       # bootstrap: `nix develop; home-manager switch --flake .#penglei`
       devShells.${system}.default = pkgs.mkShell { buildInputs = [ home-manager.defaultPackage.${system}]; };
 
+      # *home-manaer* has 3 scenarios:
+      ##  macOS only -- has launchd service
+      ##  some others Linux distribution 
+      ##  as nixos module
+
+      # *nixos*;
+      ## nixos linux only (I don't use nix-darwin)
+
       homeConfigurations.penglei = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
@@ -31,6 +39,23 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+      };
+
+      nixosConfigurations = {
+        #develop
+        utm-vm = {
+
+        };
+
+        #proxy&develop
+        hk-alpha = {
+
+        };
+
+        #proxy&dns
+        sg-alpha = {
+
+        };
       };
     };
 }

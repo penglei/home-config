@@ -277,6 +277,7 @@
         { key = "T"; mods = "Command"; action = "CreateNewWindow"; }
         { key = "F"; mods = "Alt"; chars = "\\x1bf"; }
         { key = "B"; mods = "Alt"; chars = "\\x1bb"; }
+        { key = "H"; mods = "Alt"; chars = "\\x1bb"; }
         { key = "D"; mods = "Alt"; chars = "\\x1bd"; }
         { key = "Q"; mods = "Alt"; chars = "\\x1bq"; }
         { key = "I"; mods = "Alt"; chars = "\\x1bi"; }   #nvim toggle float terminal
@@ -284,6 +285,17 @@
         { key = "H"; mods = "Alt"; chars = "\\x1bh"; }   #nvim toggle horizontal terminal
       ];
     };
+  };
+  targets.darwin.keybindings = {
+    "~f" = "moveWordForward:";
+    "~b" = "moveWordBackward:";
+    "~<" = "moveToBeginningOfDocument:";
+	  "~>" = "moveToEndOfDocument:";
+    "~d" = "()";
+    "~q" = "()";
+    "~i" = "()";
+    "~v" = "()";
+    "~h" = "()";
   };
 
   home.file.".tigrc".text = ''
