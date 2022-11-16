@@ -38,6 +38,14 @@
 
       jetbrains.pycharm-community
 
+      (utm.overrideAttrs (finalAttrs: previousAttrs: rec {
+        version = "4.0.9";
+        src = fetchurl {
+          url = "https://github.com/utmapp/UTM/releases/download/v${version}/UTM.dmg";
+          sha256 = "sha256-so1eeQ/7Pv4JBE1rFDgYWInInLwC6xefN/lv1ykDRBo=";
+        };
+      }))
+
     ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
 
     zshcfg = import ./zshcfg.nix {inherit config lib;};
