@@ -16,3 +16,16 @@
 .icon font
 
 https://www.nerdfonts.com/cheat-sheet
+
+
+== macOS 用户默认值配置
+
+NSUserDefaults
+
+https://juejin.cn/post/6844903464300969991
+
+
+== macOS awesome apps
+
+https://github.com/icopy-site/awesome-cn/blob/master/docs/awesome/open-source-mac-os-apps.md
+

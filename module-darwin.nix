@@ -46,6 +46,8 @@
         };
       }))
 
+      (import ./darwin-apps.nix {inherit lib stdenvNoCC fetchzip;})
+
     ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
 
     zshcfg = import ./zshcfg.nix {inherit config lib;};
@@ -297,11 +299,11 @@
   targets.darwin.keybindings = {
     "~f" = "moveWordForward:";
     "~b" = "moveWordBackward:";
-    "~<" = "moveToBeginningOfDocument:";
-	  "~>" = "moveToEndOfDocument:";
+    #"~<" = "moveToBeginningOfDocument:";
+	  #"~>" = "moveToEndOfDocument:";
     "~d" = "()";
     "~q" = "()";
-    "~i" = "()";
+    "~i" = "noop:";  # same as '()'
     "~v" = "()";
     "~h" = "()";
   };
