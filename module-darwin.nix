@@ -39,14 +39,16 @@
       jetbrains.pycharm-community
 
       (utm.overrideAttrs (finalAttrs: previousAttrs: rec {
-        version = "4.0.9";
+        version = "4.1.0";
         src = fetchurl {
           url = "https://github.com/utmapp/UTM/releases/download/v${version}/UTM.dmg";
-          sha256 = "sha256-so1eeQ/7Pv4JBE1rFDgYWInInLwC6xefN/lv1ykDRBo=";
+          sha256 = "sha256-GvwlmWTQTEvJqMBZHPT+TqENkEaO+l7uwf0shDGn1rE=";
         };
       }))
 
       (import ./darwin-apps.nix {inherit lib stdenvNoCC fetchzip;})
+
+      (import ./nix-cleaner.nix {inherit writeShellApplication;})
 
     ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
 

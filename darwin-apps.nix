@@ -4,7 +4,7 @@
 }:
 
 stdenvNoCC.mkDerivation rec {
-  pname = "utm";
+  pname = "netnewswire";
   version = "6.1.1b1";
 
   src = fetchzip {
@@ -13,10 +13,15 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-6jXg4ClfVZh9HmanQ6mR+kSmN6Jg2KVfGd3bzwyNqlQ=";
   };
 
-  sourceRoot = ".";
+  #sourceRoot = "."; # https://nixos.org/manual/nixpkgs/stable/#ssec-unpack-phase
   installPhase = ''
+    runHook preInstall
+    #find .
+    #cat env-vars
+
     mkdir -p $out/Applications
     cp -r *.app $out/Applications
+    runHook postInstall
   '';
 
   meta = with lib; {
