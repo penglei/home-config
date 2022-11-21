@@ -152,6 +152,14 @@
       if [[ -f $HOME/.zshlocal ]]; then
         source $HOME/.zshlocal
       fi
+
+      preman() {
+        mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
+      }
+      xman() {
+        open x-man-page://"$@"
+      }
+      alias man='xman'
     '';
 
     #e.g. debug performance: zmodload zsh/zprof
