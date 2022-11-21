@@ -35,6 +35,7 @@
         modules = [
           ./module-darwin.nix
           ./hm-modules/darwin-application.nix
+          ./hm-modules/darwin-defaults.nix
         ];
 
         # Optionally use extraSpecialArgs
