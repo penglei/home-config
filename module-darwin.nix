@@ -46,11 +46,10 @@
         };
       }))
 
-      (import ./darwin-apps.nix {inherit lib stdenvNoCC fetchzip;})
-
       (import ./nix-cleaner.nix {inherit writeShellApplication;})
-
-    ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;}));
+    ] ++ (import ./kubectl-plugins.nix {inherit pkgs stdenv;})
+      ++ (import ./darwin-apps.nix {inherit lib stdenvNoCC stdenv fetchzip fetchurl undmg;})
+    );
 
     zshcfg = import ./zshcfg.nix {inherit config lib;};
     gitaliases = import ./git-aliases.nix;
