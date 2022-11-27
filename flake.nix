@@ -50,8 +50,23 @@
       ## nixos linux only
       packages.nixosConfigurations = {
         #develop
-        utm-vm = {
+        utm-vm = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.penglei.imports = profiles.hm.linux.modules;
+            }
 
+            ./stuff/etc-nixos/configuration.nix
+            ./stuff/etc-nixos/hardware-configuration.nix
+
+            {
+              nixpkgs.overlays = [ pkgsOverlay ];
+            }
+
+          ];
         };
 
         #proxy&develop
