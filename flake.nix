@@ -25,7 +25,8 @@
       pkgsOverlay = import ./pkgs/all.nix ;
 
     in eachSystem (system: let
-      pkgs = pkgsWithOverlay pkgsOverlay system; #pkgs = nixpkgs.legacyPackages.${system};
+      #pkgs = pkgsWithOverlay pkgsOverlay system; 
+      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [ pkgsOverlay ];
       profiles = import ./profiles.nix {inherit pkgs self system home-manager;};
     in {
       overlays.default = pkgsOverlay;
