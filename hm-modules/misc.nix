@@ -5,6 +5,7 @@
     ctype = base;
     time = base;
   };
+
   home.sessionPath = [ 
     "$HOME/.local/bin"
   ];

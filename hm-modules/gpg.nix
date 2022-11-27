@@ -33,6 +33,10 @@
       "default-preference-list" = "SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed";
     };
   };
+  programs.zsh.initExtra = ''
+    export GPG_TTY=$(tty)
+    export SSH_AUTH_SOCK="$(gpgconf --homedir ${config.programs.gpg.homedir} --list-dirs agent-ssh-socket)"
+  '';
 
   home.file."${config.programs.gpg.homedir}/gpg-agent.conf".text = ''enable-ssh-support'';
 }

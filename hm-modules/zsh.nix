@@ -50,9 +50,6 @@ in
         path[''${path[(I)$HOME/${zshcfg.pluginsDir}/${plugin.name}]}]=()
       '') zshcfg.plugins)}
 
-      export GPG_TTY=$(tty)
-      export SSH_AUTH_SOCK="$(gpgconf --homedir ${config.programs.gpg.homedir} --list-dirs agent-ssh-socket)"
-
       if [[ -f $HOME/.zshlocal ]]; then
         source $HOME/.zshlocal
       fi
