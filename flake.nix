@@ -22,16 +22,16 @@
         overlays = [overlay];
       });
       eachSystem = f: (flake-utils.lib.eachSystem systems f); 
-      pkgsOverlay = import ./pkgs/all.nix ;
+      nixpkgsOverlays = import ./pkgs/all.nix ;
 
     in eachSystem (system: let
-      #pkgs = pkgsWithOverlay pkgsOverlay system; 
-      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [ pkgsOverlay ];
+      #pkgs = pkgsWithOverlay nixpkgsOverlays system; 
+      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [ nixpkgsOverlays ];
       profiles = import ./profiles.nix {inherit pkgs self system home-manager;};
     in {
-      overlays.default = pkgsOverlay;
+      overlays.default = nixpkgsOverlays;
 
-      # bootstrap: `nix develop; home-manager switch --flake .#XXXX`
+      # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#XXXX`
       devShells.default = pkgs.mkShell {
         buildInputs = [ home-manager.defaultPackage.${system}];
       };
@@ -50,23 +50,31 @@
       ## nixos linux only
       packages.nixosConfigurations = {
         #develop
-        utm-vm = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.penglei.imports = profiles.hm.linux.modules;
-            }
+        utm-vm = 
+          let hostname = "utm-vm";
+              username = "penglei";
+          in nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit nixpkgs;
+            };
+            modules = [
+              home-manager.nixosModules.home-manager {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.penglei.imports = profiles.hm.linux.modules;
+              }
 
-            ./stuff/etc-nixos/configuration.nix
-            ./stuff/etc-nixos/hardware-configuration.nix
-
-            {
-              nixpkgs.overlays = [ pkgsOverlay ];
-            }
-
-          ];
+              {
+                nixpkgs.overlays = [ nixpkgsOverlays ];
+              }
+            ] ++ [
+              ./stuff/etc-nixos/configuration.nix
+              ./stuff/etc-nixos/hardware-configuration.nix
+              {
+                networking.hostName = hostname;
+              }
+            ];
         };
 
         #proxy&develop
