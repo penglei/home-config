@@ -2,7 +2,8 @@
 
 * darwin: home-manager only, I don't employ nix-darwin.
 * aarch64, x86_64 vm(cloud and local): nixos with embeded home-manager.
-* legacy linux os like ubuntu: home-manager only.
+* legacy linux distribution like ubuntu: home-manager only.
+
 == references
 
 .shell expansion
