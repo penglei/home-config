@@ -13,7 +13,6 @@ rec {
       modules = [
         ./hm-modules/default.nix
         ./hm-modules/packages.nix
-        ./hm-modules/gpg.nix
         ./hm-modules/zsh.nix
         ./hm-modules/fzf.nix
         ./hm-modules/git.nix
@@ -30,6 +29,7 @@ rec {
       ./hm-modules/darwin/keybindings.nix
       ./hm-modules/darwin/app-aliases.nix
       ./hm-modules/darwin/skhd.nix
+      ./hm-modules/darwin/gpg.nix
     ];
   };
 
