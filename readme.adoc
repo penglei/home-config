@@ -4,13 +4,14 @@
 * aarch64, x86_64 vm(cloud and local): nixos with embeded home-manager.
 * legacy linux distribution like ubuntu: home-manager only.
 
-
 == bootstrap tips
 
 ----
 : make pin-registry
 : nix shell nixpkgs#git nixpkgs#home-manager
 : home-manager switch --flake .
+: #or
+: nix run nixpkgs#home-manager switch -- --flake .
 : sudo nixos-rebuild switch --flake .#utm-vm
 ----
 
