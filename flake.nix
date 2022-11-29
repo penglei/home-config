@@ -8,9 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = github:Mic92/sops-nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {self, nixpkgs, flake-utils, home-manager, ... }:
+  outputs = {self, nixpkgs, flake-utils, home-manager, sops-nix, ... }:
     let
       inherit (nixpkgs) lib;
 
@@ -68,6 +72,8 @@
               {
                 nixpkgs.overlays = [ nixpkgsOverlays ];
               }
+
+              sops-nix.nixosModules.sops
             ] ++ [
               ./stuff/etc-nixos/configuration.nix
               ./stuff/etc-nixos/hardware-configuration.nix
