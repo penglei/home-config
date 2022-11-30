@@ -28,7 +28,7 @@
       nixfmt 
       deno
       koka
-      go protobuf
+      go gotools protobuf
       bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
 
