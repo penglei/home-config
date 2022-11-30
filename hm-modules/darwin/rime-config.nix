@@ -4,7 +4,8 @@
 }:
 
 {
-
+  home.file."Library/Rime/lua".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/lua;
+  home.file."Library/Rime/opencc".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/opencc;
   home.file."Library/Rime/custom_phrase.txt".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/custom_phrase.txt;
   home.file."Library/Rime/default.custom.yaml".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/default.custom.yaml;
   home.file."Library/Rime/double_pinyin_flypy.custom.yaml".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/double_pinyin_flypy.custom.yaml;
@@ -25,6 +26,7 @@
   home.file."Library/Rime/pinyin_dicts.dict.yaml".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/pinyin_dicts.dict.yaml;
   home.file."Library/Rime/pinyin_simp.schema.yaml".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/pinyin_simp.schema.yaml;
   home.file."Library/Rime/pinyin_simp_mini.dict.yaml".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/pinyin_simp_mini.dict.yaml;
+  home.file."Library/Rime/rime.lua".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/rime.lua;
   home.file."Library/Rime/squirrel.custom.yaml".source = config.lib.file.mkOutOfStoreSymlink ../../files/rime/squirrel.custom.yaml;
 
 }
