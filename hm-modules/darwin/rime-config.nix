@@ -1,10 +1,6 @@
 {pkgs, config, ...}:
 
 let
-  lib = pkgs.lib; 
-
-  pathToFilename = p: "Library/Rime/" + lib.lists.last (lib.strings.split "/" (builtins.toString p));
-
   rimeFiles = [
     ../../files/rime/lua
     ../../files/rime/opencc
@@ -32,10 +28,17 @@ let
     ../../files/rime/squirrel.custom.yaml
   ];
 
+in let
+  #lib = pkgs.lib; 
+  #sourceFilename = p: lib.lists.last (lib.strings.split "/" (builtins.toString p));
+
+  sourceFilename = root: p: builtins.replaceStrings [root] [""] (builtins.toString p);
+  #/nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-source/files/rime
+  rimeRoot = (builtins.toString ../../files/rime) + "/";
 in
   {
     home.file =
-      builtins.listToAttrs (map (p: { name = pathToFilename p; value = {source = p;}; }) rimeFiles);
-      #lib.lists.foldr (p: cfg: cfg // { ${pathToFilename p} = { source = p;};}) {} rimeFiles;
+      builtins.listToAttrs (map (p: { name = "Library/Rime/${sourceFilename rimeRoot p}"; value = {source = p;}; }) rimeFiles);
+      #lib.lists.foldr (p: cfg: cfg // { "Library/Rime/${sourceFilename rimeRoot p}" = { source = p;};}) {} rimeFiles;
   }
 
