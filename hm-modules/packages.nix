@@ -16,13 +16,6 @@
       hyperfine #performance test
       #ghostscript
 
-      fontconfig
-      nerdfonts
-      noto-fonts-emoji
-      (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
-      dejavu_fonts
-      droidsans_fonts #custom
-
       #rar
       #! rar is an unfree software, but we can't set allowunfree at this moment(2022-11-08)
       #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure`
