@@ -6,7 +6,7 @@ with pkgs;
 {
   mynixcleaner = callPackage ./nix-cleaner.nix {};
 
-  nerdfonts = (prev.nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "Monoid"]; });
+  nerdfonts = (prev.nerdfonts.override { fonts = [ "FiraCode" "DejaVuSansMono" "DroidSansMono" "Monoid"]; });
 
   kubectl-kubectx = callPackage ./kubectl/kubectx.nix {};
   kubectl-kubecm = callPackage ./kubectl/kubecm.nix {};
@@ -23,4 +23,6 @@ with pkgs;
 
   netnewswire = callPackage ./darwin/netnewswire.nix {};
   rectangle = callPackage ./darwin/rectangle.nix {};
+
+  droidsans_fonts = callPackage ./fonts/droidsans.nix {};
 }

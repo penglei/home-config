@@ -26,17 +26,21 @@
 * https://stackoverflow.com/questions/3435355/remove-entry-from-array
 * https://unix.stackexchange.com/questions/411304/how-do-i-check-whether-a-zsh-array-contains-a-given-value
 
-.icon font
 
-https://www.nerdfonts.com/cheat-sheet
+.macOS NSUserDefaults
 
-.macOS user default settings
-
-NSUserDefaults
-
-https://juejin.cn/post/6844903464300969991
+* https://juejin.cn/post/6844903464300969991
 
 .macOS awesome apps
 
-https://github.com/icopy-site/awesome-cn/blob/master/docs/awesome/open-source-mac-os-apps.md
+* https://github.com/icopy-site/awesome-cn/blob/master/docs/awesome/open-source-mac-os-apps.md
 
+
+.fonts
+
+* https://jia.je/software/2021/02/09/big-sur-m1-latex-kaiti-fonts/
+* https://catcat.cc/post/2020-10-31/
+
+.icon font
+
+* https://www.nerdfonts.com/cheat-sheet
