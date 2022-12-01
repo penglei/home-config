@@ -1,13 +1,13 @@
-{lib, stdenvNoCC, unzip, fetchurl }:
+{lib, stdenvNoCC, fetchgit }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "droidsans-fonts";
   version = "0.0.0";
 
-  src = fetchurl {
-    url = "https://www.fontsquirrel.com/fonts/download/droid-sans";
-    #downloadToTemp = true;
-    sha256 = "sha256-EZH44a9/mc9BGLdwthwcTamzCOh89s851tcx2MVTxSc=";
+  src = fetchgit {
+    url = "https://github.com/grays/droid-fonts";
+    rev = "42b78cf977bb2a2d5eaa5593a63e3d2ecf868f10";
+    sha256 = "sha256-8IkkzIwMx60OrqR+5A6K/0n0vEHbdTUM65a0/aTIU3Y=";
 
     #postFetch = ''
     #  mkdir -p $out/share/fonts/truetype
@@ -15,12 +15,10 @@ stdenvNoCC.mkDerivation rec {
     #'';
   };
 
-  nativeBuildInputs = [ unzip ];
-  unpackPhase = ''
-    unzip $src
-  '';
-
-  #stripRoot = false;
+  #nativeBuildInputs = [ unzip ];
+  #unpackPhase = ''
+  #  unzip $src
+  #'';
 
   installPhase = ''
     runHook preInstall
@@ -28,7 +26,7 @@ stdenvNoCC.mkDerivation rec {
     #find .
 
     mkdir -p $out/share/fonts/truetype
-    install *.ttf $out/share/fonts/truetype
+    install droid/*.ttf $out/share/fonts/truetype
 
     runHook postInstall
   '';
