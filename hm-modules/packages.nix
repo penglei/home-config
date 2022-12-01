@@ -52,6 +52,7 @@
     jetbrains.pycharm-community
     netnewswire
     rectangle
+    preview_open
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }

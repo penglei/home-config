@@ -25,4 +25,6 @@ with pkgs;
   rectangle = callPackage ./darwin/rectangle.nix {};
 
   droidsans_fonts = callPackage ./fonts/droidsans.nix {};
+
+  preview_open = callPackage ./darwin/preview.nix {};
 }
