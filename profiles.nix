@@ -31,6 +31,7 @@ rec {
       ./hm-modules/darwin/skhd.nix
       ./hm-modules/darwin/gpg.nix
       ./hm-modules/darwin/rime-config.nix
+      ./hm-modules/tex.nix
     ];
   };
 
