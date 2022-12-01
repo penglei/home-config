@@ -27,4 +27,6 @@ with pkgs;
   droidsans_fonts = callPackage ./fonts/droidsans.nix {};
 
   preview_open = callPackage ./darwin/preview.nix {};
+
+  isabelle_app = callPackage ./darwin/isabelle.nix {};
 }

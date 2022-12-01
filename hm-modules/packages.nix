@@ -46,6 +46,7 @@
     netnewswire
     rectangle
     preview_open
+    isabelle_app
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }
