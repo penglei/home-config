@@ -3,7 +3,7 @@
 writeShellApplication {
   name = "nix-cleaner";
   text = ''
-    if ! command -v home-manager &> /dev/null
+    if type home-manager > /dev/null
     then
       home-manager expire-generations "$(home-manager generations|head -n 1 | awk -F ' : ' '{print $1}')"
     fi
