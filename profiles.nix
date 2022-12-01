@@ -32,6 +32,7 @@ rec {
       ./hm-modules/darwin/gpg.nix
       ./hm-modules/darwin/rime-config.nix
       ./hm-modules/darwin/texlive.nix
+      ./hm-modules/darwin/fonts.nix
     ];
   };
 
