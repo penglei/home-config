@@ -8,7 +8,7 @@
       fortune coreutils-full binutils
       gnugrep pstree tree watch help2man findutils
       gnumake m4 libtool autoconf automake cmake ninja
-      gnupg openssh sshpass htop rsync wget
+      gnupg openssh sshpass htop rsync wget curl
       ripgrep fd jq yq-go fx
       git-lfs tig neovim tmux fzf
       corkscrew socat
