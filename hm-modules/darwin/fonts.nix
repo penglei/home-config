@@ -7,6 +7,8 @@
       (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
       dejavu_fonts
       droidsans_fonts #custom
+      twemoji-color-font
+      #twitter-color-emoji
   ];
 
   xdg.configFile."fontconfig/conf.d/20-os-fonts.conf".text =
