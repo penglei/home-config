@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgsForNixOS.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,26 +15,25 @@
     };
   };
 
-  outputs = {self, nixpkgs, flake-utils, home-manager, sops-nix, ... }:
+  outputs = {self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager, sops-nix, ... }@inputs:
     let
       inherit (nixpkgs) lib;
 
       #systems = [ "aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux" ]
-      systems = map (x: "${x.arch}-${x.os}")
-        (lib.cartesianProductOfSets { os = ["darwin" "linux"]; arch = ["aarch64" "x86_64" ];} );
+      systems = map (x: "${x.arch}-${x.os}") (lib.cartesianProductOfSets { os = ["darwin" "linux"]; arch = ["aarch64" "x86_64" ];} );
       pkgsWithOverlay = overlay: system: (import nixpkgs {
         inherit system;
         overlays = [overlay];
       });
       eachSystem = f: (flake-utils.lib.eachSystem systems f); 
-      nixpkgsOverlays = import ./pkgs/all.nix ;
+      pkgOverlays = import ./pkgs/all.nix ;
 
     in eachSystem (system: let
-      #pkgs = pkgsWithOverlay nixpkgsOverlays system; 
-      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [ nixpkgsOverlays ];
+      #pkgs = pkgsWithOverlay pkgOverlays system; 
+      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [ pkgOverlays ];
       profiles = import ./profiles.nix {inherit pkgs self system home-manager;};
     in {
-      overlays.default = nixpkgsOverlays;
+      overlays.default = pkgOverlays;
 
       # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#XXXX`
       devShells.default = pkgs.mkShell {
@@ -57,10 +57,10 @@
         utm-vm = 
           let hostname = "utm-vm";
               username = "penglei";
-          in nixpkgs.lib.nixosSystem {
+          in nixpkgsForNixOS.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit nixpkgs;
+              nixpkgs = nixpkgsForNixOS;
             };
             modules = [
               home-manager.nixosModules.home-manager {
@@ -70,7 +70,7 @@
               }
 
               {
-                nixpkgs.overlays = [ nixpkgsOverlays ];
+                nixpkgs.overlays = [ pkgOverlays ];
               }
 
               sops-nix.nixosModules.sops
