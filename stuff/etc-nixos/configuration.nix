@@ -12,9 +12,15 @@
 
   nix = {
     package = pkgs.nixUnstable; # or versioned attributes like nix_2_4
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    settings = {
+      use-cgroups = true;
+      auto-allocate-uids = true;
+      experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" "cgroup" ];
+    };
+
+    #extraOptions = ''
+    #  Experimental-features = nix-command flakes
+    #'';
   };
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
