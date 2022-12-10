@@ -15,7 +15,7 @@
     settings = {
       use-cgroups = true;
       auto-allocate-uids = true;
-      experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" "cgroup" ];
+      experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" "cgroups" ];
     };
 
     #extraOptions = ''
