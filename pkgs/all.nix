@@ -29,4 +29,6 @@ with pkgs;
   preview_open = callPackage ./darwin/preview.nix {};
 
   isabelle_app = callPackage ./darwin/isabelle.nix {};
+
+  nix-direnv = callPackage ./nix-direnv {};
 }
