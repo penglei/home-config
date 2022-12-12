@@ -143,13 +143,6 @@ _nix_add_gcroot() {
   ln -fsn "$symlink" "/nix/var/nix/gcroots/per-user/$USER/$escaped_symlink"
 }
 
-_nix_add_direnv_gcroots() {
-  local symlink=$1
-  local escaped_symlink
-  escaped_symlink=$(_nix_strip_escape_path "$symlink")
-  ln -fsn "$symlink" "/nix/var/nix/gcroots/per-user/$USER/$escaped_symlink"
-}
-
 _nix_clean_old_gcroots() {
   local layout_dir=$1
   local escaped_layout_dir
@@ -215,12 +208,16 @@ use_flake() {
     fi
   done
 
-  if [[ ! -e "$profile"
-     || ! -e "$profile_rc"
+  if [[ ! -e "$profile_rc"
      || "$need_update" == "1"
      ]];
   then
+
+    local escaped_projectfullpath=$(_nix_strip_escape_path "${layout_dir%/*}")
+    local devshell_gcroots="/nix/var/nix/gcroots/per-user/$USER/${escaped_projectfullpath}-devshell-gcroots"
     _nix_clean_old_gcroots "$layout_dir"
+    rm -rf $devshell_gcroots
+    mkdir -p $devshell_gcroots
 
     # We need to update our cache
     local tmp_profile="${layout_dir}/flake-profile.$$"
@@ -232,14 +229,11 @@ use_flake() {
     local drv
     drv=$(_nix_direnv_realpath "$tmp_profile")
 
-    local direnv_gcroots="${layout_dir}/gcroots"
-    mkdir -p $direnv_gcroots
-    _nix_add_direnv_gcroots $direnv_gcroots
 
     echo "$tmp_profile_rc" > "$profile_rc"
     rm -f "$tmp_profile" "$tmp_profile"*
     #_nix_add_gcroot "$drv" "$profile"
-    ln -fsn "$drv" $direnv_gcroots/${drv##*/} 
+    ln -fsn "$drv" $devshell_gcroots/${drv##*/} 
 
     # also add garbage collection root for source
     local flake_input_paths
@@ -251,19 +245,19 @@ use_flake() {
       "$flake_dir" | grep -E -o '/nix/store/[^"]+')
     for path in $flake_input_paths; do
       #_nix_add_gcroot "$path" "${flake_inputs}/${path##*/}"
-      ln -fsn "$path" "${direnv_gcroots}/${path##*/}"
+      ln -fsn "$path" "${devshell_gcroots}/${path##*/}"
     done
 
     local tmpprofilejson="${layout_dir}/dev-tmp-profile"
     nix print-dev-env --extra-experimental-features "nix-command flakes" --no-write-lock-file --json > $tmpprofilejson
     for path in $(cat $tmpprofilejson | jq -r '.variables.buildInputs.value' | sed 's/ /\n/g'); do
-      ln -fsn "$path" "${direnv_gcroots}/${path##*/}"
+      ln -fsn "$path" "${devshell_gcroots}/${path##*/}"
     done
     for path in $(cat $tmpprofilejson | jq -r '.variables.nativeBuildInputs.value' | sed 's/ /\n/g'); do
-      ln -fsn "$path" "${direnv_gcroots}/${path##*/}"
+      ln -fsn "$path" "${devshell_gcroots}/${path##*/}"
     done
     for path in $(cat $tmpprofilejson | jq -r '.variables.pkgsHostHost.value|.[]'); do
-      ln -fsn "$path" "${direnv_gcroots}/${path##*/}"
+      ln -fsn "$path" "${devshell_gcroots}/${path##*/}"
     done
     rm $tmpprofilejson
 
