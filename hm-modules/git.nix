@@ -7,8 +7,8 @@
     extraConfig = {
     };
     aliases = {
-      # Prettier `git log`
-      lg = "log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      # Prettier `git log` https://git-scm.com/docs/pretty-formats
+      lg = "log --color --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       # `git checkout` with fuzzy matching
       co = "!git for-each-ref --format='%(refname:short)' refs/heads | ${pkgs.fzf}/bin/fzf -0 | xargs git checkout";
       # `git restore --staged` with fuzzy matching
