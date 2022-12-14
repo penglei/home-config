@@ -4,8 +4,6 @@
     enable = true;
     userEmail = "penglei@ybyte.org";
     userName = "penglei";
-    extraConfig = {
-    };
     aliases = {
       # Prettier `git log` https://git-scm.com/docs/pretty-formats
       lg = "log --color --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
@@ -31,7 +29,8 @@
     };
     signing = {
       signByDefault = true;
-      key = null; # Let the gpg agent handle it
+      #key = null; # Let the gpg agent handle it
+      key = "A7052F7B36E328D7!";
     };
 
     extraConfig = {
