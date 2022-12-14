@@ -43,13 +43,24 @@
     # Prettier pager, adds syntax highlighting and line numbers
     delta = {
       enable = true;
-
       options = {
         navigate = true;
         line-numbers = true;
         conflictstyle = "diff3";
       };
     };
+
+    ignores = [
+      "go.work" "go.work.sum"
+      ".envrc" ".direnv"
+      ".DS_Store"
+      # system SWAP, TMP and BACKUP files
+      "*~" "*.swp" ".*.*.swp" "*.bak" "*.log"
+      # c/c++ object 
+      "*.o" "*.so" "*.so.[0-9]*" "*.a"
+      # latex
+      "*.aux" "*.bbl" "*.bcf" "*.blg" "*.nav" "*.out" "*.run.xml" "*.snm" "*.toc" "*.vrb"
+    ];
 
   };
 
