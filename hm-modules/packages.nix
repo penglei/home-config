@@ -10,7 +10,7 @@
       gnumake m4 libtool autoconf automake cmake ninja
       gnupg openssh sshpass htop rsync wget curl
       ripgrep fd jq yq-go fx
-      git-lfs tig neovim tmux fzf
+      git-lfs tig tmux fzf
       corkscrew socat
       pass pwgen sops age  #gopass #secret security
       hyperfine #performance test

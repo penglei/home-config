@@ -13,27 +13,47 @@
       url = github:Mic92/sops-nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
+    nil-language-server = {
+      url = "github:oxalica/nil";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
-  outputs = {self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager, sops-nix, ... }@inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgsForNixOS,
+    flake-utils,
+    home-manager,
+    sops-nix,
+    nil-language-server,
+    ... 
+  }@inputs:
     let
       inherit (nixpkgs) lib;
 
       #systems = [ "aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux" ]
       systems = map (x: "${x.arch}-${x.os}") (lib.cartesianProductOfSets { os = ["darwin" "linux"]; arch = ["aarch64" "x86_64" ];} );
-      pkgsWithOverlay = overlay: system: (import nixpkgs {
-        inherit system;
-        overlays = [overlay];
-      });
       eachSystem = f: (flake-utils.lib.eachSystem systems f); 
-      pkgOverlays = import ./pkgs/all.nix ;
 
     in eachSystem (system: let
-      #pkgs = pkgsWithOverlay pkgOverlays system; 
-      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [ pkgOverlays ];
+
+      pkgOverlays = [
+        (import ./pkgs/all.nix)
+        (final: prev: {
+          nil-language-server = nil-language-server.packages.${system}.nil;
+        })
+      ];
+      pkgs = nixpkgs.legacyPackages.${system}.appendOverlays pkgOverlays;
+      #pkgs = import nixpkgs { inherit system; overlays = pkgOverlays; }; 
+
       profiles = import ./profiles.nix {inherit pkgs self system home-manager;};
     in {
-      overlays.default = pkgOverlays;
+      overlays.default = lib.lists.foldr (a: i: a // i) {} pkgOverlays;
 
       # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#XXXX`
       devShells.default = pkgs.mkShell {
@@ -67,10 +87,11 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.penglei.imports = profiles.hm.linux.modules;
+                #home-manager.extraSpecialArgs = {};
               }
 
               {
-                nixpkgs.overlays = [ pkgOverlays ];
+                nixpkgs.overlays = pkgOverlays;
               }
 
               sops-nix.nixosModules.sops

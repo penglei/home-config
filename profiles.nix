@@ -19,7 +19,7 @@ rec {
         ./hm-modules/tig.nix
         ./hm-modules/starship.nix
         ./hm-modules/alacritty.nix
-        ./hm-modules/nvim.nix
+        ./hm-modules/neovim
         ./hm-modules/misc.nix
       ];
     };
