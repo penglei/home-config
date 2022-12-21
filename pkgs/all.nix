@@ -13,10 +13,10 @@ with pkgs;
   kubectl-nodeshell = callPackage ./kubectl/nodeshell.nix {};
 
   utm = (prev.utm.overrideAttrs (finalAttrs: previousAttrs: rec {
-    version = "4.1.0";
+    version = "4.1.2";
     src = fetchurl {
       url = "https://github.com/utmapp/UTM/releases/download/v${version}/UTM.dmg";
-      sha256 = "sha256-GvwlmWTQTEvJqMBZHPT+TqENkEaO+l7uwf0shDGn1rE=";
+      sha256 = "sha256-OtQFHsDdkkO/NinGC1rF7ynxLxsr3m7TvVU9vBkAW9w=";
     };
   }));
 
