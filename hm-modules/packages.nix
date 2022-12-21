@@ -39,6 +39,8 @@
 
       mynixcleaner 
 
+      mongosh
+
   ] ++ lib.optionals stdenvNoCC.isDarwin [
     utm
     jetbrains.pycharm-community

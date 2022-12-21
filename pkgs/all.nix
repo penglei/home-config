@@ -32,4 +32,6 @@ with pkgs;
   mynixcleaner = callPackage ./nix-cleaner.nix {};
 
   nix-direnv = callPackage ./nix-direnv {};
+
+  mongosh = callPackage ./mongosh {};
 }
