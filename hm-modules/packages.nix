@@ -23,7 +23,6 @@
 
       tree-sitter #generic ast parser
       nixfmt 
-      deno
       koka
       go gotools protobuf
       bear #Tool that generates a compilation database for clang tooling
