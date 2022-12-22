@@ -45,6 +45,8 @@ in
     ];
     envExtra = '''';
     initExtra = ''
+      bindkey "^U" backward-kill-line
+
       #unset PATH introduced by plugins
       ${lib.concatStrings (map (plugin: ''
         path[''${path[(I)$HOME/${zshcfg.pluginsDir}/${plugin.name}]}]=()
