@@ -9,7 +9,7 @@
       gnugrep pstree tree watch help2man findutils
       gnumake m4 libtool autoconf automake cmake ninja
       gnutar gnupg openssh sshpass htop rsync wget curl
-      ripgrep fd jq yq-go fx
+      ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
       corkscrew socat
       pass pwgen sops age  #gopass #secret security
