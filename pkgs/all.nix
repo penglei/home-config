@@ -34,4 +34,6 @@ with pkgs;
   nix-direnv = callPackage ./nix-direnv {};
 
   mongosh = callPackage ./mongosh {};
+
+  koodo-reader = callPackage ./darwin/koodo-reader.nix {};
 }
