@@ -24,7 +24,7 @@
       tree-sitter #generic ast parser
       nixfmt 
       koka
-      go gotools protobuf
+      go gotools
       bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
 
