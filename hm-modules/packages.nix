@@ -25,7 +25,7 @@
       nixfmt 
       koka
       go gotools
-      bear #Tool that generates a compilation database for clang tooling
+      #bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
 
       (python3.withPackages (ps: [ ps.numpy ps.pygments]))
