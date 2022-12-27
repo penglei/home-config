@@ -36,4 +36,8 @@ with pkgs;
   mongosh = callPackage ./mongosh {};
 
   koodo-reader = callPackage ./darwin/koodo-reader.nix {};
+
+  alacritty = callPackage ./alacritty {
+    inherit (darwin.apple_sdk.frameworks) AppKit CoreGraphics CoreServices CoreText Foundation OpenGL;
+  };
 }

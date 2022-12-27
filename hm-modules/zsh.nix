@@ -62,7 +62,7 @@ in
       xman() {
         open x-man-page://"$@"
       }
-      alias man='xman'
+      #alias man='xman'
     '';
 
     #e.g. debug performance: zmodload zsh/zprof
