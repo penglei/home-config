@@ -32,6 +32,32 @@
         { key = "V"; mods = "Alt"; chars = "\\x1bv"; }   #nvim toggle vertial terminal
         { key = "H"; mods = "Alt"; chars = "\\x1bh"; }   #nvim toggle horizontal terminal
       ];
+
+      hints = {
+        enabled = [
+          {
+            regex = "file:///nix/store/.+ghc.+-doc/.+/html/[^)\\n\\r]+";
+            command = {
+              program = "/Users/penglei/.local/bin/open-haskell-doc";
+            };
+            hyperlinks = true; 
+            post_processing = true;
+            mouse = { enabled = true; mods = "None"; };
+            binding = { key = "U"; mods = "Control|Shift"; };
+          }
+          {
+            regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^⟨⟩`]+";
+            command = {
+              program = "open";
+              args = [ "-n" "-a" "Google Chrome" "--args" ];
+            };
+            hyperlinks = true; 
+            post_processing = true;
+            mouse = { enabled = true; mods = "None"; };
+            binding = { key = "U"; mods = "Control|Shift"; };
+          }
+        ];
+      };
     };
   };
 }
