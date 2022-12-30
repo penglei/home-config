@@ -7,11 +7,6 @@ stdenvNoCC.mkDerivation rec {
   src = fetchzip {
     url = "https://github.com/source-foundry/Hack/releases/download/${version}/Hack-${version}-ttf.zip";
     sha256 = "sha256-SxF4kYp9aL/9L9EUniquFadzWt/+PcvhUQOIOvCrFRM=";
-
-    #postFetch = ''
-    #  mkdir -p $out/share/fonts/truetype
-    #  install *.ttf $out/share/fonts/truetype
-    #'';
   };
 
   nativeBuildInputs = [ nerd-font-patcher ];
@@ -33,6 +28,8 @@ stdenvNoCC.mkDerivation rec {
         --pomicons \
         --material \
         --weather \
+        --powerline \
+        --powerlineextra \
         -out $out/tmp
       mv $out/tmp/*.ttf $out/share/fonts/truetype/$f
     done

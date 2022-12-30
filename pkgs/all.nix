@@ -6,8 +6,6 @@ with pkgs;
 {
   createScript = callPackage ./createscript.nix {};
 
-  nerdfonts = (prev.nerdfonts.override { fonts = [ "FiraCode" "DejaVuSansMono" "DroidSansMono" "Monoid"]; });
-
   kubectl-kubectx = callPackage ./kubectl/kubectx.nix {};
   kubectl-kubecm = callPackage ./kubectl/kubecm.nix {};
   kubectl-nodeshell = callPackage ./kubectl/nodeshell.nix {};
@@ -24,7 +22,7 @@ with pkgs;
   rectangle = callPackage ./darwin/rectangle.nix {};
 
   droidsans_fonts = callPackage ./fonts/droidsans.nix {};
-  hack-font = callPackage ./fonts/hack.nix {};
+  hack-nerd-font = callPackage ./fonts/hack.nix {};
 
   preview_open = callPackage ./darwin/preview.nix {};
 

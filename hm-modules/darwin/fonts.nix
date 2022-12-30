@@ -2,16 +2,43 @@
 {
   home.packages = with pkgs; [
       fontconfig
-      nerdfonts
-      noto-fonts-emoji
-      (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
-      dejavu_fonts
-      twemoji-color-font
-      #twitter-color-emoji
 
-      #custom
+      #{--coding font
+      (nerdfonts.override { fonts = [
+        #prefer ** (<most width>, <ligatures>)
+        "FiraCode" 
+
+        #prefer ** (<most narrow>, <ligatures>)
+        "JetBrainsMono"
+
+        #prefer *** (<narrow>, <no-ligatures>)
+        "DejaVuSansMono"
+
+        #prefer *** (<narrow>, <no-ligatures>)
+        #derived from DejaVuSansMono
+        "Hack"
+
+        "DroidSansMono"
+        "Monoid"
+      ]; })
+
+      #^custom Hack
+      #some symbols not exist which are needed by neovim NvChad(😣).
+      #hack-nerd-font
+
+      #jetbrains-mono
+      #--}
+
+      (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
+
+      noto-fonts-emoji
+
+      twemoji-color-font
+
+      dejavu_fonts
+
+      #^custom
       droidsans_fonts 
-      hack-font
   ];
 
   #texlive 需要的一些字体如SongTi需要通过fontconfig在系统字体目录中查找. MacOS不同版本可能这些目录可能会变..

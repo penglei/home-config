@@ -5,12 +5,30 @@
 }:
 
 let
-  userlocalconfigfile = "~/.config/alacritty/userlocal.yml";
   fontfamily = "FiraCode Nerd Font Mono";
+  #font:
+  #  normal:
+  #    family: FiraCode Nerd Font Mono
+  #
+  ##family: FiraCode Nerd Font
+  ##family: FiraCode Nerd Font Mono
+  ##
+  ##family: JetBrainsMono Nerd Font
+  ##family: JetBrainsMono Nerd Font Mono
+  ##
+  ##family: Hack Nerd Font
+  ##family: Hack Nerd Font Mono #(↑ 没区别)
+  ##
+  ##family: DejaVuSansMono Nerd Font
+  ##family: DejaVuSansMono Nerd Font Mono #(↑ 没区别)
+
+  userlocalconfigfile = "~/.config/alacritty/userlocal.yml";
 in
 {
   home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    touch ${userlocalconfigfile}
     ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${fontfamily}"' ${userlocalconfigfile}
+
   '';
   programs.alacritty = {
     enable = true;
