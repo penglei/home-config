@@ -14,6 +14,7 @@
       hack-font
   ];
 
+  #texlive 需要的一些字体如SongTi需要通过fontconfig在系统字体目录中查找. MacOS不同版本可能这些目录可能会变..
   xdg.configFile."fontconfig/conf.d/20-os-fonts.conf".text =
   ''
   <?xml version='1.0'?>
