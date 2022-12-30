@@ -7,6 +7,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      import = [ "~/.config/alacritty/userlocal.yml" ];
       window = {
         decorations = "buttonless";
         opacity = 1.0;
@@ -36,7 +37,7 @@
       hints = {
         enabled = [
           {
-            regex = "file:///nix/store/.+ghc.+-doc/.+/html/[^)\\n\\r]+";
+            regex = "file:///nix/store/.+ghc.+-doc/.+/html/[^)\\n\\r\\t ]+";
             command = {
               program = "/Users/penglei/.local/bin/open-haskell-doc";
             };
