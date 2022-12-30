@@ -23,14 +23,14 @@
       key_bindings = [
         { key = "Space"; mods = "Control"; mode = "~Search"; action = "ToggleViMode"; }
         { key = "T"; mods = "Command"; action = "CreateNewWindow"; }
-        { key = "F"; mods = "Alt"; chars = "\\x1bf"; }
-        { key = "B"; mods = "Alt"; chars = "\\x1bb"; }
-        { key = "H"; mods = "Alt"; chars = "\\x1bb"; }
-        { key = "D"; mods = "Alt"; chars = "\\x1bd"; }
-        { key = "Q"; mods = "Alt"; chars = "\\x1bq"; }
-        { key = "I"; mods = "Alt"; chars = "\\x1bi"; }   #nvim toggle float terminal
-        { key = "V"; mods = "Alt"; chars = "\\x1bv"; }   #nvim toggle vertial terminal
-        { key = "H"; mods = "Alt"; chars = "\\x1bh"; }   #nvim toggle horizontal terminal
+        { key = "F"; mods = "Alt"; chars = "\\ef"; }
+        { key = "B"; mods = "Alt"; chars = "\\eb"; }
+        { key = "H"; mods = "Alt"; chars = "\\eb"; }
+        { key = "D"; mods = "Alt"; chars = "\\ed"; }
+        { key = "Q"; mods = "Alt"; chars = "\\eq"; }
+        { key = "I"; mods = "Alt"; chars = "\\ei"; }   #nvim toggle float terminal
+        { key = "V"; mods = "Alt"; chars = "\\ev"; }   #nvim toggle vertial terminal
+        { key = "H"; mods = "Alt"; chars = "\\eh"; }   #nvim toggle horizontal terminal
       ];
 
       hints = {
