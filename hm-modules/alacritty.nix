@@ -1,13 +1,21 @@
 { pkgs
+, lib
 , config
 , ...
 }:
 
+let
+  userlocalconfigfile = "~/.config/alacritty/userlocal.yml";
+  fontfamily = "FiraCode Nerd Font Mono";
+in
 {
+  home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${fontfamily}"' ${userlocalconfigfile}
+  '';
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "~/.config/alacritty/userlocal.yml" ];
+      import = [ userlocalconfigfile ];
       window = {
         decorations = "buttonless";
         opacity = 1.0;
@@ -17,7 +25,8 @@
       };
       font = {
         normal = {
-          family = "FiraCode Nerd Font Mono";
+          ##config in userlocal.yml
+          #family = "Hack Nerd Font" # "FiraCode Nerd Font Mono" "DejaVuSansMono Nerd Font Mono" 
         };
         size = 18.0;
       };
