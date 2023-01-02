@@ -28,7 +28,7 @@ in
   home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     touch ${userlocalconfigfile}
     ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${fontfamily}"' ${userlocalconfigfile}
-
+    ${pkgs.yq-go}/bin/yq -i '.font.normal.style = "Light"' ${userlocalconfigfile}
   '';
   programs.alacritty = {
     enable = true;
@@ -45,7 +45,7 @@ in
         normal = {
           ##config in userlocal.yml
           #family = "Hack Nerd Font" # "FiraCode Nerd Font Mono" "DejaVuSansMono Nerd Font Mono" 
-          style = "Light"; #Light Regular Bold
+          #style = "Light"; #Light Regular Bold
 
         };
         size = 18.0;
