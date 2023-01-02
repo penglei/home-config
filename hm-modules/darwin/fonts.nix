@@ -30,6 +30,7 @@
       #--}
 
       apple-sfmono-font
+      apple-sfmono-nerd-font
 
       (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
 
