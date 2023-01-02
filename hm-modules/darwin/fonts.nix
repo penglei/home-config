@@ -29,6 +29,8 @@
       #jetbrains-mono
       #--}
 
+      apple-sfmono-font
+
       (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
 
       noto-fonts-emoji

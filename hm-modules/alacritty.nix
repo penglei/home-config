@@ -45,6 +45,8 @@ in
         normal = {
           ##config in userlocal.yml
           #family = "Hack Nerd Font" # "FiraCode Nerd Font Mono" "DejaVuSansMono Nerd Font Mono" 
+          style = "Light"; #Light Regular Bold
+
         };
         size = 18.0;
       };

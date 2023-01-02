@@ -23,6 +23,7 @@ with pkgs;
 
   droidsans_fonts = callPackage ./fonts/droidsans.nix {};
   hack-nerd-font = callPackage ./fonts/hack.nix {};
+  apple-sfmono-font = callPackage ./fonts/sfmono.nix {};
 
   preview_open = callPackage ./darwin/preview.nix {};
 
