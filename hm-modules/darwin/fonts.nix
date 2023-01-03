@@ -27,12 +27,14 @@
       #hack-nerd-font
 
       #jetbrains-mono
-      #--}
 
-      apple-sfmono-font
+      #apple-sfmono-font
       apple-sfmono-nerd-font
 
-      (iosevka-bin.override { variant = "slab"; }) sarasa-gothic
+      #--}
+
+      #sarasa-gothic
+      #(iosevka-bin.override { variant = "slab"; })
 
       noto-fonts-emoji
 
