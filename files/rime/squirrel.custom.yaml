@@ -16,6 +16,8 @@ patch:
         ascii_mode: true
     org.alacritty:
       ascii_mode: true
+    net.kovidgoyal.kitty:
+      ascii_mode: true
 
   # 皮肤主题名称输入在下方，分为浅色和深色
   # 浅色主题（使用哪个主题去掉前面的 #）

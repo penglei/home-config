@@ -49,6 +49,7 @@
     preview_open
     isabelle_app
     koodo-reader 
+    kitty
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }
