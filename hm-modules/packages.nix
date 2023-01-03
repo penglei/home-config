@@ -6,7 +6,7 @@
 {
   home.packages = with pkgs; [
       fortune coreutils-full binutils
-      gnused gnugrep gnutar pstree tree watch help2man findutils
+      gnused gnugrep gnutar pstree tree watch findutils help2man ascii
       gnumake m4 libtool autoconf automake cmake ninja
       gnupg openssh sshpass htop rsync wget curl
       ripgrep fd jq yq-go fx bat
