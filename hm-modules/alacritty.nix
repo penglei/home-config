@@ -5,8 +5,17 @@
 }:
 
 let
-  fontfamily = "FiraCode Nerd Font Mono";
-  fontstyle = "Light";
+  fontoffsetbase = {
+    x = 0;
+    y = -1; #line spacing delta
+  };
+  fontcfgstyle = {
+    firacode = {
+      family = "FiraCode Nerd Font Mono";
+      style = "Light";
+      offset = fontoffsetbase // { y = -1; };
+    };
+  };
   #font:
   #  normal:
   #    family: FiraCode Nerd Font Mono
@@ -32,15 +41,18 @@ let
   ##Hack, DejaVu,SF的行高类似，都稍微矮一点
   ##命令行里面感觉行高一点看起来舒服些
 
+  font = fontcfgstyle.firacode; 
+
   userlocalconfigfile = "~/.config/alacritty/userlocal.yml";
 in
 {
   home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     touch ${userlocalconfigfile}
-    ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${fontfamily}"' ${userlocalconfigfile}
-    if [[ -n "${fontstyle}" ]]; then
-      ${pkgs.yq-go}/bin/yq -i '.font.normal.style = "${fontstyle}"' ${userlocalconfigfile}
+    ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${font.family}"' ${userlocalconfigfile}
+    if [[ -n "${font.style}" ]]; then
+      ${pkgs.yq-go}/bin/yq -i '.font.normal.style = "${font.style}"' ${userlocalconfigfile}
     fi
+    ${pkgs.yq-go}/bin/yq -i '.font.offset.y = ${toString(font.offset.y)}' ${userlocalconfigfile}
   '';
   programs.alacritty = {
     enable = true;
@@ -58,7 +70,6 @@ in
           ##config in userlocal.yml
           #family = "Hack Nerd Font" # "FiraCode Nerd Font Mono" "DejaVuSansMono Nerd Font Mono" 
           #style = "Light"; #Light Regular Bold
-
         };
         size = 18.0;
       };
