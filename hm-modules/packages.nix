@@ -15,6 +15,7 @@
       pass pwgen sops age  #gopass #secret security
       hyperfine #performance test
       #ghostscript
+      hexyl
 
       #rar
       #! rar is an unfree software, but we can't set allowunfree at this moment(2022-11-08)
