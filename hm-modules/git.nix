@@ -38,15 +38,19 @@
       pull.rebase = true;
       init.defaultBranch = "main";
       push.default = "current";
+      merge.conflictstyle = "zdiff3";
+      diff.colorMoved = "default";
     };
 
     # Prettier pager, adds syntax highlighting and line numbers
+    # see: https://github.com/dandavison/delta
     delta = {
       enable = true;
       options = {
         navigate = true;
         line-numbers = true;
         conflictstyle = "diff3";
+        side-by-side = true;
       };
     };
 
