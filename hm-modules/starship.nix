@@ -57,6 +57,7 @@ in {
       #  error_symbol = "[λ](bold red)";
       #};
       scan_timeout = 300;
+      command_timeout = 2000;
     };
   };
 }
