@@ -18,13 +18,13 @@ rec {
         ./hm-modules/git.nix
         ./hm-modules/tig.nix
         ./hm-modules/starship.nix
-        ./hm-modules/alacritty.nix
         ./hm-modules/neovim
         ./hm-modules/misc.nix
       ];
     };
     linux.modules = base.modules;
     darwin.modules = base.modules ++ [
+      ./hm-modules/alacritty.nix
       ./hm-modules/darwin/settings.nix
       ./hm-modules/darwin/keybindings.nix
       ./hm-modules/darwin/app-aliases.nix

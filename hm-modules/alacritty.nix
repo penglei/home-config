@@ -43,7 +43,7 @@ let
 
   font = fontcfgstyle.firacode; 
 
-  userlocalconfigfile = "~/.config/alacritty/userlocal.yml";
+  userlocalconfigfile = "${config.xdg.configHome}/alacritty/userlocal.yml"; #"~/.config/alacritty/userlocal.yml";
 in
 {
   home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -54,6 +54,7 @@ in
     fi
     ${pkgs.yq-go}/bin/yq -i '.font.offset.y = ${toString(font.offset.y)}' ${userlocalconfigfile}
   '';
+
   programs.alacritty = {
     enable = true;
     settings = {
