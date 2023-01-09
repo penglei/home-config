@@ -63,8 +63,8 @@
         ##  3. as a nixos module
 
         #packages.${system}.homeConfigurations = self.homeConfigurations;
-        packages.homeConfigurations = profiles.creator.standalone "penglei"
-          // profiles.creator.standalone "ubuntu";
+        packages.homeConfigurations = profiles.hm-creator.standalone "penglei"
+          // profiles.hm-creator.standalone "ubuntu";
 
         ## nixos linux only
         packages.nixosConfigurations = {

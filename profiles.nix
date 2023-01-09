@@ -36,7 +36,7 @@ rec {
     ];
   };
 
-  creator = {
+  hm-creator = {
     standalone = username: {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
