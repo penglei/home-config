@@ -42,7 +42,10 @@
 
       mongosh
 
+      wireguard-tools
+
   ] ++ lib.optionals stdenvNoCC.isDarwin [
+    kitty
     utm
     jetbrains.pycharm-community
     netnewswire
@@ -50,7 +53,7 @@
     preview_open
     isabelle_app
     koodo-reader 
-    kitty
+    bitwarden-desktop 
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }

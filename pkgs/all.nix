@@ -41,4 +41,6 @@ with pkgs;
   alacritty = callPackage ./alacritty {
     inherit (darwin.apple_sdk.frameworks) AppKit CoreGraphics CoreServices CoreText Foundation OpenGL;
   };
+
+  bitwarden-desktop = callPackage ./darwin/bitwarden-desktop.nix {};
 }
