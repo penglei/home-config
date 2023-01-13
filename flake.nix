@@ -21,9 +21,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager
+  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, hyprland, home-manager
     , sops-nix, nil-language-server, ... }@inputs:
     let
       inherit (nixpkgs) lib;
@@ -76,6 +77,7 @@
             inherit system;
             specialArgs = { nixpkgs = nixpkgsForNixOS; };
             modules = [
+              { nixpkgs.overlays = pkgOverlays; }
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
@@ -84,13 +86,22 @@
                 #home-manager.extraSpecialArgs = {};
               }
 
-              { nixpkgs.overlays = pkgOverlays; }
-
               sops-nix.nixosModules.sops
             ] ++ [
               ./stuff/etc-nixos/configuration.nix
               ./stuff/etc-nixos/hardware-configuration.nix
               { networking.hostName = hostname; }
+              hyprland.nixosModules.default
+              {
+                programs.hyprland = {
+                  enable = true;
+                  #xwayland = {
+                  #  enable = true;
+                  #  hidpi = true;
+                  #};
+                  #nvidiaPatches = false;
+                };
+              }
             ];
           };
 

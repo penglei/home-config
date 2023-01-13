@@ -4,6 +4,8 @@
 , undmg
 }:
 
+#nix store add-file ./xxx.dmg
+#nix hash file ./xxx.dmg
 stdenvNoCC.mkDerivation rec {
   pname = "bitwarden-desktop";
   version = "2023.1.0";
