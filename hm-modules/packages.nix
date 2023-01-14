@@ -8,7 +8,7 @@
       fortune coreutils-full binutils
       gnused gnugrep gnutar pstree tree watch findutils help2man ascii libiconv
       gnumake m4 libtool autoconf automake cmake ninja
-      gnupg openssh sshpass htop rsync wget curl
+      gnupg openssh sshpass htop rsync wget curl xz
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
       corkscrew socat
@@ -54,6 +54,7 @@
     isabelle_app
     koodo-reader 
     bitwarden-desktop 
+    spacelauncher
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }

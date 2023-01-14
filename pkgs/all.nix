@@ -53,4 +53,5 @@ with pkgs;
   };
 
   bitwarden-desktop = callPackage ./darwin/bitwarden-desktop.nix {};
+  spacelauncher = callPackage ./darwin/spacelauncher.nix {};
 }
