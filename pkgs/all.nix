@@ -11,11 +11,21 @@ with pkgs;
   kubectl-nodeshell = callPackage ./kubectl/nodeshell.nix {};
 
   utm = (prev.utm.overrideAttrs (finalAttrs: previousAttrs: rec {
-    version = "4.1.2";
+    version = "4.1.5";
     src = fetchurl {
       url = "https://github.com/utmapp/UTM/releases/download/v${version}/UTM.dmg";
-      sha256 = "sha256-OtQFHsDdkkO/NinGC1rF7ynxLxsr3m7TvVU9vBkAW9w=";
+      sha256 = "sha256-YOmTf50UUvvh4noWnmV6WsoWSua0tpWTgLTg+Cdr3bQ=";
     };
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out/Applications
+      cp -r *.app $out/Applications
+      runHook postInstall
+    '';
+    postInstall = ''
+      mkdir -p $out/bin
+      ln $out/Applications/UTM.app/Contents/MacOS/utmctl $out/bin/utmctl
+    '';
   }));
 
   netnewswire = callPackage ./darwin/netnewswire.nix {};
@@ -38,7 +48,7 @@ with pkgs;
 
   koodo-reader = callPackage ./darwin/koodo-reader.nix {};
 
-  alacritty = callPackage ./alacritty {
+  alacritty-custom = callPackage ./alacritty {
     inherit (darwin.apple_sdk.frameworks) AppKit CoreGraphics CoreServices CoreText Foundation OpenGL;
   };
 
