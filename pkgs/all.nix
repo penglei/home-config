@@ -10,23 +10,7 @@ with pkgs;
   kubectl-kubecm = callPackage ./kubectl/kubecm.nix {};
   kubectl-nodeshell = callPackage ./kubectl/nodeshell.nix {};
 
-  utm = (prev.utm.overrideAttrs (finalAttrs: previousAttrs: rec {
-    version = "4.1.5";
-    src = fetchurl {
-      url = "https://github.com/utmapp/UTM/releases/download/v${version}/UTM.dmg";
-      sha256 = "sha256-YOmTf50UUvvh4noWnmV6WsoWSua0tpWTgLTg+Cdr3bQ=";
-    };
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out/Applications
-      cp -r *.app $out/Applications
-      runHook postInstall
-    '';
-    postInstall = ''
-      mkdir -p $out/bin
-      ln $out/Applications/UTM.app/Contents/MacOS/utmctl $out/bin/utmctl
-    '';
-  }));
+  utm = (prev.utm.overrideAttrs (import ./darwin/utm.nix {inherit fetchurl makeWrapper;}).override);
 
   netnewswire = callPackage ./darwin/netnewswire.nix {};
   rectangle = callPackage ./darwin/rectangle.nix {};

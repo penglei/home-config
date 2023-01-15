@@ -115,5 +115,6 @@
 
           };
         };
+        #packages.darwin-rootkit = ./
       }); # each system
 }
