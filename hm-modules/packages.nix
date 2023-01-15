@@ -47,6 +47,7 @@
   ] ++ lib.optionals stdenvNoCC.isDarwin [
     kitty
     utm
+    yabai
     jetbrains.pycharm-community
     netnewswire
     rectangle
