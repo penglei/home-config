@@ -29,6 +29,7 @@ rec {
       ./hm-modules/darwin/keybindings.nix
       ./hm-modules/darwin/app-aliases.nix
       ./hm-modules/darwin/skhd.nix
+      ./hm-modules/darwin/yabai.nix
       ./hm-modules/darwin/gpg.nix
       ./hm-modules/darwin/rime-config.nix
       ./hm-modules/darwin/texlive.nix
