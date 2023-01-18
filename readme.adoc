@@ -44,3 +44,8 @@
 .icon font
 
 * https://www.nerdfonts.com/cheat-sheet
+
+== memos
+
+reload yabai: `launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai`
+
