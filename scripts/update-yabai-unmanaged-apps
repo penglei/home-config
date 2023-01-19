@@ -1,0 +1,26 @@
+
+action=$1
+
+appsfile=$HOME/.yabai.unmanaged.apps
+
+orighash=$(md5sum $appsfile | cut -d ' ' -f 1)
+
+tmpfile=$(mktemp)
+
+appname="$(yabai -m query --windows | jq -r '.[]|select(."has-focus" == true)|.app')"
+
+if [ $1 == "add" ]; then
+  echo "$appname" >> $appsfile
+  cat $appsfile | sort | uniq > $tmpfile
+else
+  cat $appsfile | grep -v "$appname" > $tmpfile
+fi
+
+mv $tmpfile $appsfile
+
+
+newhash=$(md5sum $appsfile | cut -d ' ' -f 1)
+
+if [ $newhash != $orighash ]; then
+  launchctl kickstart -k gui/$UID/org.nix-community.home.yabai
+fi

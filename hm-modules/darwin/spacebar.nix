@@ -18,6 +18,8 @@ in {
       };
       KeepAlive = true;
       RunAtLoad = true;
+      StandardErrorPath = "/tmp/spacebar.err.log";
+      StandardOutPath = "/tmp/spacebar.out.log";
     };
   };
 }

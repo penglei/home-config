@@ -165,3 +165,6 @@ ctrl + alt - s : yabai -m space --layout $(yabai -m query --spaces --space | jq 
 shift + alt - n :  yabai -m space --focus next || yabai -m space --focus first
 shift + alt - p :  yabai -m space --focus prev || yabai -m space --focus last
 
+ctrl + alt + shift + cmd - k : update-yabai-unmanaged-apps add
+ctrl + alt + shift + cmd - l : update-yabai-unmanaged-apps delete
+
