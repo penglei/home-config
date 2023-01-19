@@ -33,6 +33,8 @@
 
       #--}
 
+      font-awesome_5 font-awesome_6
+
       #sarasa-gothic
       #(iosevka-bin.override { variant = "slab"; })
 

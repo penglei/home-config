@@ -56,6 +56,7 @@
     koodo-reader 
     bitwarden-desktop 
     spacelauncher
+    spacebar
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }
