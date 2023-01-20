@@ -18,7 +18,7 @@ in {
       KeepAlive = true;
       RunAtLoad = true;
       ProcessType = "Interactive";
-      ThrottleInterval = 30;
+      #ThrottleInterval = 30;
     };
   };
 }
