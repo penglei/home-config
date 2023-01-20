@@ -53,9 +53,9 @@ yabai -m config                              \
     split_ratio                 0.50         \
     split_type                  auto         \
     auto_balance                off          \
-    top_padding                 06           \
-    left_padding                06           \
-    right_padding               06           \
+    top_padding                 02           \
+    left_padding                02           \
+    right_padding               02           \
     bottom_padding              02           \
     window_gap                  06           \
     layout                      bsp          \
@@ -64,7 +64,17 @@ yabai -m config                              \
     mouse_action2               resize       \
     mouse_drop_action           swap
 
-#yabai -m config external_bar all:0:$(spacebar -m config height)
+# S K E T C H Y B A R  E V E N T S
+yabai -m config external_bar all:0:$(sketchybar --query bar | jq -r '.height')
+
+## listener can query window and space by:
+##   yabai -m query --windows --window
+##   yabai -m query --spaces --space
+yabai -m signal --add event=window_focused action="sketchybar -m --trigger window_focus &> /dev/null"
+yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger title_change &> /dev/null"
+yabai -m signal --add event=space_changed action="sketchybar -m --trigger space_change &> /dev/null"
+yabai -m signal --add event=window_resized action="sketchybar -m --trigger window_resize &> /dev/null"
+
 
 echo "yabai configuration loaded.."
 
