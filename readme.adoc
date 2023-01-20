@@ -51,10 +51,17 @@ reload yabai: `launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai`
 
 === rime/squirrel
 
-日志文件:
+log location:
 
 * $TMPDIR/rime.squirrel.INFO
 * $TMPDIR/rime.squirrel.ERROR
 
+force deploy (nix home-manager links rime config):
 
+----
+rm -rf ~/Library/Rime/build
 
+# Press Ctrl+Option(left)+` to re-deploy
+----
+
+*Shift+space* as switcher key: https://github.com/rime/squirrel/issues/113
