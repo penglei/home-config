@@ -41,4 +41,8 @@ with pkgs;
   spacebar = callPackage ./darwin/spacebar.nix {
     inherit (darwin.apple_sdk.frameworks) Carbon Cocoa ScriptingBridge SkyLight;
   };
+
+  sketchybar = callPackage ./darwin/sketchybar.nix {
+    inherit (darwin.apple_sdk.frameworks) Carbon Cocoa SkyLight;# DisplayServices isn't present yet;
+  };
 }
