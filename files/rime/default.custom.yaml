@@ -13,12 +13,12 @@ patch:
 
   # 若 caps 切换大小写无效, 打开 Mac 系统偏好设置 > 键盘 > 输入法 > 取消勾选[使用大写锁定键切换“美国”输入模式]
   ascii_composer/good_old_caps_lock: true # 若为 true， Caps 只切换大小写
-  ascii_composer/switch_key:
-    Caps_Lock: commit_code # Caps 键
-    Shift_L: commit_code # 左 Shift，切换中英文
-    Shift_R: commit_code # 右 Shift，切换中英文
+  ascii_composer/switch_key: #why named commit_code ? 因为rime输入法的code是英文字母
+    Caps_Lock: commit_code
+    Shift_L: noop 
+    Shift_R: noop
     Control_L: noop # 左 Control，屏蔽该切换键
-    Control_R: noop # 右 Control，屏蔽该切换键
+    Control_R: noop 
 
   recognizer/patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
@@ -26,6 +26,8 @@ patch:
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 
   key_binder/bindings:
+    - { when: always, accept: Shift+space, toggle: ascii_mode }
+
     #移动光标(用以调整inputs)
     - { when: composing, accept: Shift+Tab, send: Shift+Left }    # "Shift+Tab" 键向左选拼音分词
     - { when: composing, accept: Control+a, send: Home }

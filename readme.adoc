@@ -49,3 +49,12 @@
 
 reload yabai: `launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai`
 
+=== rime/squirrel
+
+日志文件:
+
+* $TMPDIR/rime.squirrel.INFO
+* $TMPDIR/rime.squirrel.ERROR
+
+
+
