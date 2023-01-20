@@ -24,9 +24,10 @@ yabai -m space 7 --label adhoc
 # apps unmanaged (ignore)
 yabai -m rule --add app="^(`cat $HOME/.yabai.unmanaged.apps | grep '^' | head -c-1 - | tr '\n' '|'`)$" manage=off
 
-yabai -m rule --add app="^(Safari|Google Chrome|Notes)$" space=viewer
+yabai -m rule --add app="^(Safari|Google Chrome|Notes|Logseq)$" space=viewer
 yabai -m rule --add app="^(Telegram|WeChat)$" space=social
 yabai -m rule --add app="^(WeCom)$" space=work
+
 
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
