@@ -13,25 +13,21 @@
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-yabai -m config external_bar all:0:$(spacebar -m config height)
-
-yabai -m space 1 --label main
-yabai -m space 2 --label web
-yabai -m space 3 --label mail
-yabai -m space 4 --label notes
-yabai -m space 6 --label social
+yabai -m space 1 --label work   #work
+yabai -m space 2 --label term   #alacritty
+yabai -m space 3 --label editor #jetbrains, vscode...
+yabai -m space 4 --label viewer #chrome,safari,koodo,logseq..
+yabai -m space 5 --label social #telegram,wechat...
+yabai -m space 6 --label misc
 yabai -m space 7 --label adhoc
 
 # apps unmanaged (ignore)
 yabai -m rule --add app="^(`cat $HOME/.yabai.unmanaged.apps | grep '^' | head -c-1 - | tr '\n' '|'`)$" manage=off
 
-yabai -m rule --add app="^(Alfred Preferences|EuDic)$" manage=off
-yabai -m rule --add app="^(iOA)$" manage=off
+yabai -m rule --add app="^(Safari|Google Chrome|Notes)$" space=viewer
+yabai -m rule --add app="^(Telegram|WeChat)$" space=social
+yabai -m rule --add app="^(WeCom)$" space=work
 
-
-yabai -m rule --add app="^(Safari|Google Chrome)$" space=web
-yabai -m rule --add app="^Notes$" space=notes
-yabai -m rule --add app="^Telegram$" space=social
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
 yabai -m config                              \
@@ -59,7 +55,7 @@ yabai -m config                              \
     top_padding                 06           \
     left_padding                06           \
     right_padding               06           \
-    bottom_padding              06           \
+    bottom_padding              02           \
     window_gap                  06           \
     layout                      bsp          \
     mouse_modifier              fn           \
@@ -67,27 +63,6 @@ yabai -m config                              \
     mouse_action2               resize       \
     mouse_drop_action           swap
 
-# yabai -m config mouse_follows_focus          off
-# yabai -m config focus_follows_mouse          off
-# yabai -m config window_origin_display        default
-# yabai -m config window_placement             second_child
-# yabai -m config window_topmost               off
-# yabai -m config window_shadow                on
-# yabai -m config window_opacity               on
-# yabai -m config window_opacity_duration      0.0
-# yabai -m config active_window_opacity        1.0
-# yabai -m config normal_window_opacity        0.90
-# yabai -m config window_border                off
-# yabai -m config window_border_width          6
-# yabai -m config active_window_border_color   0xff775759
-# yabai -m config normal_window_border_color   0xff555555
-# yabai -m config insert_feedback_color        0xffd75f5f
-# yabai -m config split_ratio                  0.50
-# yabai -m config auto_balance                 off
-# yabai -m config mouse_modifier               fn
-# yabai -m config mouse_action1                move
-# yabai -m config mouse_action2                resize
-# yabai -m config mouse_drop_action            swap
-
+yabai -m config external_bar all:0:$(spacebar -m config height)
 
 echo "yabai configuration loaded.."

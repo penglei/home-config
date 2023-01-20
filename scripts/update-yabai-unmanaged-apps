@@ -16,11 +16,10 @@ else
   cat $appsfile | grep -v "$appname" > $tmpfile
 fi
 
-mv $tmpfile $appsfile
-
+cat $tmpfile > $appsfile
+rm $tmpfile
 
 newhash=$(md5sum $appsfile | cut -d ' ' -f 1)
-
 if [ $newhash != $orighash ]; then
   launchctl kickstart -k gui/$UID/org.nix-community.home.yabai
 fi
