@@ -13,21 +13,17 @@
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-#SPACEBAR_HEIGHT=$(spacebar -m config height)
-#yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
+yabai -m config external_bar all:0:$(spacebar -m config height)
 
-yabai -m space 1 --label code
+yabai -m space 1 --label main
 yabai -m space 2 --label web
 yabai -m space 3 --label mail
 yabai -m space 4 --label notes
 yabai -m space 6 --label social
-yabai -m space 7 --label media
+yabai -m space 7 --label adhoc
 
-# apps to not manage (ignore)
-# yabai -m query --windows
-
+# apps unmanaged (ignore)
 yabai -m rule --add app="^(`cat $HOME/.yabai.unmanaged.apps | grep '^' | head -c-1 - | tr '\n' '|'`)$" manage=off
-#yabai -m rule --add app="^(Calendar|Activity Monitor|Console|Calculator|System Preferences|System Information|Archive Utility|Disk Utility|Digital Color Meter|System Information)$" manage=off
 
 yabai -m rule --add app="^(Alfred Preferences|EuDic)$" manage=off
 yabai -m rule --add app="^(iOA)$" manage=off

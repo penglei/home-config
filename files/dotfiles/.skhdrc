@@ -1,5 +1,12 @@
+#!/usr/bin/env sh
+
 #debug
 #alt - x : wmshow yabai tiling::window --close #
+
+#keywords:
+#https://github.com/koekeishiya/skhd/issues/1
+
+alt - return : open -na /Users/penglei/Applications/Alacritty.app
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -49,9 +56,9 @@ shift + alt - 4 : yabai -m space --focus  4 || skhd -k "ctrl + alt + cmd - 4"
 shift + alt - 5 : yabai -m space --focus  5 || skhd -k "ctrl + alt + cmd - 5"
 shift + alt - 6 : yabai -m space --focus  6 || skhd -k "ctrl + alt + cmd - 6"
 shift + alt - 7 : yabai -m space --focus  7 || skhd -k "ctrl + alt + cmd - 7"
-shift + alt - 8 : yabai -m space --focus  8 || skhd -k "ctrl + alt + cmd - 8"
-shift + alt - 9 : yabai -m space --focus  9 || skhd -k "ctrl + alt + cmd - 9"
-shift + alt - 0 : yabai -m space --focus 10 || skhd -k "ctrl + alt + cmd - 0"
+#shift + alt - 8 : yabai -m space --focus  8 || skhd -k "ctrl + alt + cmd - 8"
+#shift + alt - 9 : yabai -m space --focus  9 || skhd -k "ctrl + alt + cmd - 9"
+#shift + alt - 0 : yabai -m space --focus 10 || skhd -k "ctrl + alt + cmd - 0"
 
 # send window to desktop and follow focus
 shift + cmd - x : yabai -m window --space recent && yabai -m space --focus recent
@@ -64,9 +71,9 @@ shift + cmd - 4 : yabai -m window --space  4 && yabai -m space --focus 4
 shift + cmd - 5 : yabai -m window --space  5 && yabai -m space --focus 5
 shift + cmd - 6 : yabai -m window --space  6 && yabai -m space --focus 6
 shift + cmd - 7 : yabai -m window --space  7 && yabai -m space --focus 7
-shift + cmd - 8 : yabai -m window --space  8 && yabai -m space --focus 8
-shift + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9
-shift + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10
+#shift + cmd - 8 : yabai -m window --space  8 && yabai -m space --focus 8
+#shift + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9
+#shift + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10
 
 # # focus monitor
 # ctrl + alt - x  : yabai -m display --focus recent
@@ -167,4 +174,5 @@ shift + alt - p :  yabai -m space --focus prev || yabai -m space --focus last
 
 ctrl + alt + shift + cmd - k : update-yabai-unmanaged-apps add
 ctrl + alt + shift + cmd - l : update-yabai-unmanaged-apps delete
+cmd - m : yabai -m window --space adhoc
 
