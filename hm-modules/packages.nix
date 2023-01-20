@@ -48,6 +48,7 @@
     kitty
     utm
     yabai
+    skhd #sketchybar
     jetbrains.pycharm-community
     netnewswire
     rectangle
@@ -55,8 +56,6 @@
     isabelle_app
     koodo-reader 
     bitwarden-desktop 
-    spacelauncher
-    spacebar
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }

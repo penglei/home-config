@@ -91,10 +91,11 @@ sketchybar -m --add event window_focus  \
 #### yabai status ####
 sketchybar -m --add       item          space_mode left                                                       \
               --set       space_mode    script="~/.config/sketchybar/plugins/yabai_space_state.sh" lazy=off   \
+                                        background.padding_right=-10                                          \
               --subscribe space_mode    window_focus window_resize space_change \
               --add       item          window_mode left                                                      \
               --set       window_mode   script="~/.config/sketchybar/plugins/yabai_window_state.sh" lazy=off  \
-                                        background.padding_right=-10                                          \
+                                        background.padding_right=-5                                           \
               --subscribe window_mode   window_focus window_resize space_change
 
 #### Window Title Item ####
