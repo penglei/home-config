@@ -7,8 +7,8 @@ if [[ $WINDOW_TITLE = "" ]]; then
   WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.app')
 fi
 
-if [[ ${#WINDOW_TITLE} -gt 120 ]]; then
-  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-120)
+if [[ ${#WINDOW_TITLE} -gt 210 ]]; then
+  WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-210)
   sketchybar -m --set title label="$WINDOW_TITLE"…
   exit 0
 fi

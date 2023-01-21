@@ -15,6 +15,14 @@ in {
       EnvironmentVariables = {
         "PATH" = "${homeProfilePath ".nix-profile/bin"}:${homeProfilePath ".local/bin"}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
       };
+      # KeepAlive = {
+      #   OtherJobEnabled = builtins.listToAttrs [
+      #     {
+      #       name = config.launchd.agents.sketchybar.config.Label;
+      #       value = true;
+      #     }
+      #   ];
+      # };
       KeepAlive = true;
       RunAtLoad = true;
       ProcessType = "Interactive";

@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-EPpD1QuJXFFwWcs1gmhjf9zm6mkEM72Zr8NOAAgxI4I=";
   };
 
-  buildInputs = [ Carbon Cocoa SkyLight ]
+  buildInputs = [ Carbon Cocoa SkyLight DisplayServices]
     ++ lib.optionals (stdenv.system == "x86_64-darwin") [ memstreamHook ];
 
   makeFlags = [

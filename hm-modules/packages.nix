@@ -12,7 +12,8 @@
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
       corkscrew socat
-      pass pwgen sops age  #gopass #secret security
+      pass pwgen sops
+      age  #gopass #secret security
       hyperfine #performance test
       #ghostscript
       hexyl
@@ -45,10 +46,11 @@
       wireguard-tools
 
   ] ++ lib.optionals stdenvNoCC.isDarwin [
+    yabai
+    skhd
+    sketchybar
     kitty
     utm
-    yabai
-    skhd #sketchybar
     jetbrains.pycharm-community
     netnewswire
     rectangle
