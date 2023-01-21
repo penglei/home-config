@@ -5,6 +5,12 @@
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
+# yabai events
+sketchybar -m --add event window_focus  \
+              --add event window_resize \
+              --add event title_change  \
+              --add event space_change
+
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
 # options available. For all options see:
@@ -77,24 +83,23 @@ done
 #                                  icon.drawing=off                  \
 #            --subscribe front_app front_app_switched
 
+sketchybar --add item yabai_space_label left                                  \
+           --set yabai_space_label script="$PLUGIN_DIR/yabai_space_label.sh"  \
+           --subscribe yabai_space_label space_change 
+
+
 sketchybar --add item space_separator left                         \
            --set space_separator icon=                            \
                                  background.padding_left=10        \
                                  background.padding_right=-15      \
 
-# yabai events
-sketchybar -m --add event window_focus  \
-              --add event window_resize \
-              --add event title_change  \
-              --add event space_change
-
 #### yabai status ####
 sketchybar -m --add       item          space_mode left                                                       \
-              --set       space_mode    script="~/.config/sketchybar/plugins/yabai_space_state.sh" lazy=off   \
+              --set       space_mode    script="$PLUGIN_DIR/yabai_space_state.sh" lazy=off   \
                                         background.padding_right=-10                                          \
               --subscribe space_mode    window_focus window_resize space_change \
               --add       item          window_mode left                                                      \
-              --set       window_mode   script="~/.config/sketchybar/plugins/yabai_window_state.sh" lazy=off  \
+              --set       window_mode   script="$PLUGIN_DIR/yabai_window_state.sh" lazy=off  \
                                         background.padding_right=-5                                           \
               --subscribe window_mode   window_focus window_resize space_change
 
@@ -102,7 +107,7 @@ sketchybar -m --add       item          space_mode left                         
 
 # W I N D O W  T I T L E 
 sketchybar -m --add item title left \
-              --set title script="$HOME/.config/sketchybar/plugins/window_title.sh" y_offset=1 \
+              --set title script="$PLUGIN_DIR/window_title.sh" y_offset=1 \
               --subscribe title window_focus front_app_switched space_change title_change
 
 
