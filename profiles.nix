@@ -31,7 +31,7 @@ rec {
       ./hm-modules/darwin/skhd.nix
       ./hm-modules/darwin/yabai.nix
       #./hm-modules/darwin/spacebar.nix
-      #./hm-modules/darwin/sketchybar.nix
+      ./hm-modules/darwin/sketchybar.nix
       ./hm-modules/darwin/gpg.nix
       ./hm-modules/darwin/rime-config.nix
       ./hm-modules/darwin/texlive.nix

@@ -60,7 +60,7 @@ patch:
       line_spacing: 10                             # 行间距(适用于竖排)
       border_height: 4                             # 窗口上下高度，大于圆角半径才生效
       border_width: 4                              # 窗口左右宽度，大于圆角半径才生效
-      font_face: "PingFangSC"                      # 候选词字体
+      font_face: "PingFangSC,Droid Sans Fallback,Hack Nerd Font"    #候选词字体
       font_point: 16                               # 候选字大小
       label_font_point: 13                         # 候选编号大小
       text_color: 0x424242                    # 拼音行文字颜色
@@ -285,6 +285,7 @@ patch:
       label_font_point: 15                     # 候选编号大小
       corner_radius: 6                         # 窗口圆角
       line_spacing: 10                         # 行间距(适用于竖排)
+      font_face: "PingFangSC,Droid Sans Fallback,Hack Nerd Font"    #候选词字体
       text_color: 0x666666                     # 拼音行文字颜色
       candidate_text_color: 0x000000           # 预选项文字颜色
       back_color: 0xFFFFFF                     # 候选条背景色

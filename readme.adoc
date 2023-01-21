@@ -65,3 +65,7 @@ rm -rf ~/Library/Rime/build
 ----
 
 *Shift+space* as switcher key: https://github.com/rime/squirrel/issues/113
+
+=== launchctl
+
+launchctl bootout gui/$UID ./org.sketchybar.plist

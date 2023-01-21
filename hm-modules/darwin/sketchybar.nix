@@ -11,7 +11,7 @@ in {
     enable = true;
 
     config = {
-      ProgramArguments = [ "${pkgs.sketchybar}/bin/sketchybar" ];
+      ProgramArguments = [ "${homeProfilePath ".local/bin"}/sketchybar" ];
       EnvironmentVariables = {
         "PATH" = "${homeProfilePath ".nix-profile/bin"}:${homeProfilePath ".local/bin"}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
         "SHELL" = "/bin/sh";
