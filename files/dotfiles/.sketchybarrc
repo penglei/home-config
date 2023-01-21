@@ -20,7 +20,7 @@ sketchybar -m --add event window_focus  \
 
 sketchybar --bar height=32        \
                  blur_radius=50   \
-                 position=bottom     \
+                 position=bottom  \
                  sticky=off       \
                  padding_left=10  \
                  padding_right=10 \

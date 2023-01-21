@@ -65,7 +65,9 @@ yabai -m config                              \
     mouse_drop_action           swap
 
 # S K E T C H Y B A R  E V E N T S
-yabai -m config external_bar all:0:$(sketchybar --query bar | jq -r '.height')
+#height=$(sketchybar --query bar | jq -r '.height')
+#we don't query by sketchybar command, which needs yabai start after sketchybar when bootstraping.
+yabai -m config external_bar all:0:32
 
 ## listener can query window and space by:
 ##   yabai -m query --windows --window
