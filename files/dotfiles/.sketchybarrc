@@ -5,11 +5,12 @@
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-# yabai events
-sketchybar -m --add event window_focus  \
-              --add event window_resize \
-              --add event title_change  \
-              --add event space_change
+# events
+sketchybar -m --add event window_focus        \
+              --add event window_resize       \
+              --add event title_change        \
+              --add event space_change        \
+              --add event opacity_change
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
@@ -94,14 +95,20 @@ sketchybar --add item space_separator left                         \
                                  background.padding_right=-15      \
 
 #### yabai status ####
-sketchybar -m --add       item          space_mode left                                                       \
-              --set       space_mode    script="$PLUGIN_DIR/yabai_space_state.sh" lazy=off   \
-                                        background.padding_right=-10                                          \
-              --subscribe space_mode    window_focus window_resize space_change \
-              --add       item          window_mode left                                                      \
-              --set       window_mode   script="$PLUGIN_DIR/yabai_window_state.sh" lazy=off  \
-                                        background.padding_right=-5                                           \
-              --subscribe window_mode   window_focus window_resize space_change
+
+sketchybar -m --add       item            window_opacity left                                                   \
+              --set       window_opacity  script="$PLUGIN_DIR/yabai_windows_opacity.sh" lazy=off                \
+                                          click_script="skhd -k 'alt - o'"                                      \
+                                          background.padding_right=-10                                          \
+              --subscribe window_opacity  opacity_change window_focus space_change \
+              --add       item            space_mode left                                                       \
+              --set       space_mode      script="$PLUGIN_DIR/yabai_space_state.sh" lazy=off                    \
+                                          background.padding_right=-10                                          \
+              --subscribe space_mode      window_focus window_resize space_change \
+              --add       item            window_mode left                                                      \
+              --set       window_mode     script="$PLUGIN_DIR/yabai_window_state.sh" lazy=off                   \
+                                          background.padding_right=-5                                           \
+              --subscribe window_mode     window_focus window_resize space_change
 
 #### Window Title Item ####
 

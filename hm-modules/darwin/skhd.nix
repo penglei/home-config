@@ -19,6 +19,8 @@ in {
       KeepAlive = true;
       RunAtLoad = true;
       ProcessType = "Interactive";
+      StandardErrorPath = "/tmp/skhd.err.log";
+      StandardOutPath = "/tmp/skhd.out.log";
     };
   };
 }

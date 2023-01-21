@@ -170,12 +170,13 @@ alt - t : yabai -m window --toggle float --grid 8:8:1:1:6:6
 # toggle sticky (show on all spaces)
 alt - s : yabai -m window --toggle sticky --toggle topmost --toggle float --grid 8:8:3:0:5:6
 
-# toggle topmost (keep above other windows)
-alt - o : yabai -m window --toggle topmost
+# toggle opacity
+alt - o : yabai -m config window_opacity "$(yabai -m query --windows | jq -r 'if any(.[]; .opacity < 1) then "off" else "on" end')" \
+          && sketchybar -m --trigger opacity_change &> /dev/null
 
 # toggle picture-in-picture
 alt - p : yabai -m window --toggle border --toggle pip
 
-ctrl + alt + shift + cmd - k : update-yabai-unmanaged-apps add
-ctrl + alt + shift + cmd - l : update-yabai-unmanaged-apps delete
+ctrl + shift + alt + cmd - k : update-yabai-unmanaged-apps add
+ctrl + shift + alt + cmd - l : update-yabai-unmanaged-apps delete
 
