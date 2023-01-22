@@ -7,7 +7,7 @@ has_fullscreen_zoom=$(yabai -m query --windows --window | jq -r '."has-fullscree
 label=""
 case "$has_fullscreen_zoom" in
   true)
-    label="F"
+    label=""
   ;;
 esac
 sketchybar -m --set window_mode label="$label"

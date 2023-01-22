@@ -34,7 +34,6 @@ in
       }
       {
         name = "zsh-autopair";
-        #file = "lib/completion.zsh";
         src = pkgs.fetchFromGitHub {
           owner = "hlissner";
           repo = "zsh-autopair";
