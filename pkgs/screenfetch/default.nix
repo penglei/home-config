@@ -10,7 +10,7 @@ let
   ] ++ lib.optionals stdenv.isLinux [
     procps
     xdpyinfo
-    xpro
+    xprop
   ] ++ lib.optionals stdenv.isDarwin (with darwin; [
     DarwinTools
   ]));
@@ -23,7 +23,7 @@ in stdenv.mkDerivation rec {
     owner  = "KittyKatt";
     repo   = "screenFetch";
     rev    = "f497b8f44de439d1206f04bad18ebdfd8783cd5b";
-    sha256 = "";
+    sha256 = "sha256-Dx9a0VF1SYxdNVVnspxet5+C/94kjJzjgoSXyk9fCfs=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
