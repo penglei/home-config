@@ -7,7 +7,8 @@
 #https://github.com/koekeishiya/skhd/issues/1
 
 #open a floating terminal
-alt - return : skhd -k "ctrl + alt - i" && open -na /Users/penglei/Applications/Alacritty.app && skhd -k "alt - t"
+#alt - return : skhd -k "ctrl + alt - i" && open -na /Users/penglei/Applications/Alacritty.app && skhd -k "alt - t"
+alt - return : skhd -k "ctrl + alt - i" && alacritty msg create-window && sleep 0.05 && skhd -k "alt - t"
 
 # toggle layout between 'bsp' and 'stack.
 ctrl + cmd - space : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')"

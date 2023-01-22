@@ -76,7 +76,7 @@ in
       };
       key_bindings = [
         { key = "Space"; mods = "Control"; mode = "~Search"; action = "ToggleViMode"; }
-        { key = "T"; mods = "Command"; action = "CreateNewWindow"; }
+        { key = "N"; mods = "Command"; action = "CreateNewWindow"; }
         { key = "F"; mods = "Alt"; chars = "\\ef"; }
         { key = "B"; mods = "Alt"; chars = "\\eb"; }
         { key = "H"; mods = "Alt"; chars = "\\eb"; }
