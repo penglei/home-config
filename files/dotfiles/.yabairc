@@ -28,7 +28,7 @@ yabai -m rule --add app="^(Safari|Google Chrome|Notes|Logseq)$" space=viewer
 yabai -m rule --add app="^(Telegram|WeChat)$" space=social
 yabai -m rule --add app="^(WeCom)$" space=work
 yabai -m rule --add app="^(QQ音乐)$" space=misc
-
+yabai -m rule --add app="^(kitty)$" space=term
 
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 

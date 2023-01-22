@@ -45,4 +45,5 @@ with pkgs;
   sketchybar = callPackage ./darwin/sketchybar.nix {
     inherit (darwin.apple_sdk.frameworks) Carbon Cocoa SkyLight DisplayServices;
   };
+  screenfetch = callPackage ./screenfetch {};
 }
