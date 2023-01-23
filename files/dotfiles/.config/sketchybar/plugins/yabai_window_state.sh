@@ -9,6 +9,9 @@ case "$has_fullscreen_zoom" in
   true)
     label=""
   ;;
+  false)
+    label="﩯" #ﱖ󰕰﩯
+  ;;
 esac
 sketchybar -m --set window_mode label="$label"
 #is_floating is-stickey is-topmost has-fullscreen-zoom 

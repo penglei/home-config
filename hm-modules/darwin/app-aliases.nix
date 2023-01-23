@@ -24,16 +24,18 @@ in
 
     appliation_alias_dir="$HOME/Applications"
 
+    find $appliation_alias_dir -maxdepth 1 -name '*.app' -delete
+
     $DRY_RUN_CMD  find ${apps}/Applications -type l -exec readlink -f '{}' + |
         while read app; do
 
-            app_name="$(basename $app)"
+            app_name="$(basename "$app")"
             if [[ -e "$appliation_alias_dir/$app_name" ]]; then
               rm -rf "$appliation_alias_dir/$app_name"
             fi
 
-            # Spotlight does not recognize symlinks, it will ignore directory we link to the applications folder.
-            # It does understand MacOS aliases though, a unique filesystem feature. Sadly they cannot be created
+            # Spotlight does not recognize symlinks, it will ignore directory linked to the applications folder.
+            # Luckily, it understand MacOS aliases, a unique filesystem feature. But the aliase cannot be created
             # from bash (as far as I know), so we use the oh-so-great Apple Script instead.
             /usr/bin/osascript -e "
                 set fileToAlias to POSIX file \"$app\" 
