@@ -51,12 +51,14 @@
     sketchybar
     kitty
     utm
+    presentation
     jetbrains.pycharm-community
     netnewswire
     rectangle
     preview_open
     isabelle_app
     koodo-reader 
+    adobe-reader
     bitwarden-desktop 
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];

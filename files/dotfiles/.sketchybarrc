@@ -10,7 +10,8 @@ sketchybar -m --add event window_focus        \
               --add event window_resize       \
               --add event title_change        \
               --add event space_change        \
-              --add event opacity_change
+              --add event opacity_change      \
+              --add event space_mode_change
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
@@ -22,7 +23,8 @@ sketchybar -m --add event window_focus        \
 sketchybar --bar height=32        \
                  blur_radius=50   \
                  position=bottom  \
-                 sticky=off       \
+                 topmost=on       \
+                 sticky=on        \
                  padding_left=10  \
                  padding_right=10 \
                  color=0x15ffffff
@@ -86,7 +88,7 @@ done
 
 sketchybar --add item yabai_space_label left                                  \
            --set yabai_space_label script="$PLUGIN_DIR/yabai_space_label.sh"  \
-           --subscribe yabai_space_label space_change 
+           --subscribe yabai_space_label space_change
 
 
 sketchybar --add item space_separator left                         \
@@ -104,7 +106,7 @@ sketchybar -m --add       item            window_opacity left                   
               --add       item            space_mode left                                                       \
               --set       space_mode      script="$PLUGIN_DIR/yabai_space_state.sh" lazy=off                    \
                                           background.padding_right=-10                                          \
-              --subscribe space_mode      window_focus window_resize space_change \
+              --subscribe space_mode      window_focus window_resize space_change space_mode_change \
               --add       item            window_mode left                                                      \
               --set       window_mode     script="$PLUGIN_DIR/yabai_window_state.sh" lazy=off                   \
                                           background.padding_right=-5                                           \

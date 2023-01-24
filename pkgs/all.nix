@@ -46,4 +46,6 @@ with pkgs;
     inherit (darwin.apple_sdk.frameworks) Carbon Cocoa SkyLight DisplayServices;
   };
   screenfetch = callPackage ./screenfetch {};
+  presentation = callPackage ./darwin/presentation.nix {};
+  adobe-reader = callPackage ./darwin/adobe-reader.nix {};
 }
