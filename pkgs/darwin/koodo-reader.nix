@@ -18,9 +18,11 @@ stdenvNoCC.mkDerivation rec {
   nativeBuildInputs = [ undmg ];
 
   installPhase = ''
+    runHook preInstall
     appdir="Koodo Reader.app"
     mkdir -p "$out/Applications/$appdir"
     cp -R . "$out/Applications/$appdir"
+    runHook postInstall
   '';
 }
 

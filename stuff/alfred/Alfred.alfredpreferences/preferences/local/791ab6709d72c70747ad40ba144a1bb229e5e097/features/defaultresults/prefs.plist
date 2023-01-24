@@ -9,6 +9,7 @@
 		<string>/Library/PreferencePanes</string>
 		<string>/System/Library/CoreServices/Applications</string>
 		<string>/System/Library/PreferencePanes</string>
+		<string>~/Applications</string>
 		<string>~/Documents</string>
 		<string>~/Library/CloudStorage/iCloudDrive</string>
 	</array>

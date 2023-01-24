@@ -1,4 +1,5 @@
-path_app="$(dirname "$PWD")" 
+result=0
+path_epp="$(dirname "$PWD")" 
 ##
 # extract the (de) compressor
 Z=7za
@@ -49,4 +50,5 @@ exit $result
 
 # That's all Folks!
 ##
+
 
