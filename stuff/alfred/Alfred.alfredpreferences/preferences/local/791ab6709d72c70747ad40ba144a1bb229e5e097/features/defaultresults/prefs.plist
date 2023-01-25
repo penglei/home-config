@@ -5,7 +5,6 @@
 	<key>scope</key>
 	<array>
 		<string>/Applications/Xcode.app/Contents/Applications</string>
-		<string>/Developer/Applications</string>
 		<string>/Library/PreferencePanes</string>
 		<string>/System/Library/CoreServices/Applications</string>
 		<string>/System/Library/PreferencePanes</string>

@@ -12,8 +12,8 @@ alt - return : skhd -k "ctrl + alt - i" && \
                skhd -k "alt - t"
 
 # toggle layout between 'bsp' and 'stack.
-#alt + rshift - r :
-alt + shift - r : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')" && \
+#alt + rshift - b :
+alt + shift - b : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')" && \
                    sketchybar -m --trigger space_mode_change &> /dev/null
 
 # focus bsp windows
@@ -118,7 +118,7 @@ alt + shift - 9 : yabai -m window --space  adhoc && yabai -m space --focus adhoc
 # ctrl + cmd - 3  : yabai -m window --display 3 && yabai -m display --focus 3
 
 # balance size of windows
-alt + shift - b : yabai -m space --balance
+alt + shift - r : yabai -m space --balance
 #resize window
 alt + shift - w : yabai -m window --resize top:0:-100 --resize bottom:0:100
 alt + shift - s : yabai -m window --resize top:0:100 --resize bottom:0:-100

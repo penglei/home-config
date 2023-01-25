@@ -60,6 +60,8 @@
     koodo-reader 
     adobe-reader
     bitwarden-desktop 
+    p7zip libarchive  #for decompress .pkg installer
+    duti    #set default applications
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }
