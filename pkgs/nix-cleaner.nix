@@ -9,7 +9,7 @@ writeShellApplication {
 
     nix profile wipe-history
     #nix-env --delete-generations old
-    if [[ /nix/var/nix/profiles/default ]]; then
+    if [[ -L /nix/var/nix/profiles/default ]]; then
       nix profile wipe-history --profile /nix/var/nix/profiles/default 
     fi
 
