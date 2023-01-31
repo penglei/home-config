@@ -67,9 +67,6 @@ alt + shift - right  : yabai -m window --grid 1:2:1:0:1:1
 # cmd + alt - w : yabai -m space --focus prev && yabai -m space recent --destroy
 
 # fast focus desktop
-#shift + alt - x : yabai -m space --focus recent
-# shift + alt - z : yabai -m space --focus prev || skhd -k "ctrl + alt + cmd - z"
-# shift + alt - c : yabai -m space --focus next || skhd -k "ctrl + alt + cmd - c"
 alt - backspace : yabai -m space --focus recent
 alt - left  : yabai -m space --focus prev
 alt - right : yabai -m space --focus next
@@ -84,9 +81,9 @@ alt - 9 : yabai -m space --focus  adhoc
 #"Command + m" is traditional shortcut for minimize current window
 #I don't think minimizing a window is needed, instead we can move it to a "hidden" space!
 cmd - m : yabai -m window --space adhoc
-#"shift + alt" prefix is used to move window around spaces,
+#"alt + shift" prefix is used to move window around spaces,
 #the frequent ordinary operation in adhoc space is move out window,
-#so we can keep 'shift' key to reduce modifier key switch between 'shift + alt' and 'alt'.
+#so we can keep 'shift' key to reduce modifier key switch between 'alt + shift' and 'alt'.
 alt + shift - 0 : yabai -m space --focus adhoc
 
 # send window to desktop and follow focus
@@ -125,18 +122,6 @@ alt + shift - s : yabai -m window --resize top:0:100 --resize bottom:0:-100
 alt + shift - a : yabai -m window --resize left:-100:0 --resize right:100:0
 alt + shift - d : yabai -m window --resize left:100:0 --resize right:-100:0
 
-# # increase window size
-# shift + alt - a : yabai -m window --resize left:-100:0
-# shift + alt - s : yabai -m window --resize bottom:0:100
-# shift + alt - w : yabai -m window --resize top:0:-100
-# shift + alt - d : yabai -m window --resize right:100:0
-#
-# # decrease window size
-# shift + cmd - a : yabai -m window --resize left:100:0
-# shift + cmd - s : yabai -m window --resize bottom:0:-100
-# shift + cmd - w : yabai -m window --resize top:0:100
-# shift + cmd - d : yabai -m window --resize right:-100:0
-
 # set insertion point in focused container
 alt + ctrl - h : yabai -m window --insert west
 alt + ctrl - j : yabai -m window --insert south
@@ -163,7 +148,11 @@ alt - a : yabai -m space --toggle padding --toggle gap
 alt - m : yabai -m window --toggle zoom-fullscreen && sketchybar -m --trigger window_resize &> /dev/null
 
 # toggle window native fullscreen
-shift + alt - m : yabai -m window --toggle native-fullscreen
+alt + shift - m : yabai -m window --toggle native-fullscreen
+
+alt - f : yabai -m config focus_follows_mouse off
+alt + shift - f : yabai -m config focus_follows_mouse autoraise
+
 
 # toggle window split type
 alt - e : yabai -m window --toggle split

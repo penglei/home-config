@@ -62,6 +62,7 @@
     bitwarden-desktop 
     p7zip libarchive  #for decompress .pkg installer
     duti    #set default applications
+    chez-racket
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }
