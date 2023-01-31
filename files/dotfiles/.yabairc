@@ -28,16 +28,16 @@ yabai -m rule --add app="^(Safari|Google Chrome|Notes|Logseq)$" space=viewer
 yabai -m rule --add app="^(Telegram|WeChat)$" space=social
 yabai -m rule --add app="^WeChat$" -add title!="^WeChat\\s*\\(Chats\\)\\s*$" manage=off
 yabai -m rule --add app="^(WeCom)$" space=work
-yabai -m rule --add app="^(QQ音乐)$" space=misc
+yabai -m rule --add app="^(QQ音乐|迅雷)$" space=misc
 yabai -m rule --add app="^(kitty)$" space=term
 yabai -m rule --add title="^(Finder Preferences)$" manage=off
 
 
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
+yabai -m config focus_follows_mouse          autoraise #off
 yabai -m config                              \
     mouse_follows_focus         on           \
-    focus_follows_mouse         autoraise    \
     window_placement            first_child  \
     window_topmost              off          \
     window_shadow               off          \
@@ -84,3 +84,5 @@ yabai -m signal --add event=window_resized action="sketchybar -m --trigger windo
 
 echo "yabai configuration loaded.."
 
+#some references
+## https://www.cnblogs.com/kawaihe/p/yabai--mac-de-chuang-kou-ping-pu-guan-li-ruan-jian.html
