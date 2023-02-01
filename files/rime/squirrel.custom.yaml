@@ -18,6 +18,7 @@ patch:
         ascii_mode: true
     com.microsoft.VSCode:
         ascii_mode: true
+        vim_mode: true
     com.jetbrains.goland:
         ascii_mode: true
         vim_mode: true

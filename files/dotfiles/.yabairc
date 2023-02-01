@@ -24,19 +24,22 @@ yabai -m space 7 --label adhoc
 # apps unmanaged (ignore)
 yabai -m rule --add app="^(`cat $HOME/.yabai.unmanaged.apps | grep '^' | head -c-1 - | tr '\n' '|'`)$" manage=off
 
-yabai -m rule --add app="^Snipaste$" sticky=on layer=above manage=off
+yabai -m rule --add app="^(Snipaste|EuDic)$" sticky=on layer=above manage=off
+yabai -m rule --add title="^(Finder Preferences)$" layer=above manage=off
+
 yabai -m rule --add app="^(Safari|Google Chrome|Notes|Logseq)$" space=viewer
 yabai -m rule --add app="^(Telegram|WeChat)$" space=social
 yabai -m rule --add app="^WeChat$" -add title!="^WeChat\\s*\\(Chats\\)\\s*$" manage=off
 yabai -m rule --add app="^(WeCom)$" space=work
 yabai -m rule --add app="^(QQ音乐|迅雷)$" space=misc
 yabai -m rule --add app="^(kitty)$" space=term
-yabai -m rule --add title="^(Finder Preferences)$" manage=off
 
 
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
 yabai -m config focus_follows_mouse          autoraise #autoraise, off
+echo -n autoraise > $HOME/.yabai.config.focus_follows_mouse
+
 yabai -m config                              \
     mouse_follows_focus         on           \
     window_placement            first_child  \
