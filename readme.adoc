@@ -66,6 +66,8 @@ rm -rf ~/Library/Rime/build
 
 *Shift+space* as switcher key: https://github.com/rime/squirrel/issues/113
 
+*installation.yaml should be writable after upgrading squirrel.*
+
 === launchctl
 
 launchctl bootout gui/$UID ./org.sketchybar.plist
