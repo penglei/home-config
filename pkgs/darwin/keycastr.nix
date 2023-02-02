@@ -10,7 +10,7 @@ stdenvNoCC.mkDerivation rec {
   src = fetchzip {
     url = "https://github.com/keycastr/keycastr/releases/download/v${version}/KeyCastr.app.zip";
     stripRoot = false;
-    sha256 = "sha256-ABnfxLMtY8E5KqJkrtIlPB4ML7CSFvjizCabv7i7SbU=";
+    sha256 = "sha256-MuImZXfy2By+JyRbGZDegzKpxu21D/4ATgKs+wK3uRQ=";
   };
 
   #sourceRoot = "."; # https://nixos.org/manual/nixpkgs/stable/#ssec-unpack-phase

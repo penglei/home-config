@@ -11,9 +11,17 @@
 #https://www.freebsddiary.org/APC/usb_hid_usages.php
 
 #open a floating terminal
-alt - return : skhd -k "ctrl + alt - i" && \
+alt - return : \
+               skhd -k "ctrl + alt - i" && \
                sh -c 'if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then alacritty msg create-window && sleep 0.03; else open -na /Users/penglei/Applications/Alacritty.app; fi' && \
                skhd -k "alt - t"
+
+hyper - return : \
+  if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then \
+    alacritty msg create-window && sleep 0.03; \
+  else \
+    open -na /Users/penglei/Applications/Alacritty.app; \
+  fi
 
 # yabai -m space work --layout float
 # toggle layout between 'bsp', 'stack', 'float'.
@@ -165,7 +173,7 @@ alt + shift - f : sh -c 'config="off"; f="$HOME/.yabai.config.focus_follows_mous
 alt - e : yabai -m window --toggle split
 
 # float / unfloat window and restore position
-alt - t : yabai -m window --toggle float --grid 8:8:1:1:6:6
+lalt - t : yabai -m window --toggle float --grid 8:8:1:1:6:6
 
 # toggle sticky (show on all spaces)
 alt - s : yabai -m window --toggle sticky --toggle topmost --toggle float --grid 8:8:3:0:5:6
@@ -181,5 +189,7 @@ ctrl + shift + alt + cmd - k : update-yabai-unmanaged-apps add
 ctrl + shift + alt + cmd - l : update-yabai-unmanaged-apps delete
 
 f13: skhd -k "shift + cmd - 4" # Screen Capture: copy screen of selected area to the clipboard
-#ralt: ctrl + shift + alt + cmd
+
+#ralt - t : skhd -k "hyper - t"
+#hyper - t : skhd -k "alt - return"
 
