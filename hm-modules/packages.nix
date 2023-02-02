@@ -48,6 +48,7 @@
   ] ++ lib.optionals stdenvNoCC.isDarwin [
     yabai
     skhd
+    keycastr
     sketchybar
     kitty
     utm
@@ -61,7 +62,7 @@
     adobe-reader
     bitwarden-desktop 
     p7zip libarchive  #for decompress .pkg installer
-    duti    #set default applications
+    duti    #set default applications in alfred
     chez-racket
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];

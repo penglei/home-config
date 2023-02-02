@@ -5,16 +5,22 @@
 
 #keywords:
 #https://github.com/koekeishiya/skhd/issues/1
+#
+#Remapping Keys in macOS 
+#https://developer.apple.com/library/archive/technotes/tn2450/
+#https://www.freebsddiary.org/APC/usb_hid_usages.php
 
 #open a floating terminal
 alt - return : skhd -k "ctrl + alt - i" && \
                sh -c 'if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then alacritty msg create-window && sleep 0.03; else open -na /Users/penglei/Applications/Alacritty.app; fi' && \
                skhd -k "alt - t"
 
-# toggle layout between 'bsp' and 'stack.
+# yabai -m space work --layout float
+# toggle layout between 'bsp', 'stack', 'float'.
 #alt + rshift - b :
-alt + shift - b : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')" && \
+alt + shift - b : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else if .type == "float" then "stack" else "bsp" end end')" && \
                    sketchybar -m --trigger space_mode_change &> /dev/null
+
 
 # focus bsp windows
 alt - h : yabai -m window --focus west
@@ -173,4 +179,7 @@ alt - p : yabai -m window --toggle border --toggle pip
 
 ctrl + shift + alt + cmd - k : update-yabai-unmanaged-apps add
 ctrl + shift + alt + cmd - l : update-yabai-unmanaged-apps delete
+
+f13: skhd -k "shift + cmd - 4" # Screen Capture: copy screen of selected area to the clipboard
+#ralt: ctrl + shift + alt + cmd
 

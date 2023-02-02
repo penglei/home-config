@@ -10,7 +10,6 @@ patch:
         #ascii_punct: true    # 中文状态输出英文标点(半角) 
     net.kovidgoyal.kitty:
         ascii_mode: true
-        vim_mode: true
     com.apple.Terminal:
         ascii_mode: true
         vim_mode: true
