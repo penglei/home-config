@@ -1,7 +1,7 @@
 patch:
   schema_list:
     - schema: double_pinyin_flypy # 小鹤双拼
-    - schema: pinyin_simp
+    #- schema: pinyin_simp
     - schema: numbers
     - schema: easy_en
 
