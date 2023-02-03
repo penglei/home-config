@@ -22,7 +22,7 @@ patch:
   engine/filters:
     - simplifier
     - uniquifier
-    - lua_filter@single_char_first
+    #- lua_filter@single_char_first
     - simplifier@emoji_suggestion
   engine/processors:
     - ascii_composer

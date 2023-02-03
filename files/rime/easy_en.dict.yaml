@@ -37,7 +37,6 @@ Enpass	enpass
 Evernote	evernote
 ExFAT	exfat
 Final Cut Pro	finalcutpro
-false	false
 Geekbench	geekbench
 Google	google
 Handoff	hangoff
@@ -79,7 +78,6 @@ Touch ID	touchid
 Tumblr	tumblr
 Twitter	twitter
 Typora	typora
-true	true
 Uber	uber
 uBlock	ublock
 UI	ui
@@ -52744,7 +52742,7 @@ narvik	narvik	753000
 narwhal	narwhal	119000
 nary	nary	1150000
 nasa	nasa	78700000
-NASA  nasa  78700001
+NASA	nasa  78700001
 nasal	nasal	3330000
 nasalize	nasalize	5390
 nasally	nasally	82800
