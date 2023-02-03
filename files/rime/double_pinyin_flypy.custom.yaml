@@ -4,11 +4,11 @@ patch:
     - name: ascii_mode
       reset: 0
       states: [ 中文, 西文 ]
-    - name: emoji_suggestion
-      reset: 1
-      states: [ "No", "Yes" ]
     - name: full_shape
       states: [ 半角, 全角 ]
+    - name: show_emoji
+      reset: 1
+      states: [ "🈚️️\uFE0E", "🈶️️\uFE0F" ]
     - name: simplification
       reset: 1
       states: [ 漢字, 汉字 ]
@@ -21,9 +21,9 @@ patch:
     - lua_translator@date_time_week
   engine/filters:
     - simplifier
+    - simplifier@emoji_conversion
     - uniquifier
     #- lua_filter@single_char_first
-    - simplifier@emoji_suggestion
   engine/processors:
     - ascii_composer
     - recognizer
@@ -33,11 +33,12 @@ patch:
     - selector
     - navigator
     - express_editor
-
-  emoji_suggestion:
-    # tips: all
+ 
+  emoji_conversion:
     opencc_config: emoji.json
-    option_name: emoji_suggestion
+    option_name: show_emoji
+    #tags: abc 
+    #tips: all Emoji 显示注释
 
   lua_custom_phrase:
     user_dict: "lua_custom_phrase"
