@@ -8,8 +8,7 @@ schema:
   author:
     - double pinyin layout by 鶴
     - Rime schema by 佛振 <chen.sst@gmail.com>
-  description: |
-    朙月拼音＋小鶴雙拼方案。
+  description: 小鶴雙拼方案。
   dependencies:
     - stroke
 

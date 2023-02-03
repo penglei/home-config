@@ -13,13 +13,12 @@ Mac	mac
 
 
 ⇔	equiv	1
-≡	equiv 2
+≡	equiv	2
 ⇔	iff	1
-≡	iff 2
+≡	iff	2
 
 ¬	not	1
 ∧	and	1
 ∨	or	1
-→	impl 1
-⇒	impl 2
-
+→	impl	1
+⇒	impl	2

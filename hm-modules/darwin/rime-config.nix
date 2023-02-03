@@ -10,6 +10,7 @@ let
     "easy_en.dict.yaml"
     "easy_en.schema.yaml"
     "grammar.yaml"
+    "lua_custom_phrase.txt"
     "luna_pinyin.chengyusuyu.dict.yaml"
     "luna_pinyin.jisuanjicihuidaquan.dict.yaml"
     "luna_pinyin.kaifadashenzhuanyongciku.dict.yaml"
@@ -24,6 +25,7 @@ let
     "pinyin_simp_mini.dict.yaml"
     "rime.lua"
     "squirrel.custom.yaml"
+    "zh-hans-t-essay-bgw.gram"
   ];
 
 in let

@@ -51,6 +51,8 @@ reload yabai: `launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai`
 
 === rime/squirrel
 
+grammer model: https://github.com/lotem/rime-octagram-data/tree/hans
+
 log location:
 
 * $TMPDIR/rime.squirrel.INFO
@@ -62,6 +64,7 @@ force deploy (nix home-manager links rime config):
 rm -rf ~/Library/Rime/build
 
 # Press Ctrl+Option(left)+` to re-deploy
+
 ----
 
 *Shift+space* as switcher key: https://github.com/rime/squirrel/issues/113
