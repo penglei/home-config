@@ -4,7 +4,6 @@ let
   rimeFiles = [
     "lua"
     "opencc"
-    "custom_phrase.txt"
     "default.custom.yaml"
     "double_pinyin_flypy.custom.yaml"
     "double_pinyin_flypy.schema.yaml"

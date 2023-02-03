@@ -17,7 +17,7 @@ patch:
   engine/translators:
     - punct_translator
     - script_translator
-    - table_translator@custom_phrase
+    #- table_translator@custom_phrase
     ## librime-lua 输入动态时间和日期
     #- lua_translator@date_translator
     #- lua_translator@week_translator
@@ -95,14 +95,15 @@ patch:
   recognizer/patterns/punct: "^/([0-9]0?|[A-Za-z]+)$"
   
 
-  ### 双拼使用自定义词典 custom_phrase.txt
-  custom_phrase:
-    dictionary: ""
-    user_dict: custom_phrase
-    db_class: stabledb
-    enable_completion: false
-    enable_sentence: false
-    initial_quality: 1
+  ## 双拼使用自定义词典 custom_phrase.txt
+  ## 新版中一直在提示 "custom_phrase made a futile translation"， 可能影响性能 。
+  #custom_phrase:
+  #  dictionary: ""
+  #  user_dict: custom_phrase
+  #  db_class: stabledb
+  #  enable_completion: false
+  #  enable_sentence: false
+  #  initial_quality: 1
 
 # Rx: BlindingDark/rime-easy-en:customize:schema=double_pinyin_flypy
   # __include: easy_en:/patch
