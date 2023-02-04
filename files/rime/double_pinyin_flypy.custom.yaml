@@ -4,16 +4,17 @@ patch:
     - name: ascii_mode
       reset: 0
       states: [ 中, EN ]
-    - name: full_shape
-      states: [ 半角, 全角 ]
     - name: show_emoji
       reset: 1
       states: [ "🈚️️\uFE0E", "🈶️️\uFE0F" ]
-    - name: simplification
-      reset: 1
-      states: [ 漢字, 汉字 ]
-    - name: ascii_punct
-      states: [ 。，, ．， ]
+
+    #https://github.com/rime/home/wiki/CustomizationGuide
+    - name: full_shape
+      states: [ 半角, 全角 ]
+
+    ##https://github.com/rime/librime/issues/212
+    #- name: ascii_punct
+    #  states: [ 。，, ．， ]
   engine/translators:
     - punct_translator
     - lua_translator@lua_custom_phrase
