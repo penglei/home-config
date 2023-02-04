@@ -43,7 +43,8 @@ speller:
   delimiter: " '"
 
 translator:
-  dictionary: easy_en
+  dictionary: english
+  prism: easy_en
   spelling_hints: 9
 
 key_binder:
