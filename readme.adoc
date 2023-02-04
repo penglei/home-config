@@ -51,6 +51,8 @@ reload yabai: `launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai`
 
 === rime/squirrel
 
+based on: github.com/iDvel/rime-ice
+
 grammer model: https://github.com/lotem/rime-octagram-data/tree/hans
 
 log location:
