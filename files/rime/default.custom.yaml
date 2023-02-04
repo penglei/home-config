@@ -1,9 +1,9 @@
 patch:
   schema_list:
     - schema: double_pinyin_flypy # 小鹤双拼
-    #- schema: pinyin_simp
     - schema: numbers
-    - schema: easy_en
+    #- schema: pinyin_simp
+    #- schema: easy_en
 
   menu/page_size: 9 # 候选词个数
   style/font_face: "Heiti SC Light"
