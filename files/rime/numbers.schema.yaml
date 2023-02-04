@@ -16,7 +16,7 @@
 
 schema:
   schema_id: numbers
-  name: 🔢
+  name:  中文数字
   version: "1.2"
   description: 快捷输入大写数字
 

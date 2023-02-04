@@ -45,9 +45,13 @@
 
 * https://www.nerdfonts.com/cheat-sheet
 
-== memos
+== yabai
 
-reload yabai: `launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai`
+----
+# launchctl load -F ~/Library/LaunchAgents/org.nix-community.home.yabai.plist
+# launchctl unload -F ~/Library/LaunchAgents/org.nix-community.home.yabai.plist
+# launchctl kickstart -k gui/$(id -u)/org.nix-community.home.yabai
+----
 
 === rime/squirrel
 
@@ -76,3 +80,4 @@ rm -rf ~/Library/Rime/build
 === launchctl
 
 launchctl bootout gui/$UID ./org.sketchybar.plist
+
