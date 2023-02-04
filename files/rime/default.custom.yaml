@@ -15,7 +15,7 @@ patch:
   ascii_composer/good_old_caps_lock: true # 若为 true， Caps 只切换大小写
   ascii_composer/switch_key: #why named commit_code ? 因为rime输入法的code是英文字母
     Caps_Lock: commit_code
-    Shift_L: noop 
+    Shift_L: commit_code 
     Shift_R: noop
     Control_L: noop # 左 Control，屏蔽该切换键
     Control_R: noop 
@@ -26,7 +26,13 @@ patch:
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 
   key_binder/bindings:
-    - { when: always, accept: Shift+space, toggle: ascii_mode }
+
+    #squirrel-0.16.1,rime-1.8.4以前，shift 作为switch_key经常误触发
+    #比如 「shift+英文字母」输入大写字母时可能会导致switching，
+    #因此，采用 「shift+space」来toggle ascii_mode。
+    #但是这个版本更新后，这个问题好像被修复了，反而「shift+space」的方案
+    #在一些app(如alacritty,kitty)下导致「空格」上屏，故不再采用该方案。
+    #- { when: always, accept: Shift+space, toggle: ascii_mode }
 
     #移动光标(用以调整inputs)
     - { when: composing, accept: Shift+Tab, send: Shift+Left }    # "Shift+Tab" 键向左选拼音分词
