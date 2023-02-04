@@ -26,7 +26,8 @@ patch:
     com.apple.finder:
         ascii_mode: true
 
- 
+  #style/translucency: true
+
   # 皮肤主题名称输入在下方，分为浅色和深色
   # 浅色主题（使用哪个主题去掉前面的 #）
   style/color_scheme: mac_light
@@ -64,13 +65,13 @@ patch:
       font_point: 16                               # 候选字大小
       label_font_point: 13                         # 候选编号大小
       text_color: 0x424242                    # 拼音行文字颜色
-      back_color: 0xFFFFFF                    # 候选条背景色
+      back_color: 0x80FFFFFF                  # 候选条背景色
       border_color: 0xFFFFFF                  # 边框色
       label_color: 0x999999                   # 预选栏编号颜色
       candidate_text_color: 0x3c3c3c          # 预选项文字颜色
       comment_text_color: 0x999999            # 拼音等提示文字颜色
       hilited_text_color: 0x999999            # 高亮拼音 (需要开启内嵌编码)
-      hilited_back_color: 0xD75A00            # 第一候选项背景背景色
+      hilited_back_color: 0x80D75A00            # 第一候选项背景背景色
       hilited_candidate_text_color: 0xFFFFFF  # 第一候选项文字颜色
       hilited_candidate_label_color: 0xFFFFFF # 第一候选项编号颜色
       hilited_comment_text_color: 0x999999    # 注解文字高亮
@@ -297,7 +298,7 @@ patch:
       comment_text_color: 0x6D6D6D             # 拼音等提示文字颜色
       hilited_comment_text_color: 0xEBC6B0     # 注解文字高亮
       hilited_candidate_label_color: 0xfafafa  # 第一候选项编号颜色
-      
+ 
     milan:
       name: 米兰
       horizontal: false              # true横排，false竖排

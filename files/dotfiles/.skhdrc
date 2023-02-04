@@ -11,14 +11,18 @@
 #https://www.freebsddiary.org/APC/usb_hid_usages.php
 
 #open a floating terminal
-alt - return : \
-               yabai -m window --insert stack && \
-               sh -c 'if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then alacritty msg create-window && sleep 0.03; else open -na /Users/penglei/Applications/Alacritty.app; fi' && \
-               skhd -k "alt - t"
-
 hyper - return : \
+               yabai -m window --insert stack && \
+               if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then \
+                 alacritty msg create-window && sleep 0.03; \
+               else \
+                 open -na /Users/penglei/Applications/Alacritty.app; sleep 0.03; \
+               fi && \
+               yabai -m window --toggle float --grid 8:8:1:1:6:6
+
+alt - return : \
   if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then \
-    alacritty msg create-window && sleep 0.03; \
+    alacritty msg create-window; \
   else \
     open -na /Users/penglei/Applications/Alacritty.app; \
   fi
