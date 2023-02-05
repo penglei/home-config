@@ -3,7 +3,7 @@ patch:
   switches:
     - name: ascii_mode
       reset: 0
-      states: [ 中, EN ]
+      states: [ 汉, 英 ]
     - name: show_emoji
       reset: 1
       states: [ "🚫", "😄" ]
@@ -27,21 +27,17 @@ patch:
     - simplifier@emoji_conversion
     - uniquifier
     #- lua_filter@single_char_first
-  engine/processors:
-    - ascii_composer
-    - recognizer
-    - key_binder
-    - speller
-    - punctuator
-    - selector
-    - navigator
-    - express_editor
- 
+  engine/processors/@before 0: lua_processor@select_boundry_character
+
+  translator/dictionary: pinyin_dicts #自定义词典
+  ##清空转换规则，使shift+return上屏input code(与return上屏一样)。
+  ##关闭之后shift+return上屏拼音，return上屏input code
+  #translator/preedit_format: {}
+
   emoji_conversion:
     opencc_config: emoji.json
     option_name: show_emoji
-    #tags: abc 
-    #tips: all Emoji 显示注释
+    tips: all
 
   lua_custom_phrase:
     user_dict: "custom_phrase"
