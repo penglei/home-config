@@ -18,6 +18,7 @@ let
     "pinyin_simp.schema.yaml"
     "rime.lua"
     "squirrel.custom.yaml"
+    "symbols.yaml"
     "zh-hans-t-essay-bgw.gram"
   ];
 
