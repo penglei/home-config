@@ -95,6 +95,7 @@ alt - 4 : yabai -m space --focus  4
 alt - 7 : yabai -m space --focus  5
 alt - 8 : yabai -m space --focus  misc
 alt - 9 : yabai -m space --focus  adhoc
+cmd - 9 : yabai -m space --focus  adhoc
 
 #"Command + m" is traditional shortcut for minimize current window
 #I don't think minimizing a window is needed, instead we can move it to a "hidden" space!
