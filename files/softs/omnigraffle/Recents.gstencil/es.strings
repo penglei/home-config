@@ -1,0 +1,19 @@
+/*  Canvases  */
+"Canvas 1" = "Lienzo 1"; 
+
+/*  Layers  */
+"Layer 1" = "Capa 1"; 
+
+/*  Graphics  */
+"Checkbox" = "Checkbox"; 
+"Radio Buttons" = "Radio Buttons"; 
+"Search Field" = "Search Field"; 
+"Search" = "Búsqueda"; 
+"Button" = "Button"; 
+"Button" = "Botón"; 
+"Note" = "Nota"; 
+"1" = "1"; 
+"Right Triangle" = "Right Triangle"; 
+"Star" = "Star"; 
+"Circle" = "Circle"; 
+"Square" = "Square"; 

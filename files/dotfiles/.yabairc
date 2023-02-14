@@ -38,8 +38,8 @@ yabai -m rule --add app="^(kitty)$" space=term
 
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
-yabai -m config focus_follows_mouse          autoraise #autoraise, off
-echo -n autoraise > $HOME/.yabai.config.focus_follows_mouse
+yabai -m config focus_follows_mouse          off #autoraise, off
+echo -n off > $HOME/.yabai.config.focus_follows_mouse
 
 yabai -m config                              \
     mouse_follows_focus         on           \

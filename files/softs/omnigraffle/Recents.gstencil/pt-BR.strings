@@ -1,0 +1,19 @@
+/*  Canvases  */
+"Canvas 1" = "Tela 1"; 
+
+/*  Layers  */
+"Layer 1" = "Camada 1"; 
+
+/*  Graphics  */
+"Checkbox" = "Checkbox"; 
+"Radio Buttons" = "Radio Buttons"; 
+"Search Field" = "Search Field"; 
+"Search" = "Busca"; 
+"Button" = "Button"; 
+"Button" = "Botão"; 
+"Note" = "Nota"; 
+"1" = "1"; 
+"Right Triangle" = "Right Triangle"; 
+"Star" = "Star"; 
+"Circle" = "Circle"; 
+"Square" = "Square"; 

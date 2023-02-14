@@ -1,0 +1,19 @@
+/*  Canvases  */
+"Canvas 1" = "版面 1"; 
+
+/*  Layers  */
+"Layer 1" = "图层 1"; 
+
+/*  Graphics  */
+"Checkbox" = "Checkbox"; 
+"Radio Buttons" = "Radio Buttons"; 
+"Search Field" = "Search Field"; 
+"Search" = "搜索"; 
+"Button" = "Button"; 
+"Button" = "按钮"; 
+"Note" = "附注"; 
+"1" = "1"; 
+"Right Triangle" = "Right Triangle"; 
+"Star" = "Star"; 
+"Circle" = "Circle"; 
+"Square" = "Square"; 
