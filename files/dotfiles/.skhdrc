@@ -207,3 +207,5 @@ f13: skhd -k "shift + cmd - 4" # Screen Capture: copy screen of selected area to
 #ralt - t : skhd -k "hyper - t"
 #hyper - t : skhd -k "alt - return"
 
+hyper - b: sketchybar --bar topmost="$(sketchybar --query bar | jq -r 'if .topmost == "on" then "off" else "on" end')"
+
