@@ -25,6 +25,8 @@ patch:
         ascii_mode: true
     com.apple.finder:
         ascii_mode: true
+    com.omnigroup.OmniGraffle7:
+        ascii_mode: true
 
   #style/translucency: true
 
