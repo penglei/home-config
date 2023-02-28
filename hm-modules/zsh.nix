@@ -47,6 +47,10 @@ in
       bindkey "^U" backward-kill-line
       bindkey -M menuselect '^[[Z' reverse-menu-complete
 
+      setopt appendhistory
+      setopt INC_APPEND_HISTORY  
+      setopt SHARE_HISTORY
+
       #unset PATH introduced by plugins
       ${lib.concatStrings (map (plugin: ''
         path[''${path[(I)$HOME/${zshcfg.pluginsDir}/${plugin.name}]}]=()
