@@ -88,15 +88,17 @@ alt + shift - right  : yabai -m window --grid 1:2:1:0:1:1
 alt - backspace : yabai -m space --focus recent
 alt - left  : yabai -m space --focus prev
 alt - right : yabai -m space --focus next
-alt - 1 : yabai -m space --focus  1
-alt - 2 : yabai -m space --focus  2
-alt - 3 : yabai -m space --focus  3
-alt - 4 : yabai -m space --focus  4
-hyper - 1 : yabai -m space --focus  1
-hyper - 2 : yabai -m space --focus  2
-hyper - 3 : yabai -m space --focus  3
-hyper - 4 : yabai -m space --focus  4
-alt - 7 : yabai -m space --focus  5
+alt - 1 : yabai -m space --focus  work
+alt - 2 : yabai -m space --focus  email
+alt - 3 : yabai -m space --focus  editor
+alt - 4 : yabai -m space --focus  viewer
+#hyper - 1 : yabai -m space --focus  1
+#hyper - 2 : yabai -m space --focus  2
+#hyper - 3 : yabai -m space --focus  3
+#hyper - 4 : yabai -m space --focus  4
+alt - 5 : yabai -m space --focus  social
+alt - 6 : yabai -m space --focus  term
+alt - 7 : yabai -m space --focus  relax
 alt - 8 : yabai -m space --focus  misc
 alt - 9 : yabai -m space --focus  adhoc
 cmd - 9 : yabai -m space --focus  adhoc
@@ -117,9 +119,11 @@ alt + shift - 1 : yabai -m window --space  1 && yabai -m space --focus 1
 alt + shift - 2 : yabai -m window --space  2 && yabai -m space --focus 2
 alt + shift - 3 : yabai -m window --space  3 && yabai -m space --focus 3
 alt + shift - 4 : yabai -m window --space  4 && yabai -m space --focus 4
-alt + shift - 7 : yabai -m window --space  5 && yabai -m space --focus 5
-alt + shift - 8 : yabai -m window --space  misc && yabai -m space --focus misc
-alt + shift - 9 : yabai -m window --space  adhoc && yabai -m space --focus adhoc
+alt + shift - 5 : yabai -m window --space  5 && yabai -m space --focus 5
+alt + shift - 6 : yabai -m window --space  6 && yabai -m space --focus 6
+alt + shift - 7 : yabai -m window --space  7 && yabai -m space --focus 7
+alt + shift - 8 : yabai -m window --space  8 && yabai -m space --focus 8
+alt + shift - 9 : yabai -m window --space  9 && yabai -m space --focus 9
 
 # # focus monitor
 # alt + ctrl - x  : yabai -m display --focus recent
@@ -136,7 +140,6 @@ alt + shift - 9 : yabai -m window --space  adhoc && yabai -m space --focus adhoc
 # ctrl + cmd - 1  : yabai -m window --display 1 && yabai -m display --focus 1
 # ctrl + cmd - 2  : yabai -m window --display 2 && yabai -m display --focus 2
 # ctrl + cmd - 3  : yabai -m window --display 3 && yabai -m display --focus 3
-
 # balance size of windows
 alt + shift - r : yabai -m space --balance
 #resize window
@@ -150,7 +153,7 @@ hyper - a : yabai -m window --resize left:-100:0 --resize right:100:0
 hyper - d : yabai -m window --resize left:100:0 --resize right:-100:0
 
 ## set insertion point in focused container
-cmd - i : yabai -m window --insert stack  #west,east,north,south
+cmd - i : yabai -m window --insert south  #stack,west,east,north,south
 
 alt + ctrl - h : yabai -m window --warp west
 alt + ctrl - j : yabai -m window --warp south
@@ -203,9 +206,6 @@ ctrl + shift + alt + cmd - k : update-yabai-unmanaged-apps add
 ctrl + shift + alt + cmd - l : update-yabai-unmanaged-apps delete
 
 f13: skhd -k "shift + cmd - 4" # Screen Capture: copy screen of selected area to the clipboard
-
-#ralt - t : skhd -k "hyper - t"
-#hyper - t : skhd -k "alt - return"
 
 hyper - b: sketchybar --bar topmost="$(sketchybar --query bar | jq -r 'if .topmost == "on" then "off" else "on" end')"
 
