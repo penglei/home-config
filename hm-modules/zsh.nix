@@ -45,6 +45,7 @@ in
     envExtra = '''';
     initExtra = ''
       bindkey "^U" backward-kill-line
+      bindkey -M menuselect '^[[Z' reverse-menu-complete
 
       #unset PATH introduced by plugins
       ${lib.concatStrings (map (plugin: ''
