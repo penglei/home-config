@@ -21,6 +21,10 @@ in
     enableSyntaxHighlighting = true;
     autocd = true;
     defaultKeymap = "emacs";
+    history = {
+      size = 500000;
+      save = 500000;
+    };
     plugins = [
       {
         name = "omz-completion";
