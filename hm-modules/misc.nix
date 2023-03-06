@@ -8,6 +8,7 @@
 
   home.sessionPath = [ 
     "$HOME/.local/bin"
+    "$HOME/.local/share/nvim/mason/bin"
   ];
 
   home.shellAliases = {
