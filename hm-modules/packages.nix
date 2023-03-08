@@ -9,6 +9,7 @@
       gnused gnugrep gnutar pstree tree watch findutils help2man ascii libiconv
       gnumake m4 libtool autoconf automake cmake ninja
       gnupg openssh sshpass htop rsync wget curl xz
+      rhash
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
       corkscrew socat
@@ -23,12 +24,14 @@
       #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure`
       #! must be executed to switch home configuration.
 
-      tree-sitter #generic ast parser
+      #tree-sitter #generic ast parser
       nixfmt 
       koka
-      go gotools
+      go #gotools
       #bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
+
+      luarocks
 
       (python3.withPackages (ps: [ ps.numpy ps.pygments]))
 
