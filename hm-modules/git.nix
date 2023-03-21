@@ -64,6 +64,8 @@
       "*.o" "*.so" "*.so.[0-9]*" "*.a"
       # latex
       "*.aux" "*.bbl" "*.bcf" "*.blg" "*.nav" "*.out" "*.run.xml" "*.snm" "*.toc" "*.vrb"
+      #lua
+      ".luarc.json"
     ];
 
   };
