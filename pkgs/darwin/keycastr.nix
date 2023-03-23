@@ -9,14 +9,12 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/keycastr/keycastr/releases/download/v${version}/KeyCastr.app.zip";
-    stripRoot = false;
     sha256 = "sha256-MuImZXfy2By+JyRbGZDegzKpxu21D/4ATgKs+wK3uRQ=";
+    stripRoot = false;
   };
 
-  #sourceRoot = "."; # https://nixos.org/manual/nixpkgs/stable/#ssec-unpack-phase
   installPhase = ''
     runHook preInstall
-
     mkdir -p $out/Applications
     cp -r *.app $out/Applications
     runHook postInstall

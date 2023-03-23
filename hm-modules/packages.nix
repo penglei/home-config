@@ -67,6 +67,7 @@
     p7zip libarchive  #for decompress .pkg installer
     duti    #set default applications in alfred
     chez-racket
+    alttab
   ] ++ lib.optionals stdenvNoCC.isLinux [
   ];
 }

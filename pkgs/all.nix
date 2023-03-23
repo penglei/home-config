@@ -49,4 +49,5 @@ with pkgs;
   presentation = callPackage ./darwin/presentation.nix {};
   adobe-reader = callPackage ./darwin/adobe-reader.nix {};
   keycastr = callPackage ./darwin/keycastr.nix {};
+  alttab = callPackage ./darwin/alttab.nix {};
 }

@@ -1,4 +1,4 @@
-{lib, nerd-font-patcher, stdenvNoCC, unzip, fetchzip }:
+{lib, nerd-font-patcher, stdenvNoCC, fetchzip }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "hack-font";
