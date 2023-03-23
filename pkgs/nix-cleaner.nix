@@ -8,17 +8,18 @@ writeShellApplication {
     fi
 
     nix profile wipe-history
-    #nix-env --delete-generations old
-    if [[ -L /nix/var/nix/profiles/default ]]; then
-      nix profile wipe-history --profile /nix/var/nix/profiles/default 
-    fi
 
     if [[ -L /nix/var/nix/profiles/per-user/''${USER}/home-manager ]]; then
       nix profile wipe-history --profile "/nix/var/nix/profiles/per-user/''${USER}/home-manager"
     fi
 
+    #nix-env --delete-generations old
+    if [[ -L /nix/var/nix/profiles/default ]]; then
+      echo nix profile wipe-history --profile /nix/var/nix/profiles/default 
+    fi
+
     if [[ -L /nix/var/nix/profiles/system ]]; then
-      sudo nix profile wipe-history --profile /nix/var/nix/profiles/system
+      echo nix profile wipe-history --profile /nix/var/nix/profiles/system
       #sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old
     fi
 
