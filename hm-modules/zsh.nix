@@ -53,7 +53,6 @@ in
 
       setopt appendhistory
       setopt INC_APPEND_HISTORY  
-      setopt SHARE_HISTORY
 
       #unset PATH introduced by plugins
       ${lib.concatStrings (map (plugin: ''
