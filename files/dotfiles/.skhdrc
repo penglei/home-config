@@ -10,18 +10,19 @@
 #https://developer.apple.com/library/archive/technotes/tn2450/
 #https://www.freebsddiary.org/APC/usb_hid_usages.php
 
+
+#  alacritty msg create-window -e /bin/zsh -c "exec -c -a -zsh /bin/zsh";
 #open a floating terminal
 hyper - return : \
                yabai -m window --insert stack && \
-               if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then \
-                 alacritty msg create-window && sleep 0.03; \
+               if [ $(ls ${TMPDIR}Alacritty-*.sock 2>/dev/null | wc -l) -gt 0 ]; then \
+                 alacritty msg create-window; \
                else \
                  open -na /Users/penglei/Applications/Alacritty.app; sleep 0.03; \
                fi && \
                yabai -m window --toggle float --grid 8:8:1:1:6:6
-
 alt - return : \
-  if [ ls ${TMPDIR}Alacritty-*.sock > /dev/null 2>&1 ]; then \
+  if [ $(ls ${TMPDIR}Alacritty-*.sock 2>/dev/null | wc -l) -gt 0 ]; then \
     alacritty msg create-window; \
   else \
     open -na /Users/penglei/Applications/Alacritty.app; \
@@ -208,16 +209,3 @@ ctrl + shift + alt + cmd - l : update-yabai-unmanaged-apps delete
 f13: skhd -k "shift + cmd - 4" # Screen Capture: copy screen of selected area to the clipboard
 
 hyper - b: sketchybar --bar topmost="$(sketchybar --query bar | jq -r 'if .topmost == "on" then "off" else "on" end')"
-
-# h [
-#   "AltTab" : skhd -k "left"
-# ]
-# j [
-#   "AltTab" : skhd -k "down"
-# ]
-# k [
-#   "AltTab" : skhd -k "up"
-# ]
-# l [
-#   "AltTab" : skhd -k "right"
-# ]
