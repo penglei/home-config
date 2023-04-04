@@ -24,6 +24,7 @@ in
     history = {
       size = 500000;
       save = 500000;
+      path = "$HOME/.zsh_nix_history";
     };
     plugins = [
       {
