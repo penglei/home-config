@@ -50,4 +50,7 @@ with pkgs;
   adobe-reader = callPackage ./darwin/adobe-reader.nix {};
   keycastr = callPackage ./darwin/keycastr.nix {};
   alttab = callPackage ./darwin/alttab.nix {};
+  yabai = darwin.apple_sdk_11_0.callPackage ./darwin/yabai.nix {
+    inherit (darwin.apple_sdk_11_0.frameworks) SkyLight Cocoa Carbon ScriptingBridge;
+  };
 }
