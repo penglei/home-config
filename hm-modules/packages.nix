@@ -50,6 +50,8 @@
 
       wireguard-tools
 
+      shiori
+
   ] ++ lib.optionals stdenvNoCC.isDarwin [
     yabai
     skhd
