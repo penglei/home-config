@@ -43,7 +43,7 @@ with pkgs;
   };
 
   sketchybar = callPackage ./darwin/sketchybar.nix {
-    inherit (darwin.apple_sdk.frameworks) Carbon Cocoa SkyLight DisplayServices;
+    inherit (darwin.apple_sdk_11_0.frameworks) Carbon Cocoa CoreWLAN DisplayServices SkyLight;
   };
   screenfetch = callPackage ./screenfetch {};
   presentation = callPackage ./darwin/presentation.nix {};
