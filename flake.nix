@@ -60,7 +60,7 @@
 
         # *home-manaer* has 3 scenarios:
         ##  1. macOS only -- has launchd service
-        ##  2. some others Linux distribution 
+        ##  2. some others Linux distribution
         ##  3. as a nixos module
 
         #packages.${system}.homeConfigurations = self.homeConfigurations;
