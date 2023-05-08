@@ -69,41 +69,45 @@
 
         ## nixos linux only
         packages.nixosConfigurations = {
-          #develop
+
+          #local develop
           utm-vm = let
             hostname = "utm-vm";
             username = "penglei";
-          in nixpkgsForNixOS.lib.nixosSystem {
-            inherit system;
-            specialArgs = { nixpkgs = nixpkgsForNixOS; };
-            modules = [
-              { nixpkgs.overlays = pkgOverlays; }
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.penglei.imports = profiles.hm.linux.modules;
-                #home-manager.extraSpecialArgs = {};
-              }
+            in nixpkgsForNixOS.lib.nixosSystem {
+              inherit system;
+              specialArgs = { nixpkgs = nixpkgsForNixOS; };
+              modules = [
+                { nixpkgs.overlays = pkgOverlays; }
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.penglei.imports = profiles.hm.linux.modules;
+                  #home-manager.extraSpecialArgs = {};
+                }
+                sops-nix.nixosModules.sops
+                ./nixos/utm-vm/services.nix
+              ] ++ [
+                ./stuff/etc-nixos/configuration.nix
+                ./stuff/etc-nixos/hardware-configuration.nix
+                { networking.hostName = hostname; }
 
-              sops-nix.nixosModules.sops
-            ] ++ [
-              ./stuff/etc-nixos/configuration.nix
-              ./stuff/etc-nixos/hardware-configuration.nix
-              { networking.hostName = hostname; }
-              hyprland.nixosModules.default
-              {
-                programs.hyprland = {
-                  enable = true;
-                  #xwayland = {
-                  #  enable = true;
-                  #  hidpi = true;
-                  #};
-                  #nvidiaPatches = false;
-                };
-              }
-            ];
-          };
+                # utm-vm is a local server(needn't desktop)
+                # hyprland.nixosModules.default
+                # {
+                #   programs.hyprland = {
+                #     enable = true;
+                #     #xwayland = {
+                #     #  enable = true;
+                #     #  hidpi = true;
+                #     #};
+                #     #nvidiaPatches = false;
+                #   };
+                # }
+
+              ];
+            };
 
           #proxy&develop
           hk-alpha = {

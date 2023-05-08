@@ -67,6 +67,7 @@
     ];
     shell = pkgs.zsh;
   };
+  programs.zsh.enable = true;
 
   security.sudo.extraRules= [
     {  users = [ "penglei" ];
@@ -109,8 +110,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.passwordAuthentication = true;
-  services.openssh.permitRootLogin = "yes";
+  services.openssh.settings.PasswordAuthentication = true;
+  services.openssh.settings.PermitRootLogin = "yes"
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
