@@ -16,6 +16,17 @@ in
 
   '';
 
+  home.file.".ssh/config".text = ''
+    Host *
+      ServerAliveInterval 120
+      TCPKeepAlive no
+      ForwardAgent yes
+      StrictHostKeyChecking no
+
+    Include config.d/*
+
+  '';
+
   home.file.".ssh/config.d/utm-vm".text = ''
     Host utm-vm
         Hostname 192.168.65.5
