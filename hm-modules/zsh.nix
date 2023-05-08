@@ -64,15 +64,6 @@ in
         source $HOME/.zshlocal
       fi
 
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-      preman() {
-        mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
-      }
-      xman() {
-        open x-man-page://"$@"
-      }
-      #alias man='xman'
     '';
 
     #e.g. debug performance: zmodload zsh/zprof

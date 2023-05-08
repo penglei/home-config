@@ -15,6 +15,7 @@ rec {
         ./hm-modules/packages.nix
         ./hm-modules/zsh.nix
         ./hm-modules/fzf.nix
+        ./hm-modules/zshvimode.nix
         ./hm-modules/git.nix
         ./hm-modules/tig.nix
         ./hm-modules/starship.nix
@@ -30,7 +31,6 @@ rec {
       ./hm-modules/darwin/app-aliases.nix
       ./hm-modules/darwin/skhd.nix
       ./hm-modules/darwin/yabai.nix
-      #./hm-modules/darwin/spacebar.nix
       ./hm-modules/darwin/sketchybar.nix
       ./hm-modules/darwin/gpg.nix
       ./hm-modules/darwin/rime-config.nix
