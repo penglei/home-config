@@ -2,10 +2,10 @@
 
 {
   override = finalAttrs: previousAttrs: rec {
-    version = "4.1.5";
+    version = "4.2.5";
     src = fetchurl {
       url = "https://github.com/utmapp/UTM/releases/download/v${version}/UTM.dmg";
-      sha256 = "sha256-YOmTf50UUvvh4noWnmV6WsoWSua0tpWTgLTg+Cdr3bQ=";
+      sha256 = "sha256-T3TA+CwddNtUL80xASRCSczGA2LLTwPEA2+jnc9m6jY=";
     };
 
     nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [makeWrapper];
