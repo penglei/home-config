@@ -12,6 +12,7 @@
       rhash
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
+      asciinema #terminal recording
       corkscrew socat
       pass pwgen sops
       age  #gopass #secret security
