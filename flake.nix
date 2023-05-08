@@ -49,7 +49,7 @@
         #pkgs = import nixpkgs { inherit system; overlays = pkgOverlays; }; 
 
         profiles =
-          import ./profiles.nix { inherit pkgs self system home-manager; };
+          import ./profiles.nix { inherit pkgs self system home-manager sops-nix; };
       in {
         overlays.default = lib.lists.foldr (a: i: a // i) { } pkgOverlays;
 

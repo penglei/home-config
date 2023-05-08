@@ -29,5 +29,7 @@ in {
       #ThrottleInterval = 30;
     };
   };
+
+  # home.file.".yabairc".text = "";
 }
 

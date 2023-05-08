@@ -1,7 +1,8 @@
 { self,
   pkgs,
   system,
-  home-manager
+  home-manager,
+  sops-nix
 }:
 
 let
@@ -28,6 +29,8 @@ rec {
     linux.modules = base.modules;
     darwin.modules = base.modules ++ [
       ./hm-modules/alacritty.nix
+      sops-nix.homeManagerModule
+      ./hm-modules/darwin/sops.nix
       ./hm-modules/darwin/settings.nix
       ./hm-modules/darwin/keybindings.nix
       ./hm-modules/darwin/app-aliases.nix

@@ -36,9 +36,6 @@
       experimental-features = "nix-command flakes";
     }
   '';
-  home.sessionVariables = {
-    SOPS_AGE_KEY_FILE = "$HOME/.config/sops/age/keys.txt";
-  };
   programs = {
     command-not-found.enable = true;
 
