@@ -5,10 +5,27 @@
 }:
 #https://github.com/jeffreytse/zsh-vi-mode#lazy-keybindings
 with lib;
+let cfg = config.zsh-vi-mode;
+in
 {
-    #`bindkey -e` enables the Emacs-style key binding mode in zsh, allowing users to use Emacs-like shortcuts for editing the command line. In this mode, you can use Ctrl+A to jump to the beginning of the line, Ctrl+E to jump to the end of the line, Ctrl+K to delete text from the cursor to the end of the line, and so on.
+  options.zsh-vi-mode = {
+    enable = mkEnableOption "zsh vi mode plugin";
+    package = mkOption {
+      type = types.package;
+      default = pkgs.zsh-vi-mode;
+      defaultText = literalExpression "pkgs.zsh-vi-mode";
+    };
+  };
+  config = mkIf cfg.enable {
 
-    #we should init between `bindkey -e` and fzf plugin initialization that order is 200.
+    #`bindkey -e` enables the Emacs-style key binding mode in zsh,
+    # allowing users to use Emacs-like shortcuts for editing the command line.
+    # In this mode, you can use:
+    # Ctrl+A to jump to the beginning of the line,
+    # Ctrl+E to jump to the end of the line,
+    # Ctrl+K to delete text from the cursor to the end of the line, and so on.
+
+    #this plugin should init between `bindkey -e` and fzf plugin initialization that order is 200.
     programs.zsh.initExtra = mkOrder 199 ''
 
       ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
@@ -27,9 +44,10 @@ with lib;
       }
 
       ZVM_INIT_MODE=sourcing
-      . ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+      . ${cfg.package}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       unset ZVM_INIT_MODE
     '';
+  };
 }
 
 
