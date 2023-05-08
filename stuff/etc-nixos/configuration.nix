@@ -111,7 +111,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
-  services.openssh.settings.PermitRootLogin = "yes"
+  services.openssh.settings.PermitRootLogin = "yes";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
