@@ -91,7 +91,13 @@
               ] ++ [
                 ./stuff/etc-nixos/configuration.nix
                 ./stuff/etc-nixos/hardware-configuration.nix
-                { networking.hostName = hostname; }
+                {
+                    networking.hostName = hostname; 
+                    networking.interfaces.enp0s1.ipv4.addresses = [{
+                        address = "192.168.65.5";
+                        prefixLength = 24;
+                    }];
+                }
 
                 # utm-vm is a local server(needn't desktop)
                 # hyprland.nixosModules.default

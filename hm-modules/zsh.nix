@@ -64,6 +64,8 @@ in
         source $HOME/.zshlocal
       fi
 
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
       preman() {
         mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
       }
