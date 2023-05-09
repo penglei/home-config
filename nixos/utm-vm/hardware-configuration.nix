@@ -23,16 +23,5 @@
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/2c69ae19-6815-4c3c-a879-ec3571c3a4d1"; }
-    ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s9.useDHCP = lib.mkDefault true;
-
+  swapDevices = [ { device = "/dev/disk/by-uuid/2c69ae19-6815-4c3c-a879-ec3571c3a4d1"; } ];
 }

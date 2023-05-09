@@ -87,31 +87,9 @@
                   #home-manager.extraSpecialArgs = {};
                 }
                 sops-nix.nixosModules.sops
+                ./nixos/utm-vm/configuration.nix
                 ./nixos/utm-vm/services.nix
-              ] ++ [
-                ./stuff/etc-nixos/configuration.nix
-                ./stuff/etc-nixos/hardware-configuration.nix
-                {
-                    networking.hostName = hostname; 
-                    networking.interfaces.enp0s1.ipv4.addresses = [{
-                        address = "192.168.65.5";
-                        prefixLength = 24;
-                    }];
-                }
-
-                # utm-vm is a local server(needn't desktop)
-                # hyprland.nixosModules.default
-                # {
-                #   programs.hyprland = {
-                #     enable = true;
-                #     #xwayland = {
-                #     #  enable = true;
-                #     #  hidpi = true;
-                #     #};
-                #     #nvidiaPatches = false;
-                #   };
-                # }
-
+                (import ./nixos/utm-vm/networking.nix {inherit hostname;})
               ];
             };
 
