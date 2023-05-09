@@ -16,10 +16,10 @@ in
     age.keyFile = keyfile;
     defaultSopsFile = ../../secrets/basic.yaml;
 
-    secrets.ssh_legacy_key = {
-      # sopsFile = ./ssh-key.enc
-      path = "${config.home.homeDirectory}/.ssh/id_rsa";
-    };
+    # secrets.ssh_legacy_key = {
+    #   # sopsFile = ./ssh-key.enc
+    #   path = "${config.home.homeDirectory}/.ssh/id_rsa";
+    # };
   };
 
 }
