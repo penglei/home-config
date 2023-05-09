@@ -22,11 +22,11 @@ rec {
         ./hm-modules/starship.nix
         ./hm-modules/neovim
         ./hm-modules/misc.nix
-      ] ++ [
-        {zsh-vi-mode.enable = false;} #The compatibility of zsh-vi-mode and autopairs plugins is not good.
       ];
     };
-    linux.modules = base.modules;
+    linux.modules = base.modules ++ [
+      {zsh-vi-mode.enable = true;} #The compatibility of zsh-vi-mode and autopairs plugins is not good.
+    ];
     darwin.modules = base.modules ++ [
       ./hm-modules/alacritty.nix
       sops-nix.homeManagerModule
