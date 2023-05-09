@@ -43,9 +43,7 @@
   users.users.penglei = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker"]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAFQdutHfBohOBte2UWc3+3hBnm0ENPLsMBtp7hzEII+9JnGs8iKPA9/SKnLfABD4QdApP3Ptb5bX4opI6iG4XIafe8dgg8SwS3Kqk5BWY/90BADCrxdl7wsORbT3laaGzz205dzljZf+DWp0dCfSH1JfTPVUmatut+iWZNZMpXDktNsKXh3cjdCv+cWXVSbJkVSt8CFYHqD7/TrCJdQilFBgEoZHYPM6MGIAFCzCdNW4Vzu9GQeq7iodDfYu3BtpAKYQLHLR2WwNjKIevgfOzaChFruYfroWYIMx5RCYcM5IRFuI1BA8bNm9w6bC2EETdhjdnydQrpzxWkGy6otST"
-    ];
+    openssh.authorizedKeys.keys = [ (import ../../config.nix).ssh.authorized_key ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;

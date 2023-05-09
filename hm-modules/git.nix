@@ -30,7 +30,7 @@
     signing = {
       signByDefault = true;
       #key = null; # Let the gpg agent handle it
-      key = "A7052F7B36E328D7!";
+      key = (import ../config.nix).gpg.sign_key + "!";
     };
 
     extraConfig = {
