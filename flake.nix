@@ -1,5 +1,5 @@
 {
-  description = "penglei's Home Manager configuration";
+  description = "penglei's system configuration powered by Nix";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -55,7 +55,10 @@
 
         # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#XXXX`
         devShells.default = pkgs.mkShell {
-          buildInputs = [ home-manager.defaultPackage.${system} ];
+          buildInputs = with pkgs; [
+            home-manager.defaultPackage.${system} #home-manager command
+            ssh-to-pgp ssh-to-age
+          ];
         };
 
         # *home-manaer* has 3 scenarios:

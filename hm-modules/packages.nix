@@ -14,8 +14,8 @@
       git-lfs tig tmux fzf
       asciinema #terminal recording
       corkscrew socat
-      pass pwgen sops
-      age  #gopass #secret security
+      sops age passage pass diceware pwgen
+      ssh-tools
       hyperfine #performance test
       #ghostscript
       hexyl
@@ -53,7 +53,10 @@
 
       shiori
 
+      trash-cli
+
   ] ++ lib.optionals stdenvNoCC.isDarwin [
+    yubikey-manager age-plugin-yubikey
     yabai
     skhd
     keycastr
