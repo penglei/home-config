@@ -8,7 +8,8 @@
       fortune coreutils-full binutils getopt
       gnused gnugrep gnutar pstree tree watch findutils help2man ascii libiconv
       gnumake m4 libtool autoconf automake cmake ninja
-      gnupg openssh sshpass htop rsync wget curl xz
+      gnupg openssh openssl #openssl and openssh should be paired, don't use macOS default
+      htop rsync wget curl xz
       rhash
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
