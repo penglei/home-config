@@ -56,7 +56,7 @@
       trash-cli
 
   ] ++ lib.optionals stdenvNoCC.isDarwin [
-    yubikey-manager age-plugin-yubikey
+    yubikey-manager yubico-piv-tool age-plugin-yubikey
     yabai
     skhd
     keycastr
