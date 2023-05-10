@@ -5,7 +5,7 @@
 
 {
   home.packages = with pkgs; [
-      fortune coreutils-full binutils
+      fortune coreutils-full binutils getopt
       gnused gnugrep gnutar pstree tree watch findutils help2man ascii libiconv
       gnumake m4 libtool autoconf automake cmake ninja
       gnupg openssh sshpass htop rsync wget curl xz
