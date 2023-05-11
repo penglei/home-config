@@ -28,7 +28,7 @@
       track = "checkout --track";
     };
     signing = {
-      signByDefault = true;
+      signByDefault = false;
       #key = null; # Let the gpg agent handle it
       key = (import ../config.nix).gpg.sign_key + "!";
     };
