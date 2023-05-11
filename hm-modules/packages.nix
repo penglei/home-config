@@ -15,7 +15,7 @@
       git-lfs tig tmux fzf
       asciinema #terminal recording
       corkscrew socat
-      sops age passage pass diceware pwgen
+      sops age passage diceware pwgen
       ssh-tools
       hyperfine #performance test
       #ghostscript
