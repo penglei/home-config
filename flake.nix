@@ -51,6 +51,7 @@
         profiles =
           import ./profiles.nix { inherit pkgs self system home-manager sops-nix; };
       in {
+        packages.nixpkgs = pkgs; #debug overrided nixpkgs: nix build .#nixpkgs.passage
         overlays.default = lib.lists.foldr (a: i: a // i) { } pkgOverlays;
 
         # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#XXXX`
@@ -59,6 +60,9 @@
             home-manager.defaultPackage.${system} #home-manager command
             ssh-to-pgp ssh-to-age
           ];
+          shellHook = ''
+            export PATH=$(pwd)/result/bin:''$PATH
+          '';
         };
 
         # *home-manaer* has 3 scenarios:

@@ -54,4 +54,5 @@ with pkgs;
     inherit (darwin.apple_sdk_11_0.frameworks) SkyLight Cocoa Carbon ScriptingBridge;
   };
   shiori = callPackage ./shiori.nix {};
+  passage = callPackage ./passage.nix {};
 }
