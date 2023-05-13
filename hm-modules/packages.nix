@@ -15,7 +15,7 @@
       git-lfs tig tmux fzf
       asciinema #terminal recording
       corkscrew socat
-      sops age passage diceware pwgen
+      sops age diceware pwgen
       ssh-tools
       hyperfine #performance test
       #ghostscript
@@ -57,8 +57,8 @@
       trash-cli
 
   ] ++ lib.optionals stdenvNoCC.isDarwin [
-    yubikey-manager yubico-piv-tool age-plugin-yubikey
-    yabai
+    passage yubikey-manager yubico-piv-tool age-plugin-yubikey
+    yabai 
     skhd
     keycastr
     sketchybar
