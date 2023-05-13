@@ -9,9 +9,9 @@ let
 in
 {
 
-  home.sessionVariables = {
-    SOPS_AGE_KEY_FILE = "$HOME/${keyfileInHome}";
-  };
+  # home.sessionVariables = {
+  #   SOPS_AGE_KEY_FILE = "$HOME/${keyfileInHome}";
+  # };
   sops =  {
     age.keyFile = keyfile;
     defaultSopsFile = ../../secrets/basic.yaml;

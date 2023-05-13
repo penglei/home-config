@@ -12,6 +12,7 @@
       "no-comments" = true;
       "use-agent" = true;
       "with-fingerprint" = true;
+      "with-subkey-fingerprint" = true;
       "with-keygrip" = true;
       #"show-unusable-subkeys" = true;
       "keyid-format" = "long";

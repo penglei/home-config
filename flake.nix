@@ -97,6 +97,7 @@
                 ./nixos/utm-vm/configuration.nix
                 ./nixos/utm-vm/services.nix
                 (import ./nixos/utm-vm/networking.nix {inherit hostname;})
+                ./nixos/utm-vm/sops.nix
               ];
             };
 

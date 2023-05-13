@@ -1,7 +1,12 @@
 keys:
-  - &penglei age153uqe6cwr5rfqr79y5al4lr8udzahad30snqwhj65kqg4yrh6ygqg364pr
+  - &main 354E6EB6E69FCDA3BCA1B3B7B346D48376F25ECB # gpg (support yubikey)
+  - &secondary age153uqe6cwr5rfqr79y5al4lr8udzahad30snqwhj65kqg4yrh6ygqg364pr # main recovery key
+  - &utm-vm age18sjryxz9rpzwerapr387hk0yumhscklp2nd5pmw8cj5qnpjek92qyq8c8z #ssh host key
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
-      - age:
-          - *penglei
+      - pgp:
+          - *main
+        age:
+          - *secondary
+          - *utm-vm
