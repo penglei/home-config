@@ -38,7 +38,6 @@
 
     in eachSystem (system:
       let
-
         pkgOverlays = [
           (import ./pkgs/all.nix)
           (final: prev: {
@@ -48,8 +47,7 @@
         pkgs = nixpkgs.legacyPackages.${system}.appendOverlays pkgOverlays;
         #pkgs = import nixpkgs { inherit system; overlays = pkgOverlays; }; 
 
-        profiles =
-          import ./profiles.nix { inherit pkgs self system home-manager sops-nix; };
+        profiles = import ./profiles.nix { inherit self pkgs system home-manager sops-nix; };
       in {
         packages.nixpkgs = pkgs; #debug overrided nixpkgs: nix build .#nixpkgs.passage
         overlays.default = lib.lists.foldr (a: i: a // i) { } pkgOverlays;
@@ -71,35 +69,29 @@
         ##  3. as a nixos module
 
         #packages.${system}.homeConfigurations = self.homeConfigurations;
-        packages.homeConfigurations = profiles.hm-creator.standalone "penglei"
-          // profiles.hm-creator.standalone "ubuntu";
+        packages.homeConfigurations =
+            profiles.hm-creator.standalone "penglei" //
+            profiles.hm-creator.standalone "ubuntu";
 
         ## nixos linux only
         packages.nixosConfigurations = {
-
-          #local develop
-          utm-vm = let
+          utm-vm = profiles.nixos-creator {
+            inherit system;
+            nixpkgs = nixpkgs; #nixpkgsForNixOS
+            overlays = pkgOverlays;
             hostname = "utm-vm";
             username = "penglei";
-            in nixpkgsForNixOS.lib.nixosSystem {
-              inherit system;
-              specialArgs = { nixpkgs = nixpkgsForNixOS; };
-              modules = [
-                { nixpkgs.overlays = pkgOverlays; }
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.penglei.imports = profiles.hm.linux.modules;
-                  #home-manager.extraSpecialArgs = {};
-                }
-                sops-nix.nixosModules.sops
-                ./nixos/utm-vm/configuration.nix
-                ./nixos/utm-vm/services.nix
-                (import ./nixos/utm-vm/networking.nix {inherit hostname;})
-                ./nixos/utm-vm/sops.nix
-              ];
-            };
+            modules = [ ./nixos/utm-vm/all.nix ];
+          };
+
+          tart-vm = profiles.nixos-creator {
+            inherit system;
+            nixpkgs = nixpkgs; #nixpkgsForNixOS
+            overlays = pkgOverlays;
+            hostname = "tart-vm";
+            username = "penglei";
+            modules = [ ./nixos/tart-vm/all.nix ];
+          };
 
           #proxy&develop
           hk-alpha = {

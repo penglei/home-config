@@ -1,4 +1,4 @@
-{hostname}: { config, pkgs, lib, ... }:
+{ config, pkgs, lib, hostname, ... }:
 
 #https://nixos.wiki/wiki/Networking
 {

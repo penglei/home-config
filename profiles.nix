@@ -1,13 +1,10 @@
 { self,
-  pkgs,
+  pkgs, #pkgs used for standalone home-manager
   system,
   home-manager,
   sops-nix
 }:
 
-let
-  isDarwin = pkgs.lib.hasSuffix "darwin" system;
-in
 rec {
   hm = rec {
     base = {
@@ -25,7 +22,7 @@ rec {
       ];
     };
     linux.modules = base.modules ++ [
-      {zsh-vi-mode.enable = true;} #The compatibility of zsh-vi-mode and autopairs plugins is not good.
+      {zsh-vi-mode.enable = true;} #The compatibility between zsh-vi-mode and autopairs plugins is not good.
     ];
     darwin.modules = base.modules ++ [
       ./hm-modules/alacritty.nix
@@ -49,19 +46,41 @@ rec {
     standalone = username: {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [{ home.username = username; }] ++
-        (
-          if isDarwin then 
-            hm.darwin.modules ++ [{
-              # Home Manager needs a bit of information about you and the paths it should manage.
-              home.homeDirectory = "/Users/${username}";
-            }]
-          else
-            hm.linux.modules ++ [{
-              home.homeDirectory = "/home/${username}";
-            }]
-        );
+        modules =
+          let
+            isDarwin = pkgs.lib.hasSuffix "darwin" system;
+          in
+            [{ home.username = username; }] ++ 
+            (if isDarwin then 
+                hm.darwin.modules ++ [{
+                  # Home Manager needs a bit of information about you and the paths it should manage.
+                  home.homeDirectory = "/Users/${username}";
+                }]
+              else
+                hm.linux.modules ++ [{
+                  home.homeDirectory = "/home/${username}";
+                }]
+            );
       };
     };
   };
+
+  nixos-creator = {nixpkgs, system, hostname, username, overlays, modules, ...}@args:
+    nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = {
+        inherit nixpkgs username hostname;
+      };
+      modules = [
+        home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
+        { nixpkgs.overlays = overlays; }
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${username}.imports = hm.linux.modules;
+          #home-manager.extraSpecialArgs = {};
+        }
+      ] ++ modules;
+    };
 }

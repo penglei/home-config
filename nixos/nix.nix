@@ -10,23 +10,24 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixUnstable; # or versioned attributes like nix_2_4
     registry.nixpkgs.flake = nixpkgs;
 
     gc.automatic = true;
 
     settings = rec {
       auto-optimise-store = true;
+      use-cgroups = true;
       warn-dirty = false;
-
-
-      experimental-features = [ "nix-command" "flakes" ];
+      auto-allocate-uids = true;
+      experimental-features = [
+        "nix-command" "flakes" "auto-allocate-uids" "cgroups"
+      ];
       trusted-users = [ "@wheel" username ];
       allowed-users = trusted-users;
 
       #substituters = [];
       #trusted-public-keys = [];
-
     };
   };
 }

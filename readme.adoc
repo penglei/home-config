@@ -6,6 +6,15 @@
 
 == bootstrap tips
 
+
+
+The newly installed NixOS does not come with vim by default,
+I'm not used to the nano editor. Use the following command to temporarily use vim:
+
+----
+nix --extra-experimental-features nix-command --extra-experimental-features flakes shell nixpkgs#vim
+----
+
 ----
 : make pin-registry
 : nix shell nixpkgs#git nixpkgs#home-manager

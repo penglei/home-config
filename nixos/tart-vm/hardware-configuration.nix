@@ -2,9 +2,8 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
-  boot.initrd.availableKernelModules = [ "virtio_pci" "xhci_pci" "usbhid" "uhci_hcd" "usb_storage" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "virtio_pci" "xhci_pci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -14,8 +13,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/nixos";
-      fsType = "ext4";
+    {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
     };
 
   fileSystems."/boot" =
@@ -23,5 +23,5 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+  swapDevices = [ ];
 }
