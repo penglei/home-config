@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 
 let 
   default_ssh_auth_key = (import ../../config.nix).ssh.authorized_key;
@@ -15,7 +15,7 @@ in
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.penglei = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ default_ssh_auth_key ];
@@ -27,14 +27,15 @@ in
     openssh.authorizedKeys.keys = [ default_ssh_auth_key ];
   };
 
-  security.sudo.extraRules= [
-    {  users = [ "penglei" ];
+  security.sudo = {
+    extraRules = [{
+      users = [ username ];
       commands = [
-         { command = "ALL" ;
-           options= [ "NOPASSWD" "SETENV" ]; # "SETENV" # Adding the following could be a good idea
+        { command = "ALL" ;
+          options= [ "NOPASSWD" "SETENV" ]; # "SETENV" # Adding the following could be a good idea
         }
       ];
-    }
-  ];
+    }];
+  };
 }
 

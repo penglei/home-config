@@ -50,7 +50,7 @@ rec {
           let
             isDarwin = pkgs.lib.hasSuffix "darwin" system;
           in
-            [{ home.username = username; }] ++ 
+            [{ home.username = username; }] ++
             (if isDarwin then 
                 hm.darwin.modules ++ [{
                   # Home Manager needs a bit of information about you and the paths it should manage.
@@ -79,7 +79,7 @@ rec {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${username}.imports = hm.linux.modules;
-          #home-manager.extraSpecialArgs = {};
+          # home-manager.extraSpecialArgs = { inherit username; };
         }
       ] ++ modules;
     };
