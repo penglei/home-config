@@ -64,6 +64,7 @@
     sketchybar
     kitty
     utm
+    graphviz
     presentation
     jetbrains.pycharm-community
     netnewswire
