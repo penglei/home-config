@@ -68,11 +68,12 @@ in
 
     '';
 
-    initExtraBeforeCompInit = ''
-      # HACK #67
-      # Fix broken autocompletion. See https://github.com/nix-community/home-manager/issues/2562.
-      fpath+=("${config.home.profileDirectory}"/share/zsh/site-functions "${config.home.profileDirectory}"/share/zsh/$ZSH_VERSION/functions "${config.home.profileDirectory}"/share/zsh/vendor-completions)
-    '';
+    #if NIX_PROFILES env is absent, completions wouldn't work.
+    #initExtraBeforeCompInit = ''
+    #  # HACK #67
+    #  # Fix broken autocompletion. See https://github.com/nix-community/home-manager/issues/2562.
+    #  fpath+=("${config.home.profileDirectory}"/share/zsh/site-functions "${config.home.profileDirectory}"/share/zsh/$ZSH_VERSION/functions "${config.home.profileDirectory}"/share/zsh/vendor-completions)
+    #'';
 
     #e.g. debug performance: zmodload zsh/zprof
     initExtraFirst = ''
