@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../basic
+    ../basic/all.nix
     ../basic/grub.nix
   ];
 

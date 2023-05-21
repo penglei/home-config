@@ -75,6 +75,14 @@
 
         ## nixos linux only
         packages.nixosConfigurations = {
+          basic = profiles.nixos-creator {
+            inherit system;
+            nixpkgs = nixpkgs; #nixpkgsForNixOS
+            overlays = pkgOverlays;
+            hostname = "nixos";
+            username = "penglei";
+            modules = [ ./nixos/basic ];
+          };
           utm-vm = profiles.nixos-creator {
             inherit system;
             nixpkgs = nixpkgs; #nixpkgsForNixOS
