@@ -5,6 +5,7 @@ label=nixos
 partion_index=1
 dev_part1="${dev}$partion_index"
 
+umount /mnt || :
 wipefs -a $dev_part1 || :
 wipefs -a $dev || :
 
@@ -27,6 +28,7 @@ while :; do
 	sleep 0.3
 done
 
+mount /dev/disk/by-label/$label /mnt
 mkdir -p /mnt/boot
 nixos-generate-config --root /mnt
 find /mnt

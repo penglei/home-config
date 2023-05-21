@@ -93,6 +93,15 @@
             modules = [ ./nixos/tart-vm/all.nix ];
           };
 
+          router-dev = profiles.nixos-creator {
+            inherit system;
+            nixpkgs = nixpkgs; #nixpkgsForNixOS
+            overlays = pkgOverlays;
+            hostname = "router-dev";
+            username = "penglei";
+            modules = [ ./nixos/router-dev ];
+          };
+
           #proxy&develop
           hk-alpha = {
 
