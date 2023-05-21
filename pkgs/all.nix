@@ -4,7 +4,7 @@ let
 in
 with pkgs;
 {
-  createScript = callPackage ./createscript.nix {};
+  createscript = callPackage ./createscript.nix {};
 
   kubectl-kubectx = callPackage ./kubectl/kubectx.nix {};
   kubectl-kubecm = callPackage ./kubectl/kubecm.nix {};
@@ -55,4 +55,6 @@ with pkgs;
   };
   shiori = callPackage ./shiori.nix {};
   passage = callPackage ./passage.nix {};
+
+  nixos-installer = callPackage ./nixos-installer {};
 }
