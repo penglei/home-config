@@ -21,8 +21,9 @@
       warn-dirty = false;
       auto-allocate-uids = true;
       experimental-features = [
-        "nix-command" "flakes" "auto-allocate-uids" "cgroups" "ca-derivations"
+        "nix-command" "flakes" "auto-allocate-uids" "cgroups"
       ];
+      extra-experimental-features = [ "ca-derivations" ];
       trusted-users = [ "@wheel" username ];
       allowed-users = trusted-users;
 
