@@ -23,8 +23,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager
-    , sops-nix, nil-language-server, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager , sops-nix, nil-language-server, ... }@inputs:
     let
       inherit (nixpkgs) lib;
 
