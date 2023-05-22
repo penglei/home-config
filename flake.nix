@@ -21,10 +21,9 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, hyprland, home-manager
+  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager
     , sops-nix, nil-language-server, ... }@inputs:
     let
       inherit (nixpkgs) lib;
@@ -49,10 +48,12 @@
 
         profiles = import ./profiles.nix { inherit self pkgs system home-manager sops-nix; };
       in {
-        packages.nixpkgs = pkgs; #debug overrided nixpkgs: nix build .#nixpkgs.passage
+        # debug overrided nixpkgs, e.g.: nix build .#nixpkgs.passage
+        packages.nixpkgs = pkgs;
+
         overlays.default = lib.lists.foldr (a: i: a // i) { } pkgOverlays;
 
-        # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#XXXX`
+        # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#penglei`
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             home-manager.defaultPackage.${system} #home-manager command
@@ -67,59 +68,16 @@
         ##  1. macOS only -- has launchd service
         ##  2. some others Linux distribution
         ##  3. as a nixos module
+        #1,2: #packages.${system}.homeConfigurations = self.homeConfigurations;
+        #3: {home-manager.users.${username}.imports = hm-modules}
 
-        #packages.${system}.homeConfigurations = self.homeConfigurations;
         packages.homeConfigurations =
             profiles.hm-creator.standalone "penglei" //
             profiles.hm-creator.standalone "ubuntu";
 
         ## nixos linux only
-        packages.nixosConfigurations = {
-          basic = profiles.nixos-creator {
-            inherit system;
-            nixpkgs = nixpkgs; #nixpkgsForNixOS
-            overlays = pkgOverlays;
-            hostname = "nixos";
-            username = "penglei";
-            modules = [ ./nixos/basic ];
-          };
-          utm-vm = profiles.nixos-creator {
-            inherit system;
-            nixpkgs = nixpkgs; #nixpkgsForNixOS
-            overlays = pkgOverlays;
-            hostname = "utm-vm";
-            username = "penglei";
-            modules = [ ./nixos/utm-vm/all.nix ];
-          };
-
-          tart-vm = profiles.nixos-creator {
-            inherit system;
-            nixpkgs = nixpkgs; #nixpkgsForNixOS
-            overlays = pkgOverlays;
-            hostname = "tart-vm";
-            username = "penglei";
-            modules = [ ./nixos/tart-vm/all.nix ];
-          };
-
-          router-dev = profiles.nixos-creator {
-            inherit system;
-            nixpkgs = nixpkgs; #nixpkgsForNixOS
-            overlays = pkgOverlays;
-            hostname = "router-dev";
-            username = "penglei";
-            modules = [ ./nixos/router-dev ];
-            hm-modules = profiles.hm.slim.modules;
-          };
-
-          #proxy&develop
-          hk-alpha = {
-
-          };
-
-          #proxy&dns
-          sg-alpha = {
-
-          };
+        packages.nixosConfigurations = import ./machines.nix {
+            inherit system profiles nixpkgs pkgOverlays;
         };
         #packages.darwin-rootkit = ./
       }); # each system

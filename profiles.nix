@@ -10,6 +10,9 @@ rec {
     slim = {
       modules = [
         ./hm-modules/default.nix
+        ./hm-modules/zsh.nix
+        ./hm-modules/fzf.nix
+        ./hm-modules/starship.nix
       ];
     };
     base = {
