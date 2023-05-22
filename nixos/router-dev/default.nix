@@ -6,6 +6,11 @@
     ../basic/grub.nix
   ];
 
+  boot.kernelParams = [
+    "console=ttyS0,115200"
+    "console=tty1"
+  ];
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # This value determines the NixOS release from which the default
