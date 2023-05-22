@@ -7,6 +7,11 @@
 
 rec {
   hm = rec {
+    slim = {
+      modules = [
+        ./hm-modules/default.nix
+      ];
+    };
     base = {
       modules = [
         ./hm-modules/default.nix
@@ -65,7 +70,7 @@ rec {
     };
   };
 
-  nixos-creator = {nixpkgs, system, hostname, username, overlays, modules, ...}@args:
+  nixos-creator = {nixpkgs, system, hostname, username, overlays, modules, hm-modules ? hm.linux.modules, ...}@args:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
@@ -78,7 +83,7 @@ rec {
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username}.imports = hm.linux.modules;
+          home-manager.users.${username}.imports = hm-modules;
           # home-manager.extraSpecialArgs = { inherit username; };
         }
       ] ++ modules;

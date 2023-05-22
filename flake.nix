@@ -108,6 +108,7 @@
             hostname = "router-dev";
             username = "penglei";
             modules = [ ./nixos/router-dev ];
+            hm-modules = profiles.hm.slim.modules;
           };
 
           #proxy&develop
