@@ -1,6 +1,15 @@
 {system, profiles, nixpkgs, pkgOverlays, ...}:
 
 {
+  slim = profiles.nixos-creator {
+    inherit system;
+    nixpkgs = nixpkgs; #nixpkgsForNixOS
+    overlays = pkgOverlays;
+    hostname = "nixos";
+    username = "penglei";
+    modules = [ ./nixos/basic ];
+    hm-modules = profiles.hm.slim.modules;
+  };
   basic = profiles.nixos-creator {
     inherit system;
     nixpkgs = nixpkgs; #nixpkgsForNixOS
