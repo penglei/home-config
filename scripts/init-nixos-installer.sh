@@ -19,5 +19,5 @@ EOF
 
 if [ -n "$VM" ]; then
 	nix run github:penglei/nix-configs#nixpkgs.nixos-installer.make-vm-disk
-	nixos-install --flake github:penglei/nix-configs#$VM --no-root-password
+	nixos-install --flake github:penglei/nix-configs#$VM --no-root-password --root /mnt
 fi
