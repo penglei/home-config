@@ -33,6 +33,11 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 
 === lustrate installation
 
+Install nix via https://nixos.org/manual/nix/stable/installation/single-user.html[Single-user installation^]
+
+
+Then, install nixos from a flake:
+
 ----
 ubuntu@VM-0-3-ubuntu:~/nix-configs$ nix profile install --profile /nix/var/nix/profiles/system .#nixosConfigurations.slim.config.system.build.toplevel
 ubuntu@VM-0-3-ubuntu:~/nix-configs$ sudo chown -R 0:0 /nix

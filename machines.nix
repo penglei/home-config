@@ -1,6 +1,6 @@
 {system, profiles, nixpkgs, pkgOverlays, ...}:
 
-{
+rec {
   slim = profiles.nixos-creator {
     inherit system;
     nixpkgs = nixpkgs; #nixpkgsForNixOS
@@ -52,7 +52,10 @@
   };
 
   #proxy&dns
-  sg-alpha = {
-
+  sg-alpha = slim // {
+    hostname = "sg-alpha";
+    username = "penglei";
+    modules = [ ./nixos/basic ./nixos/sg-alpha ];
+    hm-modules = profiles.hm.slim.modules;
   };
 }
