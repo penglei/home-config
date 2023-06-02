@@ -34,10 +34,24 @@
       "default-preference-list" = "SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed";
     };
   };
-  programs.zsh.initExtra = ''
-    export GPG_TTY=$(tty)
-    export SSH_AUTH_SOCK="$(gpgconf --homedir ${config.programs.gpg.homedir} --list-dirs agent-ssh-socket)"
-  '';
 
-  home.file."${config.programs.gpg.homedir}/gpg-agent.conf".text = ''enable-ssh-support'';
+  gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    enableScDaemon = true;
+    sshKeys = [
+      # List of allowed ssh keys.  Only keys present in this file are used
+      # in the SSH protocol.  The ssh-add tool may add new entries to this
+      # file to enable them; you may also add them manually.  Comment
+      # lines, like this one, as well as empty lines are ignored.  Lines do
+      # have a certain length limit but this is not serious limitation as
+      # the format of the entries is fixed and checked by gpg-agent. A
+      # non-comment line starts with optional white spaces, followed by the
+      # keygrip of the key given as 40 hex digits, optionally followed by a
+      # caching TTL in seconds, and another optional field for arbitrary
+      # flags.   Prepend the keygrip with an '!' mark to disable it.
+      "3B399574276E0CB8C31E6131C2E9AA60750AFD7A" #legacy ssh
+      "DA4F387CA3DA3CFED81DA37792471D7D8704C8D6" #gpg auth key
+    ];
+  };
 }

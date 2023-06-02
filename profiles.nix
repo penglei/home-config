@@ -43,6 +43,7 @@ rec {
       ./hm-modules/darwin/yabai.nix
       ./hm-modules/darwin/sketchybar.nix
       ./hm-modules/darwin/gpg.nix
+      ./hm-modules/darwin/gpg-agent.nix
       ./hm-modules/darwin/ssh.nix
       ./hm-modules/darwin/rime-config.nix
       ./hm-modules/darwin/texlive.nix
