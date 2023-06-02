@@ -52,7 +52,10 @@ rec {
   };
 
   #proxy&dns
-  sg-alpha = slim // {
+  sg-alpha = profiles.nixos-creator {
+    inherit system;
+    nixpkgs = nixpkgs; #nixpkgsForNixOS
+    overlays = pkgOverlays;
     hostname = "sg-alpha";
     username = "penglei";
     modules = [ ./nixos/basic ./nixos/sg-alpha ];
