@@ -3,5 +3,6 @@
 {
   imports = [
     ./services.nix
+    ./sops.nix
   ];
 }
