@@ -57,4 +57,5 @@ with pkgs;
   passage = callPackage ./passage.nix {};
 
   nixos-installer = callPackage ./nixos-installer {};
+  v2ray-plugin = callPackage ./networking/v2ray-plugin.nix {};
 }
