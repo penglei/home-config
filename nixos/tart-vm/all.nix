@@ -14,7 +14,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   system.stateVersion = "22.11";
 
-  nixpkgs.config.contentAddressedByDefault = true;
+  #nixpkgs.config.contentAddressedByDefault = true;
   nix.settings = {
     extra-experimental-features = [ "ca-derivations" ];
     substituters = [ "https://cache.ngi0.nixos.org/" ];

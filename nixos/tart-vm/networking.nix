@@ -7,5 +7,10 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s1.useDHCP = lib.mkDefault true;
-  networking.firewall.enable = false;
+  networking = {
+      firewall.enable = false;
+      nftables = {
+        enable = true;
+      };
+  };
 }
