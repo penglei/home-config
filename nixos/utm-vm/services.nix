@@ -9,9 +9,20 @@
   services.qemuGuest.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
-  services.openssh.settings.PermitRootLogin = "yes";
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "yes";
+      StreamLocalBindUnlink = "yes"; 
+    };
+    #extraConfig = ''
+    #    Match User test
+    #        PasswordAuthentication yes
+    #        ForceCommand internal-sftp
+    #        ChrootDirectory /run/home/test
+    #'';
+  };
 
   services.tailscale.enable = true;
 

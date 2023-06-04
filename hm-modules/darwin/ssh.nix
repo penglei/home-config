@@ -27,8 +27,13 @@ in
 
   '';
 
-  home.file.".ssh/config.d/utm-vm".text = ''
+  #需要注意远端的socket 文件是否存在，如果是一个已经存在的socket，需要先删掉
+  #在gpg-agent转发场景中，S.gpg-agent.sock通常是由默认的gpg-agent创建的，
+  #使用gpgconfig --kill gpg-agent停止，自动删除不需要的socket。
+  home.file.".ssh/config.d/vms".text = ''
     Host utm-vm
-        Hostname 192.168.65.5
+      Hostname 192.168.65.5
+      RemoteForward /run/user/1000/gnupg/S.gpg-agent ${config.home.homeDirectory}/.gnupg/S.gpg-agent.extra
+      #RemoteForward /home/penglei.gnupg/S.gpg-agent ${config.home.homeDirectory}/.gnupg/S.gpg-agent.extra
   '';
 }
