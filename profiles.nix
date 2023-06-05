@@ -31,12 +31,6 @@ rec {
     };
     linux.modules = base.modules ++ [
       {zsh-vi-mode.enable = true;} #The compatibility between zsh-vi-mode and autopairs plugins is not good.
-      {
-        programs.zsh.initExtra = ''
-          #we must trigger gpg create directory /run/user/$UID/gnupg/
-          gpgconf --list-dirs agent-socket > /dev/null
-        '';
-      }
     ];
     darwin.modules = base.modules ++ [
       ./hm-modules/alacritty.nix

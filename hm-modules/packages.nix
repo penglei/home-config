@@ -8,7 +8,8 @@
       fortune coreutils-full binutils getopt
       gnused gnugrep gnutar pstree tree watch findutils help2man ascii libiconv
       gnumake m4 libtool autoconf automake cmake ninja
-      gnupg openssh openssl #openssl and openssh should be paired, don't use macOS default
+      #gnupg
+      openssh openssl #openssl and openssh should be paired, don't use macOS default
       htop rsync wget curl xz
       rhash
       ripgrep fd jq yq-go fx bat
@@ -57,6 +58,7 @@
       trash-cli
 
   ] ++ lib.optionals stdenvNoCC.isDarwin [
+    gnupg #full with gui
     passage yubikey-manager yubico-piv-tool age-plugin-yubikey
     yabai 
     skhd
@@ -79,5 +81,22 @@
     chez-racket
     alttab
   ] ++ lib.optionals stdenvNoCC.isLinux [
+    #(gnupg.override {
+    #  enableMinimal = true;
+    #  guiSupport = false;
+    #})
+
+    (gnupg.overrideAttrs (finalAttrs: previousAttrs: {
+      postInstall = ''
+        # add gpg2 symlink to make sure git does not break when signing commits
+        ln -s $out/bin/gpg $out/bin/gpg2
+
+        # Make libexec tools available in PATH
+        for f in $out/libexec/; do
+          if [[ "$(basename $f)" == "gpg-wks-client" ]]; then continue; fi
+          ln -s $f $out/bin/$(basename $f)
+        done
+      '';
+    }))
   ];
 }
