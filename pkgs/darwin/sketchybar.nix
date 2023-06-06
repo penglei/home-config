@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, Carbon, Cocoa, CoreWLAN, DisplayServices, SkyLight }:
+{ lib, stdenv, fetchFromGitHub, Carbon, Cocoa, CoreWLAN, DisplayServices, SkyLight, MediaRemote}:
 
 let
   inherit (stdenv.hostPlatform) system;
@@ -6,20 +6,21 @@ let
     "aarch64-darwin" = "arm64";
     "x86_64-darwin" = "x86";
   }.${system} or (throw "Unsupported system: ${system}");
+
 in
 
 stdenv.mkDerivation rec {
   pname = "sketchybar";
-  version = "2.15.1";
+  version = "2.15.2";
 
   src = fetchFromGitHub {
     owner = "FelixKratz";
     repo = "SketchyBar";
     rev = "v${version}";
-    sha256 = "sha256-0jCVDaFc7ZvA8apeHRoQvPhAlaGlBHzqUkS9or88PcM=";
+    sha256 = "sha256-13wc+1IgplB+L0j1AbBr/MUjEo4W38ZgJwrAhbdOroE=";
   };
 
-  buildInputs = [ Carbon Cocoa CoreWLAN DisplayServices SkyLight ];
+  buildInputs = [ Carbon Cocoa CoreWLAN DisplayServices SkyLight MediaRemote];
 
   makeFlags = [
     target

@@ -4,6 +4,16 @@ let
 in
 with pkgs;
 {
+  apple_sdk_extend.frameworks =
+    let
+      apple_sdk_maker = callPackage ./darwin/framework.nix {
+        inherit buildPackages;
+        inherit (darwin.apple_sdk) MacOSX-SDK;
+      };
+    in {
+      MediaRemote = apple_sdk_maker.privateFramework "MediaRemote" {};
+    };
+
   createscript = callPackage ./createscript.nix {};
 
   kubectl-kubectx = callPackage ./kubectl/kubectx.nix {};
@@ -43,7 +53,8 @@ with pkgs;
   };
 
   sketchybar = callPackage ./darwin/sketchybar.nix {
-    inherit (darwin.apple_sdk_11_0.frameworks) Carbon Cocoa CoreWLAN DisplayServices SkyLight;
+    inherit (darwin.apple_sdk.frameworks) Carbon Cocoa CoreWLAN DisplayServices SkyLight;
+    inherit (apple_sdk_extend.frameworks) MediaRemote;
   };
   screenfetch = callPackage ./screenfetch {};
   presentation = callPackage ./darwin/presentation.nix {};
