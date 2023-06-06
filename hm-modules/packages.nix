@@ -58,6 +58,7 @@
       trash-cli
 
   ] ++ lib.optionals stdenvNoCC.isDarwin [
+    git-cliff
     gnupg #full with gui
     passage yubikey-manager yubico-piv-tool age-plugin-yubikey
     yabai 

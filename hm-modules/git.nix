@@ -26,6 +26,9 @@
       ps = "push";
       fp = "push --force";
       track = "checkout --track";
+      cliff = "!${pkgs.git-cliff}/bin/git-cliff";
+      whois = ''!sh -c 'git log -i -1 --pretty="format:%an <%ae>''\n" --author="$1"' -'';
+      whatis = "show -s --pretty='tformat:%h (%s, %ad)' --date=short";
     };
     signing = {
       signByDefault = false;
