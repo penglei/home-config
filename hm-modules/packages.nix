@@ -10,7 +10,7 @@
       gnumake m4 libtool autoconf automake cmake ninja
       #gnupg
       openssh openssl #openssl and openssh should be paired, don't use macOS default
-      htop rsync wget curl xz
+      htop rsync wget curl xz zstd
       rhash
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
@@ -35,6 +35,8 @@
       go #gotools
       #bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
+
+      starlark-rust
 
       luarocks
 

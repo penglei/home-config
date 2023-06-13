@@ -69,4 +69,5 @@ with pkgs;
 
   nixos-installer = callPackage ./nixos-installer {};
   v2ray-plugin = callPackage ./networking/v2ray-plugin.nix {};
+  starlark-rust = callPackage ./starlark-rust.nix {};
 }
