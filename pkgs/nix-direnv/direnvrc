@@ -45,7 +45,7 @@ _nix_direnv_preflight () {
 #
 # Checks that the nix-direnv version is at least as old as <version_at_least>.
 nix_direnv_version() {
-  declare major='2' minor='2' patch='1' # UPDATE(nix-direnv version)
+  declare major='2' minor='3' patch='0' # UPDATE(nix-direnv version)
 
   [[ $1 =~ ^([^+-.]*)(\.?)([^+-.]*)(\.?)([^+-]*)(-?)([^+]*)(\+?)(.*)$ ]]
   declare -a ver; ver=("${BASH_REMATCH[@]:1}")
@@ -142,7 +142,8 @@ _nix_add_gcroot() {
   escaped_symlink=$(_nix_strip_escape_path "$symlink")
 
   ln -fsn "$storepath" "$symlink"
-  ln -fsn "$symlink" "/nix/var/nix/gcroots/per-user/$USER/$escaped_symlink"
+  #ln -fsn "$symlink" "/nix/var/nix/gcroots/per-user/$USER/$escaped_symlink"
+  nix-store --realise "$storepath" --add-root "$escaped_symlink" >/dev/null
 }
 
 _nix_clean_old_gcroots() {
@@ -151,7 +152,7 @@ _nix_clean_old_gcroots() {
   escaped_layout_dir=$(_nix_strip_escape_path "$layout_dir")
 
   rm -rf "$layout_dir/flake-inputs/"
-  rm -rf "$layout_dir/gcroots/"
+  #rm -rf "$layout_dir/gcroots/"
   rm -f "$layout_dir"/{nix,flake}-profile*
   rm -f "/nix/var/nix/gcroots/per-user/$USER/$escaped_layout_dir"-flake--inputs*
   rm -f "/nix/var/nix/gcroots/per-user/$USER/$escaped_layout_dir"-{nix,flake}--profile*
@@ -231,7 +232,6 @@ use_flake() {
     local drv
     drv=$(_nix_direnv_realpath "$tmp_profile")
 
-
     echo "$tmp_profile_rc" > "$profile_rc"
     rm -f "$tmp_profile" "$tmp_profile"*
     #_nix_add_gcroot "$drv" "$profile"
@@ -278,7 +278,7 @@ use_nix() {
 
   local layout_dir path version
   layout_dir=$(direnv_layout_dir)
-  path=$("${NIX_BIN_PREFIX}nix-instantiate" --find-file nixpkgs 2>/dev/null)
+  path=$("${NIX_BIN_PREFIX}nix-instantiate" --find-file nixpkgs 2>/dev/null || true)
   if [[ -n "$path" ]]; then
     path=$(_nix_direnv_realpath "$path")
 
@@ -296,7 +296,7 @@ use_nix() {
     elif [[ -f "${path}/.version" && "${path}" == "/nix/store/"* ]]; then
       # borrow some bits from the store path
       local version_prefix
-      read -r version_prefix < "${path}/.version"
+      read -r version_prefix < <(cat "${path}/.version" ; echo)
       version="${version_prefix}-${path:11:16}"
     fi
   fi
