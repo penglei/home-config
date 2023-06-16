@@ -83,6 +83,7 @@
     duti    #set default applications in alfred
     chez-racket
     alttab
+    parinfer-rust #vim plugin for lisp brackets
   ] ++ lib.optionals stdenvNoCC.isLinux [
     #(gnupg.override {
     #  enableMinimal = true;
