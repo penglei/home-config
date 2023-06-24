@@ -26,6 +26,7 @@
   # Applies inside of the home-manager config
   nixpkgs.config = {
     allowUnfree = true;
+    allowBroken = true;
     experimental-features = "nix-command flakes";
   };
 
@@ -33,6 +34,7 @@
   xdg.configFile."nixpkgs/config.nix".text = ''
     {
       allowUnfree = true;
+      allowBroken = true;
       experimental-features = "nix-command flakes";
     }
   '';
