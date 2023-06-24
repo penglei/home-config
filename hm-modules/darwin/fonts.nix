@@ -48,7 +48,10 @@
       droidsans_fonts 
   ];
 
-  #texlive 需要的一些字体如SongTi需要通过fontconfig在系统字体目录中查找. MacOS不同版本可能这些目录可能会变..
+  #texlive 需要的一些字体如STFangsong、Kaiti，这些字体文件在nix texlive fontconfig查找路径中是没有的。
+  #我们需要将相应的字体文件拷贝到 ~/Library/Fonts 或 ~/.local/share/fonts/ 目录。
+  #为了方便找到字体目录，我们把配置一些系统字体的查找路径，方便使用fc-list查找需要的字体。
+  #另外，MacOS不同版本可能这些目录可能会变.
   xdg.configFile."fontconfig/conf.d/20-os-fonts.conf".text =
   ''
   <?xml version='1.0'?>
@@ -57,7 +60,7 @@
     <dir>/System/Library/Fonts</dir>
     <dir>/System/Library/Fonts/Supplemental</dir>
     <dir>/Library/Fonts</dir>
-    <dir>/System/Library/PrivateFrameworks/FontServices.framework/Versions/A/Resources/Fonts/Subsets</dir>
+    <dir>/System/Library/PrivateFrameworks/FontServices.framework/Resources/Fonts</dir>
   </fontconfig>
   '';
 }
