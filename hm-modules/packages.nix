@@ -84,6 +84,7 @@
     chez-racket
     alttab
     parinfer-rust #vim plugin for lisp brackets
+    typst-prebuilt
   ] ++ lib.optionals stdenvNoCC.isLinux [
     #(gnupg.override {
     #  enableMinimal = true;
