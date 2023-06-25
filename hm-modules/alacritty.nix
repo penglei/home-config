@@ -60,6 +60,7 @@ in
     settings = {
       import = [ userlocalconfigfile ];
       window = {
+        option_as_alt = "OnlyLeft";
         decorations = "buttonless";
         opacity = 1.0;
         startup_mode = "Maximized";
@@ -77,14 +78,14 @@ in
       key_bindings = [
         { key = "Space"; mods = "Control"; mode = "~Search"; action = "ToggleViMode"; }
         { key = "N"; mods = "Command"; action = "CreateNewWindow"; }
-        { key = "F"; mods = "Alt"; chars = "\\ef"; }
-        { key = "B"; mods = "Alt"; chars = "\\eb"; }
-        { key = "H"; mods = "Alt"; chars = "\\eb"; }
-        { key = "D"; mods = "Alt"; chars = "\\ed"; }
-        { key = "Q"; mods = "Alt"; chars = "\\eq"; }
-        { key = "I"; mods = "Alt"; chars = "\\ei"; }   #nvim toggle float terminal
-        { key = "V"; mods = "Alt"; chars = "\\ev"; }   #nvim toggle vertial terminal
-        { key = "H"; mods = "Alt"; chars = "\\eh"; }   #nvim toggle horizontal terminal
+        # { key = "F"; mods = "Alt"; chars = "\\ef"; }
+        # { key = "B"; mods = "Alt"; chars = "\\eb"; }
+        # { key = "H"; mods = "Alt"; chars = "\\eb"; }
+        # { key = "D"; mods = "Alt"; chars = "\\ed"; }
+        # { key = "Q"; mods = "Alt"; chars = "\\eq"; }
+        # { key = "I"; mods = "Alt"; chars = "\\ei"; }   #nvim toggle float terminal
+        # { key = "V"; mods = "Alt"; chars = "\\ev"; }   #nvim toggle vertial terminal
+        # { key = "H"; mods = "Alt"; chars = "\\eh"; }   #nvim toggle horizontal terminal
       ];
 
       hints = {
