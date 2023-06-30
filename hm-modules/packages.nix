@@ -5,7 +5,7 @@
 
 {
   home.packages = with pkgs; [
-      fortune coreutils-full binutils getopt
+      fortune coreutils-full getopt
       gnused gnugrep gnutar pstree tree watch findutils help2man ascii libiconv
       gnumake m4 libtool autoconf automake cmake ninja
       #gnupg
@@ -90,6 +90,7 @@
     #  enableMinimal = true;
     #  guiSupport = false;
     #})
+    binutils
 
     (gnupg.overrideAttrs (finalAttrs: previousAttrs: {
       postInstall = ''
