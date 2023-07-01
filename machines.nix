@@ -46,19 +46,23 @@ rec {
     hm-modules = profiles.hm.slim.modules;
   };
 
-  #proxy&develop
-  hk-alpha = {
-
+  hk-alpha = profiles.nixos-creator {
+    inherit system;
+    nixpkgs = nixpkgs; #nixpkgsForNixOS
+    overlays = pkgOverlays;
+    hostname = "hk-alpha";
+    username = "penglei";
+    modules = [ ./nixos/cloud ];
+    hm-modules = profiles.hm.slim.modules;
   };
 
-  #proxy&dns
   sg-alpha = profiles.nixos-creator {
     inherit system;
     nixpkgs = nixpkgs; #nixpkgsForNixOS
     overlays = pkgOverlays;
     hostname = "sg-alpha";
     username = "penglei";
-    modules = [ ./nixos/basic ./nixos/sg-alpha ];
+    modules = [ ./nixos/cloud ];
     hm-modules = profiles.hm.slim.modules;
   };
 }

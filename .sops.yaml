@@ -1,15 +1,17 @@
 keys:
   - &main 354E6EB6E69FCDA3BCA1B3B7B346D48376F25ECB # gpg (support yubikey)
-  - &recovery age153uqe6cwr5rfqr79y5al4lr8udzahad30snqwhj65kqg4yrh6ygqg364pr # recovery key
+  - &recovery age153uqe6cwr5rfqr79y5al4lr8udzahad30snqwhj65kqg4yrh6ygqg364pr # important recovery key
   - &utm-vm age18sjryxz9rpzwerapr387hk0yumhscklp2nd5pmw8cj5qnpjek92qyq8c8z #ssh host key
   - &sg-alpha age1ae2dhtv5pryg54q478sll79wyp6rxqakan5ack6fxyylyyqandqq4v79q0 #ssh host key
+  - &hk-alpha age1lrqtrvnahhdfu6pq00ncp5fk0vsm05duvkxk78d7nf6eezy7jayqlpxmvj #ssh host key
 creation_rules:
-  - path_regex: secrets/https-server.yaml$
+  - path_regex: secrets/server.yaml$
     key_groups:
       - pgp:
           - *main
         age:
           - *sg-alpha
+          - *hk-alpha
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
       - pgp:
