@@ -28,6 +28,7 @@ in
 
             static = {
               "static.fixpoint" = {
+                 #created on https://dnscrypt.info/stamps/
                  stamp = "sdns://AgcAAAAAAAAADjQzLjE1Ni4xNTIuMjAxABRyZXNvbHZlLmxub3RlMzY1LmNvbQovZG5zLXF1ZXJ5";
               };
             };
