@@ -6,6 +6,7 @@
     ../modules/configuration.nix
     ../modules/programs.nix
     ../modules/dnscrypt-proxy-client.nix
+    ../modules/ssserver.nix
     ./hardware-configuration.nix
     ./networking.nix
     ./sops.nix

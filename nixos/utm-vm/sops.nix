@@ -12,6 +12,11 @@
     secrets.hello = {
       path = "/tmp/helloworld-from-sops";
     };
+
+    secrets."ssserver.json" = {
+        sopsFile = ../../secrets/server.yaml;
+        restartUnits = [ "ssserver.service" ];
+    };
   };
 
 }

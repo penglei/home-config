@@ -2,6 +2,11 @@
 
 #https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
 
+
+let
+  cfg = config.services.dnscrypt-proxy2;
+in
+
 {
     services.dnscrypt-proxy2 = {
         enable = true;
@@ -17,14 +22,9 @@
               ];
             };
 
-            # sources = {
-            #   "sources.public-resolvers" = {
-            #     cache_file = "/tmp/public-resolvers.md";
-            #   };
-            #   "sources.relays" = {
-            #     cache_file = "/tmp/relays.md";
-            #   };
-            # };
+            # it wouldn't merge, but replace the sources field.
+            # sources."sources.public-resolvers".cache_file = "/tmp/public-resolvers.md";
+            # sources."sources.relays".cache_file = "/tmp/relays.md";
 
             static = {
               "static.fixpoint" = {
@@ -43,9 +43,9 @@
     };
     systemd.services.dnscrypt-proxy2 = {
       serviceConfig = {
-        DynamicUser = mkForce false;
-        User = "root";
-        Group = "root";
+        #ExecStartPre = ["${pkgs.bash}/bin/bash -c 'pwd; echo ----!!!----'"];
+        #it doesn't work, because the process would change directory to dir of configfile.
+        # WorkingDirectory = "/tmp";
       };
     };
 }

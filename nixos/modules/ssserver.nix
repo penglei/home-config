@@ -19,9 +19,7 @@ in
       exec ssserver -c ${configFile}
     '';
     serviceConfig = {
-      DynamicUser = lib.mkForce false;
-      User = "root";
-      Group = "root";
+        WorkingDirectory = "/tmp";
     };
   };
 }
