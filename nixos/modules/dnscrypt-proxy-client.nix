@@ -16,12 +16,20 @@
                 }
               ];
             };
-            sources = null;
-            server_names = ["fixpoint"];
+
+            # sources = {
+            #   "sources.public-resolvers" = {
+            #     cache_file = "/tmp/public-resolvers.md";
+            #   };
+            #   "sources.relays" = {
+            #     cache_file = "/tmp/relays.md";
+            #   };
+            # };
+
             static = {
-                "static.fixpoint" = {
-                     stamp = "sdns://AgcAAAAAAAAADjQzLjE1Ni4xNTIuMjAxABRyZXNvbHZlLmxub3RlMzY1LmNvbQovZG5zLXF1ZXJ5";
-                };
+              "static.fixpoint" = {
+                 stamp = "sdns://AgcAAAAAAAAADjQzLjE1Ni4xNTIuMjAxABRyZXNvbHZlLmxub3RlMzY1LmNvbQovZG5zLXF1ZXJ5";
+              };
             };
 
             # #server
