@@ -6,7 +6,7 @@
 {
   sops =  {
     defaultSopsFile = ../../secrets/basic.yaml;
-    secrets."doh_server_key.pem" = {
+    secrets."resolver-key.pem" = {
         sopsFile = ../../secrets/server.yaml;
         restartUnits = [ "dnscrypt-proxy2.service" ];
     };

@@ -5,6 +5,7 @@
     ../nix.nix
     ../modules/configuration.nix
     ../modules/programs.nix
+    ../modules/dnscrypt-proxy-client.nix
     ./hardware-configuration.nix
     ./networking.nix
     ./sops.nix
