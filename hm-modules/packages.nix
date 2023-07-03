@@ -32,7 +32,7 @@
       #tree-sitter #generic ast parser
       nixfmt 
       # koka
-      go #gotools
+      go
       #bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
 
@@ -85,6 +85,7 @@
     alttab
     parinfer-rust #vim plugin for lisp brackets
     typst-prebuilt
+    gotools
   ] ++ lib.optionals stdenvNoCC.isLinux [
     #(gnupg.override {
     #  enableMinimal = true;
