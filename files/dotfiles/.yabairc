@@ -33,12 +33,12 @@ yabai -m rule --add title="^(Finder Preferences)$" layer=above manage=off
 
 yabai -m rule --add app="^(Safari|Google Chrome|Notes)$" space=viewer
 yabai -m rule --add app="^(Telegram|WeChat)$" space=social
-yabai -m rule --add app="^WeChat$" -add title!="^WeChat\\s*\\(Chats\\)\\s*$" manage=off
+yabai -m rule --add app="^WeChat$" --add title!="^WeChat\\s*\\(Chats\\)\\s*$" manage=off
 yabai -m rule --add app="^(WeCom)$" space=work
 yabai -m rule --add app="^(QQ音乐|迅雷)$" space=misc
 yabai -m rule --add app="^(kitty)$" space=term
-
-#企业微信·会议
+yabai -m rule --add app="^Microsoft Outlook$" space=email
+yabai -m rule --add app="^TencentMeeting$" space=work
 
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
@@ -53,7 +53,7 @@ yabai -m config \
 	window_animation_duration 0.0 \
 	window_opacity_duration 0.0 \
 	active_window_opacity 1.0 \
-	normal_window_opacity 0.98 \
+	normal_window_opacity 0.97 \
 	window_opacity on \
 	insert_feedback_color 0xaad75f5f \
 	active_window_border_color 0xBF775759 \
