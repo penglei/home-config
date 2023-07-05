@@ -11,12 +11,12 @@ in
 
 stdenv.mkDerivation rec {
   pname = "sketchybar";
-  version = "2.15.2";
+  version = "master"; #>2.15.2
 
   src = fetchFromGitHub {
     owner = "FelixKratz";
     repo = "SketchyBar";
-    rev = "v${version}";
+    rev = "61eacaeb450deec43b3cdfc510541eaea3165b5d";
     sha256 = "sha256-13wc+1IgplB+L0j1AbBr/MUjEo4W38ZgJwrAhbdOroE=";
   };
 
