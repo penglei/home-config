@@ -71,4 +71,5 @@ with pkgs;
   v2ray-plugin = callPackage ./networking/v2ray-plugin.nix {};
   starlark-rust = callPackage ./starlark-rust.nix {};
   typst-prebuilt = callPackage ./darwin/typst.nix {};
+  zsh-vi-mode = callPackage ./zsh-vi-mode.nix {};
 }
