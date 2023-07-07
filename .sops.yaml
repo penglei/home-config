@@ -12,6 +12,7 @@ creation_rules:
         age:
           - *sg-alpha
           - *hk-alpha
+          - *utm-vm
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
       - pgp:
