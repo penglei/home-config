@@ -43,9 +43,11 @@ in
 
       }
 
-      ZVM_INIT_MODE=sourcing
+      ##In sourcing mode, zsh-vi-mode should be placed after the zsh-syntax-highlighting plugin,
+      ##but the zsh hm module does not yet support adding plugins after it.
+      #ZVM_INIT_MODE=sourcing
       . ${cfg.package}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-      unset ZVM_INIT_MODE
+      #unset ZVM_INIT_MODE
     '';
   };
 }
