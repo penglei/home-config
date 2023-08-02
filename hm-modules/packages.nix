@@ -87,12 +87,12 @@
     typst-prebuilt
     gotools
   ] ++ lib.optionals stdenvNoCC.isLinux [
+    #binutils #`ld` is not recommended installing globally.
+
     #(gnupg.override {
     #  enableMinimal = true;
     #  guiSupport = false;
     #})
-    binutils
-
     (gnupg.overrideAttrs (finalAttrs: previousAttrs: {
       postInstall = ''
         # add gpg2 symlink to make sure git does not break when signing commits
