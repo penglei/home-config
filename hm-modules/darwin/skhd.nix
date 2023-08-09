@@ -121,19 +121,19 @@ in {
     alt - left  : ${yabai} -m space --focus $(${yabai} -m query --spaces --space | ${jq} -r 'if .index == 1 then 9 else "prev" end')
     alt - right : ${yabai} -m space --focus $(${yabai} -m query --spaces --space | ${jq} -r 'if .index == 9 then 1 else "next" end')
     alt - 1 : ${yabai} -m space --focus  work
-    alt - 2 : ${yabai} -m space --focus  email
+    alt - 2 : ${yabai} -m space --focus  term
     alt - 3 : ${yabai} -m space --focus  editor
-    alt - 4 : ${yabai} -m space --focus  viewer
+    alt - 4 : ${yabai} -m space --focus  misc
+    alt - 5 : ${yabai} -m space --focus  social
+    alt - 6 : ${yabai} -m space --focus  email
+    alt - 7 : ${yabai} -m space --focus  relax
+    alt - 8 : ${yabai} -m space --focus  viewer
+    alt - 9 : ${yabai} -m space --focus  adhoc
+    cmd - 9 : ${yabai} -m space --focus  adhoc
     #hyper - 1 : ${yabai} -m space --focus  1
     #hyper - 2 : ${yabai} -m space --focus  2
     #hyper - 3 : ${yabai} -m space --focus  3
     #hyper - 4 : ${yabai} -m space --focus  4
-    alt - 5 : ${yabai} -m space --focus  social
-    alt - 6 : ${yabai} -m space --focus  term
-    alt - 7 : ${yabai} -m space --focus  relax
-    alt - 8 : ${yabai} -m space --focus  misc
-    alt - 9 : ${yabai} -m space --focus  adhoc
-    cmd - 9 : ${yabai} -m space --focus  adhoc
 
     #"Command + m" is traditional shortcut for minimize current window
     #I don't think minimizing a window is needed, instead we can move it to a "hidden" space!
