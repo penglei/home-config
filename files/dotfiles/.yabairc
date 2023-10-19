@@ -31,8 +31,8 @@ yabai -m rule --add app="^($(cat $HOME/.yabai.unmanaged.apps | grep '^' | head -
 yabai -m rule --add app="^(Snipaste)$" sticky=on layer=above manage=off
 yabai -m rule --add title="^(Finder Preferences)$" layer=above manage=off
 
-yabai -m rule --add app="^(Safari|Notes|Google Chrome)$" space=viewer
-yabai -m rule --add app="^(Telegram|WeChat)$" space=social
+yabai -m rule --add app="^(Safari|Notes|Google Chrome|Firefox)$" space=viewer
+yabai -m rule --add app="^(Telegram|WeChat)$" space=viewer
 yabai -m rule --add app="^WeChat$" --add title!="^WeChat\\s*\\(Chats\\)\\s*$" manage=off
 yabai -m rule --add app="^(WeCom)$" space=work
 yabai -m rule --add app="^(QQ音乐|迅雷)$" space=misc
