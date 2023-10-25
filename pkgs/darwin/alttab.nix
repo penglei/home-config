@@ -5,7 +5,7 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "alttab";
-  version = "6.57.0";
+  version = "6.64.0";
 
   src = fetchzip {
     url = "https://github.com/lwouis/alt-tab-macos/releases/download/v${version}/AltTab-${version}.zip";

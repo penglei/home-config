@@ -16,8 +16,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "FelixKratz";
     repo = "SketchyBar";
-    rev = "61eacaeb450deec43b3cdfc510541eaea3165b5d";
-    sha256 = "sha256-13wc+1IgplB+L0j1AbBr/MUjEo4W38ZgJwrAhbdOroE=";
+    rev = "dc59f2e36adca6cc04d8024a35e57615ff50efb3";
+    sha256 = "sha256-vVtS4q1uAM/po2RMcOUsEqI+gyjtdrHCDRpmIJBDqpM=";
   };
 
   buildInputs = [ Carbon Cocoa CoreWLAN DisplayServices SkyLight MediaRemote];
