@@ -32,7 +32,7 @@
       #tree-sitter #generic ast parser
       nixfmt 
       # koka
-      go
+      go_1_21
       #bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
 
