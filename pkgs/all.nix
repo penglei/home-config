@@ -75,4 +75,5 @@ with pkgs;
   typst-prebuilt = callPackage ./darwin/typst.nix {};
   zsh-vi-mode = callPackage ./zsh-vi-mode.nix {};
   open-haskell-doc = callPackage ./darwin/scripts/open-haskell-doc.nix {};
+  concealed-pbcopy = callPackage ./darwin/scripts/concealed-pbcopy.nix {};
 }

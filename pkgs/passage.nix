@@ -9,6 +9,7 @@
 # or store password by its name. Most users would want this dependency.
 , tree
 , getopt
+, concealed-pbcopy
 }:
 
 let 
@@ -18,8 +19,8 @@ let
       value = fetchFromGitHub {
         owner = "penglei";
         repo = "passage";
-        rev = "6f710a04a4e23c3762c711366c1fcf6b35a112a6";
-        sha256 = "sha256-Z6cxOm5KqyQJ1Obz87PpL/Vg1dJ+8mU0+5T8EdlVhgM=";
+        rev = "a08ef1fefb1616bab3c4bea2991bb5acafe0f0f7";
+        sha256 = "sha256-xD8/VrBsFreVW2a1P2pZt6e+TTg0z8GnwGb5J3ffF04=";
       };
     }
   ];
@@ -33,7 +34,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ makeBinaryWrapper ];
 
-  extraPath = lib.makeBinPath [ age git qrencode tree getopt ];
+  extraPath = lib.makeBinPath [ age git qrencode tree getopt concealed-pbcopy ];
 
   # Using $0 is bad, it causes --help to mention ".passage-wrapped".
   postInstall = ''

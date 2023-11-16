@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-k="$1"
+data="$1"
+
+if [[ -z "$data" ]]; then
+	data="$(cat)"
+fi
 
 osascript \
 	-e 'use framework "Foundation"' \
@@ -11,4 +15,4 @@ osascript \
 	-e "pb's setString:\"\" forType:\"org.nspasteboard.ConcealedType\"" \
 	-e "pb's setString:(item 1 of argv) forType:type" \
 	-e "end run" \
-	$k >/dev/null
+	$data >/dev/null
