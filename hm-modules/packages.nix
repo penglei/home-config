@@ -27,6 +27,7 @@
       #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure`
       #! must be executed to switch home configuration.
 
+      emacs-nox
       helix #modern editor
 
       #tree-sitter #generic ast parser
