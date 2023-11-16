@@ -93,7 +93,7 @@ in
           {
             regex = "file:///nix/store/.+ghc.+-doc/.+/html/[^)\\n\\r\\t ]+";
             command = {
-              program = "/Users/penglei/.local/bin/open-haskell-doc";
+              program = "${pkgs.open-haskell-doc}/bin/open-haskell-doc";
             };
             hyperlinks = true; 
             post_processing = true;

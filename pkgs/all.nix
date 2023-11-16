@@ -74,4 +74,5 @@ with pkgs;
   starlark-rust = callPackage ./starlark-rust.nix {};
   typst-prebuilt = callPackage ./darwin/typst.nix {};
   zsh-vi-mode = callPackage ./zsh-vi-mode.nix {};
+  open-haskell-doc = callPackage ./darwin/scripts/open-haskell-doc.nix {};
 }
