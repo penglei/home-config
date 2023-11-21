@@ -87,6 +87,7 @@
     parinfer-rust #vim plugin for lisp brackets
     typst-prebuilt
     gotools
+    k9s
   ] ++ lib.optionals stdenvNoCC.isLinux [
     #binutils #`ld` is not recommended installing globally.
 
