@@ -65,7 +65,7 @@ in
         opacity = 1.0;
         startup_mode = "Maximized";
         title = "😄";
-        dynamic_title = false;
+        dynamic_title = true;
       };
       font = {
         normal = {
