@@ -9,7 +9,7 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/lwouis/alt-tab-macos/releases/download/v${version}/AltTab-${version}.zip";
-    sha256 = "sha256-R4GDj72tkILGK5g1Z/iWaR7YLtiIlbEYWTuJxAMxCF8=";
+    sha256 = "sha256-t9FfpA2zk5ycpSLcw1Z+9QpPCc6DA48LerrxSWflYx0=";
     stripRoot = false;
   };
 
