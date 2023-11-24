@@ -11,13 +11,13 @@ in
 
 stdenv.mkDerivation rec {
   pname = "sketchybar";
-  version = "master"; #>2.15.2
+  version = "master"; #>=2.19.4
 
   src = fetchFromGitHub {
     owner = "FelixKratz";
     repo = "SketchyBar";
-    rev = "dc59f2e36adca6cc04d8024a35e57615ff50efb3";
-    sha256 = "sha256-vVtS4q1uAM/po2RMcOUsEqI+gyjtdrHCDRpmIJBDqpM=";
+    rev = "1fbf8559302f4e69e015f08a76e05ea84a93cef8";
+    sha256 = "sha256-6MqTyCqFv5suQgQ5a9t1mDA2njjFFgk67Kp7xO5OXoA=";
   };
 
   buildInputs = [ Carbon Cocoa CoreWLAN DisplayServices SkyLight MediaRemote];
