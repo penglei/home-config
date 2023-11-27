@@ -118,8 +118,8 @@ in {
 
     # fast focus desktop
     alt - backspace : ${yabai} -m space --focus recent
-    alt - left  : ${yabai} -m space --focus $(${yabai} -m query --spaces --space | ${jq} -r 'if .index == 1 then 9 else "prev" end')
-    alt - right : ${yabai} -m space --focus $(${yabai} -m query --spaces --space | ${jq} -r 'if .index == 9 then 1 else "next" end')
+    alt - left  : ${yabai} -m space --focus $(${yabai} -m query --spaces --space | ${jq} -r 'if .index == 1  then 10 else "prev" end')
+    alt - right : ${yabai} -m space --focus $(${yabai} -m query --spaces --space | ${jq} -r 'if .index == 10 then 1  else "next" end')
     alt - 1 : ${yabai} -m space --focus  work
     alt - 2 : ${yabai} -m space --focus  term
     alt - 3 : ${yabai} -m space --focus  editor
