@@ -128,8 +128,9 @@ in {
     alt - 6 : ${yabai} -m space --focus  email
     alt - 7 : ${yabai} -m space --focus  relax
     alt - 8 : ${yabai} -m space --focus  viewer
-    alt - 9 : ${yabai} -m space --focus  adhoc
-    cmd - 9 : ${yabai} -m space --focus  adhoc
+    alt - 9 : ${yabai} -m space --focus  listener
+    alt - 0 : ${yabai} -m space --focus  adhoc
+    cmd - 0 : ${yabai} -m space --focus  adhoc
     #hyper - 1 : ${yabai} -m space --focus  1
     #hyper - 2 : ${yabai} -m space --focus  2
     #hyper - 3 : ${yabai} -m space --focus  3
@@ -138,6 +139,7 @@ in {
     #"Command + m" is traditional shortcut for minimize current window
     #I don't think minimizing a window is needed, instead we can move it to a "hidden" space!
     cmd - m : ${yabai} -m window --space adhoc
+
     #"alt + shift" prefix is used to move window around spaces,
     #the frequent ordinary operation in adhoc space is move out window,
     #so we can keep 'shift' key to reduce modifier key switch between 'alt + shift' and 'alt'.

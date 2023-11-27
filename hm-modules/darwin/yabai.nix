@@ -5,6 +5,7 @@
 
 let
   homeProfilePath = path: "${config.home.homeDirectory}/${path}";
+  yabai = "${pkgs.yabai}/bin/yabai";
 in {
   # https://ss64.com/osx/launchctl.html
   launchd.agents.yabai = {
@@ -30,6 +31,7 @@ in {
     };
   };
 
-  # home.file.".yabairc".text = "";
+
+  home.file.".yabairc".text = (import ./rc/yabairc.nix) {inherit yabai;};
 }
 
