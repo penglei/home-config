@@ -130,7 +130,7 @@ in {
     alt - 8 : ${yabai} -m space --focus  viewer
     alt - 9 : ${yabai} -m space --focus  listener
     alt - 0 : ${yabai} -m space --focus  adhoc
-    cmd - 0 : ${yabai} -m space --focus  adhoc
+    #cmd - 0 : ${yabai} -m space --focus  adhoc
     #hyper - 1 : ${yabai} -m space --focus  1
     #hyper - 2 : ${yabai} -m space --focus  2
     #hyper - 3 : ${yabai} -m space --focus  3
@@ -158,6 +158,7 @@ in {
     alt + shift - 7 : ${yabai} -m window --space  7 && ${yabai} -m space --focus 7
     alt + shift - 8 : ${yabai} -m window --space  8 && ${yabai} -m space --focus 8
     alt + shift - 9 : ${yabai} -m window --space  9 && ${yabai} -m space --focus 9
+    alt + shift - 0 : ${yabai} -m window --space  9 && ${yabai} -m space --focus 10
 
     # # focus monitor
     # alt + ctrl - x  : ${yabai} -m display --focus recent
