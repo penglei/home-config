@@ -3,7 +3,7 @@
 
 {
 
-  boot.initrd.availableKernelModules = [ "virtio_pci" "xhci_pci" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "nvme" "virtio_pci" "xhci_pci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
