@@ -27,7 +27,7 @@ ${yabai} -m space 6 --label email
 ${yabai} -m space 7 --label relax
 ${yabai} -m space 8 --label viewer #chrome,safari,koodo,logseq..
 ${yabai} -m space 9 --label listener
-${yabai} -m space 0 --label adhoc
+${yabai} -m space 10 --label adhoc
 
 # apps unmanaged (ignore)
 ${yabai} -m rule --add app="^($(cat $HOME/.yabai.unmanaged.apps | grep '^' | head -c-1 - | tr '\n' '|'))$" manage=off
