@@ -41,7 +41,7 @@
 
       luarocks
 
-      (python3.withPackages (ps: [ ps.numpy ps.pygments]))
+      python3 #(python3.withPackages (ps: [ ps.numpy ps.pygments]))
 
       kustomize
       kubectl
@@ -52,7 +52,7 @@
 
       mynixcleaner 
 
-      mongosh
+      #mongosh
 
       wireguard-tools
 
@@ -78,7 +78,7 @@
     preview_open
     isabelle_app
     koodo-reader 
-    adobe-reader
+    #adobe-reader
     bitwarden-desktop 
     p7zip libarchive  #for decompress .pkg installer
     duti    #set default applications in alfred

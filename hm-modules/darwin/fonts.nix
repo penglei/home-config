@@ -38,7 +38,7 @@
       #sarasa-gothic
       #(iosevka-bin.override { variant = "slab"; })
 
-      noto-fonts-emoji
+      #noto-fonts-emoji
 
       twemoji-color-font
 
