@@ -20,7 +20,8 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 : home-manager switch --flake .
 : #or
 : nix run nixpkgs#home-manager switch -- --flake .
-: sudo nixos-rebuild switch --flake .#utm-vm
+
+: sudo nixos-rebuild switch --flake .#tart-vm
 ----
 
 == installation
