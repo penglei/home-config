@@ -15,7 +15,7 @@
       ripgrep fd jq yq-go fx bat
       git-lfs tig tmux fzf
       asciinema #terminal recording
-      corkscrew socat
+      socat
       sops age diceware pwgen
       ssh-tools
       hyperfine #performance test
