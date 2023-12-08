@@ -73,7 +73,10 @@ with pkgs;
   v2ray-plugin = callPackage ./networking/v2ray-plugin.nix {};
   starlark-rust = callPackage ./starlark-rust.nix {};
   typst-prebuilt = callPackage ./darwin/typst.nix {};
-  zsh-vi-mode = callPackage ./zsh-vi-mode.nix {};
   open-haskell-doc = callPackage ./darwin/scripts/open-haskell-doc.nix {};
   concealed-pbcopy = callPackage ./darwin/scripts/concealed-pbcopy.nix {};
+
+  ### linux
+  zsh-vi-mode = callPackage ./zsh-vi-mode.nix {};
+  create-ssh-session-gnupg-socketdir = callPackage ./linux/gnupg-socketdir.nix {};
 }

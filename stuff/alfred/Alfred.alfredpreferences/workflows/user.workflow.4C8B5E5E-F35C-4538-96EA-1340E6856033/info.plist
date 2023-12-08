@@ -487,9 +487,10 @@ fi
 
 if [[ "${suspendable}" -eq 1 ]]
 then
-  nohup tart run --suspendable "${1}" $run_opts &amp;
+  #tart run --suspendable --dir /Users/penglei/Data "${1}" $run_opts
+  tart run "${1}" --dir /Users/penglei/Data $run_opts
 else
-  nohup tart run "${1}" $run_opts &amp;
+  tart run "${1}" --dir /Users/penglei/Data $run_opts
 fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>

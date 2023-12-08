@@ -14,4 +14,5 @@
       PermitRootLogin = "yes";
     };
   };
+  services.timesyncd.enable = false;
 }
