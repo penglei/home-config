@@ -7,6 +7,7 @@ import Alfred3 as Alfred
 
 APP_FOLDER = "/Applications"
 SYSTEM_APP_FOLDER = "/System/Applications"
+USER_APP_FOLDER = "/Users/penglei/Applications"
 
 
 def get_app_icon(app):
@@ -25,6 +26,7 @@ def get_app_icon(app):
     """
     app_file = os.path.join(APP_FOLDER, f"{app}.app")
     sys_app_file = os.path.join(SYSTEM_APP_FOLDER, f"{app}.app")
+    sys_app_file = os.path.join(USER_APP_FOLDER, f"{app}.app")
     if os.path.exists(app_file):
         return app_file
     if os.path.exists(sys_app_file):
@@ -50,6 +52,7 @@ def app_list(q):
     """
     file_list = os.listdir(APP_FOLDER)
     file_list.extend(os.listdir(SYSTEM_APP_FOLDER))
+    file_list.extend(os.listdir(USER_APP_FOLDER))
 
     for i in file_list:
         p = os.path.join(APP_FOLDER, i)
@@ -67,7 +70,8 @@ def app_list(q):
 
 query = Alfred.Tools.getArgv(1)
 wf = Alfred.Items()
-for app in app_list(query):
+apps = app_list(query)
+for app in apps:
     ax = get_app_icon(app)
     wf.setItem(
         title=app,

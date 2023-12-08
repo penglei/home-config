@@ -17,7 +17,7 @@ def get_duti_path() -> str:
         if os.path.isfile(p):
             duti_path = p
             break
-    return duti_path
+    return "duti"
 
 
 ext = Alfred.Tools.getArgv(1)
