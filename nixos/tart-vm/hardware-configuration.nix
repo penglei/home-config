@@ -3,7 +3,7 @@
 
 {
 
-  boot.initrd.availableKernelModules = [ "nvme" "virtio_pci" "xhci_pci" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "nvme" "virtio_pci" "xhci_pci" "usbhid" "virtiofs" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -21,6 +21,11 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-label/boot";
       fsType = "vfat";
+    };
+
+  fileSystems."/run/data" =
+    { device = "com.apple.virtio-fs.automount";
+      fsType = "virtiofs";
     };
 
   swapDevices = [ ];

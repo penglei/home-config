@@ -1,4 +1,4 @@
-{lib, ...}:
+{lib, hostname, ...}:
 
 {
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -8,6 +8,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s1.useDHCP = lib.mkDefault true;
   networking = {
+    hostName = hostname;
     firewall.enable = false;
     nat.enable = false;
     nftables = {
