@@ -8,6 +8,10 @@ in
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
+  #No need on a server
+  sound.enable = false;
+  fonts.fontconfig.enable = lib.mkDefault false;
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {

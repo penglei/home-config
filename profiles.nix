@@ -30,7 +30,7 @@ rec {
       ];
     };
     linux.modules = base.modules ++ [
-      {zsh-vi-mode.enable = true;} #The compatibility between zsh-vi-mode and autopairs plugins is not good.
+      {zsh-vi-mode.enable = false;} #The compatibility between zsh-vi-mode and autopairs plugins is not good.
     ];
     darwin.modules = base.modules ++ [
       ./hm-modules/alacritty.nix
@@ -75,7 +75,7 @@ rec {
     };
   };
 
-  nixos-creator = {nixpkgs, system, hostname, username, overlays, modules, hm-modules ? hm.linux.modules, ...}@args:
+  nixos-creator = {nixpkgs, system, hostname, username, overlays, modules, hm-modules ? hm.linux.modules, ...}:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {

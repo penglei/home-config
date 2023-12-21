@@ -28,6 +28,8 @@ in {
       RunAtLoad = true;
       ProcessType = "Interactive";
       #ThrottleInterval = 30;
+      StandardErrorPath = "/tmp/yabai.err.log";
+      StandardOutPath = "/tmp/yabai.out.log";
     };
   };
 
