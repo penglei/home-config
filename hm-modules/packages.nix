@@ -43,6 +43,10 @@
 
       python3 #(python3.withPackages (ps: [ ps.numpy ps.pygments]))
 
+      sqlite.out #for neovim telescope plugin
+
+      nodejs_latest
+
       kustomize
       kubectl
       krew
