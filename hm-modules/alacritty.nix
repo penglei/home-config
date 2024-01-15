@@ -43,17 +43,17 @@ let
 
   font = fontcfgstyle.firacode; 
 
-  userlocalconfigfile = "${config.xdg.configHome}/alacritty/userlocal.yml"; #"~/.config/alacritty/userlocal.yml";
+  userlocalconfigfile = "${config.xdg.configHome}/alacritty/userlocal.toml"; #"~/.config/alacritty/userlocal.toml";
 in
 {
-  home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    touch ${userlocalconfigfile}
-    ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${font.family}"' ${userlocalconfigfile}
-    if [[ -n "${font.style}" ]]; then
-      ${pkgs.yq-go}/bin/yq -i '.font.normal.style = "${font.style}"' ${userlocalconfigfile}
-    fi
-    ${pkgs.yq-go}/bin/yq -i '.font.offset.y = ${toString(font.offset.y)}' ${userlocalconfigfile}
-  '';
+  #home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  #  touch ${userlocalconfigfile}
+  #  ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${font.family}"' ${userlocalconfigfile}
+  #  if [[ -n "${font.style}" ]]; then
+  #    ${pkgs.yq-go}/bin/yq -i '.font.normal.style = "${font.style}"' ${userlocalconfigfile}
+  #  fi
+  #  ${pkgs.yq-go}/bin/yq -i '.font.offset.y = ${toString(font.offset.y)}' ${userlocalconfigfile}
+  #'';
 
   programs.alacritty = {
     enable = true;
@@ -75,7 +75,7 @@ in
         };
         size = 18.0;
       };
-      key_bindings = [
+      keyboard.bindings = [
         { key = "Space"; mods = "Control"; mode = "~Search"; action = "ToggleViMode"; }
         { key = "N"; mods = "Command"; action = "CreateNewWindow"; }
         # { key = "F"; mods = "Alt"; chars = "\\ef"; }
