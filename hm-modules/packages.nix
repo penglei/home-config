@@ -37,6 +37,8 @@
       #bear #Tool that generates a compilation database for clang tooling
       #ocaml opam ocamlPackages.sexp
 
+      watchexec
+
       # starlark-rust
 
       luarocks
