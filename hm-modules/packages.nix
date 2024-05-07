@@ -31,7 +31,7 @@
       helix #modern editor
 
       #tree-sitter #generic ast parser
-      nixfmt 
+      nixfmt-classic
       # koka
       go_1_21
       #bear #Tool that generates a compilation database for clang tooling
