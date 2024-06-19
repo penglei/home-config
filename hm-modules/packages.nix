@@ -78,7 +78,7 @@
     utm
     graphviz
     presentation
-    jetbrains.pycharm-community
+    #jetbrains.pycharm-community
     netnewswire
     rectangle
     preview_open
