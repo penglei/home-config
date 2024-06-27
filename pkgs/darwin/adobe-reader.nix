@@ -1,22 +1,16 @@
-{ lib
-, fetchurl
-, stdenvNoCC
-, undmg
-, p7zip
-, libarchive
-, unzip
-}:
+{ lib, fetchurl, stdenvNoCC, undmg, p7zip, libarchive, unzip }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "adobe-reader";
   version = "2200320314";
 
   src = fetchurl {
-    url = "https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/${version}/AcroRdrDC_${version}_MUI.dmg";
+    url =
+      "https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/${version}/AcroRdrDC_${version}_MUI.dmg";
     sha256 = "sha256-ouy241PNFLXGBrS1yEfRdZA+c6/cXcZ0xJy06Pmreek=";
   };
 
-  nativeBuildInputs = [ undmg p7zip libarchive unzip];
+  nativeBuildInputs = [ undmg p7zip libarchive unzip ];
 
   decompressScript = ../../scripts/adobe-pdf-reader-decompress;
 

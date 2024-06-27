@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 let
   rimeFiles = [
@@ -29,12 +29,16 @@ in let
   ##/nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-source/files/rime
   #rimeRoot = (builtins.toString ../../files/rime) + "/";
 
-  files = map (name: { path = ../../files/rime/${name}; name = "Library/Rime/${name}"; }) rimeFiles;
+  files = map (name: {
+    path = ../../files/rime/${name};
+    name = "Library/Rime/${name}";
+  }) rimeFiles;
 
-in
-  {
-    home.file =
-      builtins.listToAttrs (map (file: { name = file.name; value = {source = file.path;}; }) files);
-      #lib.lists.foldr (p: cfg: cfg // { "Library/Rime/${sourceFilename rimeRoot p}" = { source = p;};}) {} rimeFiles;
-  }
+in {
+  home.file = builtins.listToAttrs (map (file: {
+    name = file.name;
+    value = { source = file.path; };
+  }) files);
+  #lib.lists.foldr (p: cfg: cfg // { "Library/Rime/${sourceFilename rimeRoot p}" = { source = p;};}) {} rimeFiles;
+}
 

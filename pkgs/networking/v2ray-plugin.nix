@@ -1,9 +1,4 @@
-{
-  lib,
-  stdenvNoCC,
-  bash,
-  fetchurl,
-}:
+{ lib, stdenvNoCC, bash, fetchurl, }:
 
 let
   version = "1.3.2";
@@ -12,22 +7,22 @@ let
     {
       name = "x86_64-linux";
       value = fetchurl {
-        url = "https://github.com/shadowsocks/v2ray-plugin/releases/download/v${version}/v2ray-plugin-linux-amd64-v${version}.tar.gz";
+        url =
+          "https://github.com/shadowsocks/v2ray-plugin/releases/download/v${version}/v2ray-plugin-linux-amd64-v${version}.tar.gz";
         sha256 = "sha256-tXhRQjW5iyMPiBqioBpydyBfhRNbwJ/Dgy5fOZPuVBo=";
       };
     }
     {
       name = "aarch64-linux";
       value = fetchurl {
-        url = "https://github.com/shadowsocks/v2ray-plugin/releases/download/v${version}/v2ray-plugin-linux-arm64-v${version}.tar.gz";
+        url =
+          "https://github.com/shadowsocks/v2ray-plugin/releases/download/v${version}/v2ray-plugin-linux-arm64-v${version}.tar.gz";
         sha256 = "sha256-7wdGfNvSSc3sUXgJ0oGtqRxbRkDn8AOjJNFFzh5m/sM=";
       };
     }
   ];
 
-in
-
-stdenvNoCC.mkDerivation {
+in stdenvNoCC.mkDerivation {
   pname = "v2ray-plugin";
   version = version;
 
@@ -45,8 +40,6 @@ stdenvNoCC.mkDerivation {
 
     runHook postInstall
   '';
-  meta = with lib;{
-    platforms = platforms.linux;
-  };
+  meta = with lib; { platforms = platforms.linux; };
 }
 

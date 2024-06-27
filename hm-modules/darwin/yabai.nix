@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 
 let
   homeProfilePath = path: "${config.home.homeDirectory}/${path}";
@@ -14,7 +11,9 @@ in {
     config = {
       ProgramArguments = [ "${pkgs.yabai}/bin/yabai" ];
       EnvironmentVariables = {
-        "PATH" = "${homeProfilePath ".nix-profile/bin"}:${homeProfilePath ".local/bin"}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
+        "PATH" = "${homeProfilePath ".nix-profile/bin"}:${
+            homeProfilePath ".local/bin"
+          }:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
       };
       # KeepAlive = {
       #   OtherJobEnabled = builtins.listToAttrs [
@@ -33,7 +32,6 @@ in {
     };
   };
 
-
-  home.file.".yabairc".text = (import ./rc/yabairc.nix) {inherit yabai;};
+  home.file.".yabairc".text = (import ./rc/yabairc.nix) { inherit yabai; };
 }
 

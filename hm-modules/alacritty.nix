@@ -1,13 +1,9 @@
-{ pkgs
-, lib
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
 
 let
   fontoffsetbase = {
     x = 0;
-    y = -1; #line spacing delta
+    y = -1; # line spacing delta
   };
   fontcfgstyle = {
     firacode = {
@@ -41,11 +37,11 @@ let
   ##Hack, DejaVu,SF的行高类似，都稍微矮一点
   ##命令行里面感觉行高一点看起来舒服些
 
-  font = fontcfgstyle.firacode; 
+  font = fontcfgstyle.firacode;
 
-  userlocalconfigfile = "${config.xdg.configHome}/alacritty/userlocal.toml"; #"~/.config/alacritty/userlocal.toml";
-in
-{
+  userlocalconfigfile =
+    "${config.xdg.configHome}/alacritty/userlocal.toml"; # "~/.config/alacritty/userlocal.toml";
+in {
   #home.activation.writerMutableAllcrittyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
   #  touch ${userlocalconfigfile}
   #  ${pkgs.yq-go}/bin/yq -i '.font.normal.family = "${font.family}"' ${userlocalconfigfile}
@@ -76,8 +72,17 @@ in
         size = 18.0;
       };
       keyboard.bindings = [
-        { key = "Space"; mods = "Control"; mode = "~Search"; action = "ToggleViMode"; }
-        { key = "N"; mods = "Command"; action = "CreateNewWindow"; }
+        {
+          key = "Space";
+          mods = "Control";
+          mode = "~Search";
+          action = "ToggleViMode";
+        }
+        {
+          key = "N";
+          mods = "Command";
+          action = "CreateNewWindow";
+        }
         # { key = "F"; mods = "Alt"; chars = "\\ef"; }
         # { key = "B"; mods = "Alt"; chars = "\\eb"; }
         # { key = "H"; mods = "Alt"; chars = "\\eb"; }
@@ -95,21 +100,34 @@ in
             command = {
               program = "${pkgs.open-haskell-doc}/bin/open-haskell-doc";
             };
-            hyperlinks = true; 
+            hyperlinks = true;
             post_processing = true;
-            mouse = { enabled = true; mods = "None"; };
-            binding = { key = "U"; mods = "Control|Shift"; };
+            mouse = {
+              enabled = true;
+              mods = "None";
+            };
+            binding = {
+              key = "U";
+              mods = "Control|Shift";
+            };
           }
           {
-            regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^⟨⟩`]+";
+            regex = ''
+              (ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>"\\s{-}\\^⟨⟩`]+'';
             command = {
               program = "open";
               args = [ "-n" "-a" "Google Chrome" "--args" ];
             };
-            hyperlinks = true; 
+            hyperlinks = true;
             post_processing = true;
-            mouse = { enabled = true; mods = "None"; };
-            binding = { key = "U"; mods = "Control|Shift"; };
+            mouse = {
+              enabled = true;
+              mods = "None";
+            };
+            binding = {
+              key = "U";
+              mods = "Control|Shift";
+            };
           }
         ];
       };

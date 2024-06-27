@@ -1,7 +1,7 @@
-{lib, stdenvNoCC, fetchgit }:
+{ lib, stdenvNoCC, fetchgit }:
 
 stdenvNoCC.mkDerivation rec {
-  pname = "sfmono-nerd"; #https://developer.apple.com/fonts/
+  pname = "sfmono-nerd"; # https://developer.apple.com/fonts/
   version = "v18.0d1e1.0";
 
   src = fetchgit {

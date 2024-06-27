@@ -8,7 +8,7 @@
     useDHCP = false;
     dhcpcd.enable = false;
     defaultGateway = "192.168.65.1";
-    nameservers = ["192.168.65.1"];
+    nameservers = [ "192.168.65.1" ];
     interfaces.enp0s1 = {
       ipv4.addresses = [{
         address = "192.168.65.5";
@@ -27,7 +27,6 @@
 # networking.firewall.allowedUDPPorts = [ ... ];
 # Or disable the firewall altogether.
 # networking.firewall.enable = false;
-
 
 # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
 # (the default) this is the recommended approach. When using systemd-networkd it's

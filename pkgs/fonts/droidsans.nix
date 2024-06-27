@@ -1,4 +1,4 @@
-{lib, stdenvNoCC, fetchgit }:
+{ lib, stdenvNoCC, fetchgit }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "droidsans-fonts";

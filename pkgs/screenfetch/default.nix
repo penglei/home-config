@@ -1,28 +1,20 @@
-{ stdenv, lib, fetchFromGitHub, makeWrapper, coreutils, gawk, procps, gnused
-, bc, findutils, xdpyinfo, xprop, gnugrep, ncurses, pciutils
-, darwin
-}:
+{ stdenv, lib, fetchFromGitHub, makeWrapper, coreutils, gawk, procps, gnused, bc
+, findutils, xdpyinfo, xprop, gnugrep, ncurses, pciutils, darwin }:
 
 let
-  path = lib.makeBinPath ([
-    coreutils gawk gnused findutils
-    gnugrep ncurses bc pciutils
-  ] ++ lib.optionals stdenv.isLinux [
-    procps
-    xdpyinfo
-    xprop
-  ] ++ lib.optionals stdenv.isDarwin (with darwin; [
-    DarwinTools
-  ]));
+  path = lib.makeBinPath
+    ([ coreutils gawk gnused findutils gnugrep ncurses bc pciutils ]
+      ++ lib.optionals stdenv.isLinux [ procps xdpyinfo xprop ]
+      ++ lib.optionals stdenv.isDarwin (with darwin; [ DarwinTools ]));
 
 in stdenv.mkDerivation rec {
   pname = "screenfetch";
   version = "master";
 
   src = fetchFromGitHub {
-    owner  = "KittyKatt";
-    repo   = "screenFetch";
-    rev    = "f497b8f44de439d1206f04bad18ebdfd8783cd5b";
+    owner = "KittyKatt";
+    repo = "screenFetch";
+    rev = "f497b8f44de439d1206f04bad18ebdfd8783cd5b";
     sha256 = "sha256-Dx9a0VF1SYxdNVVnspxet5+C/94kjJzjgoSXyk9fCfs=";
   };
 
@@ -40,7 +32,8 @@ in stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "Fetches system/theme information in terminal for Linux desktop screenshots";
+    description =
+      "Fetches system/theme information in terminal for Linux desktop screenshots";
     longDescription = ''
       screenFetch is a "Bash Screenshot Information Tool". This handy Bash
       script can be used to generate one of those nifty terminal theme

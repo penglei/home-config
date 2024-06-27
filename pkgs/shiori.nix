@@ -1,7 +1,4 @@
-{
-pkgs,
-...
-}:
+{ pkgs, ... }:
 
 pkgs.buildGoModule rec {
   pname = "shiori";

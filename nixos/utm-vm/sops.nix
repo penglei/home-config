@@ -1,21 +1,16 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 
 {
-  sops =  {
+  sops = {
     # age.keyFile = keyfile;
     # age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     defaultSopsFile = ../../secrets/basic.yaml;
 
-    secrets.hello = {
-      path = "/tmp/helloworld-from-sops";
-    };
+    secrets.hello = { path = "/tmp/helloworld-from-sops"; };
 
     secrets."ssserver.json" = {
-        sopsFile = ../../secrets/server.yaml;
-        restartUnits = [ "ssserver.service" ];
+      sopsFile = ../../secrets/server.yaml;
+      restartUnits = [ "ssserver.service" ];
     };
   };
 

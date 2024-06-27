@@ -1,15 +1,12 @@
-{ lib
-, fetchurl
-, stdenvNoCC
-, unzip
-}:
+{ lib, fetchurl, stdenvNoCC, unzip }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "spacelauncher";
   version = "2.0.0-alpha-20230112-101";
 
   src = fetchurl {
-    url = "https://spacelauncherapp.com/alpha/SpaceLauncher-2.0.0-alpha-20230112-(101).zip";
+    url =
+      "https://spacelauncherapp.com/alpha/SpaceLauncher-2.0.0-alpha-20230112-(101).zip";
     sha256 = "sha256-wQW/iAQliWHCksiyQjoy3VEbYIul5vCWtxrq5rQuCvQ=";
   };
 

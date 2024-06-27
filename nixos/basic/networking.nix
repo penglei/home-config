@@ -2,8 +2,6 @@
 
 #https://nixos.wiki/wiki/Networking
 {
-  networking = {
-    hostName = hostname;
-  };
+  networking = { hostName = hostname; };
 }
 

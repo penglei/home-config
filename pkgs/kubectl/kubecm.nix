@@ -1,15 +1,11 @@
-{
-  kubectx,
-  stdenvNoCC,
-  bash,
-  fetchurl
-}:
+{ kubectx, stdenvNoCC, bash, fetchurl }:
 stdenvNoCC.mkDerivation rec {
   pname = "kubectl-kubecm";
   version = "0.21.0";
 
   src = fetchurl {
-    url = "https://github.com/sunny0826/kubecm/releases/download/v0.21.0/kubecm_v0.21.0_Darwin_arm64.tar.gz";
+    url =
+      "https://github.com/sunny0826/kubecm/releases/download/v0.21.0/kubecm_v0.21.0_Darwin_arm64.tar.gz";
     sha256 = "sha256-3HnUSlysTBFIfklYJ1ouUEF5iy/Jt9QQjF/KBWRu5DU=";
   };
 

@@ -5,11 +5,8 @@ let
     inherit pkgs;
     inherit (stdenv.hostPlatform) system;
   };
-in
-nodePackages.mongosh.override {
-  passthru.tests.version = testers.testVersion {
-    package = mongosh;
-  };
+in nodePackages.mongosh.override {
+  passthru.tests.version = testers.testVersion { package = mongosh; };
 
   meta = with lib; {
     homepage = "https://www.mongodb.com/try/download/shell";

@@ -1,9 +1,5 @@
 # List services that you want to enable:
-{ config
-, pkgs
-, lib
-, ...
-}:
+{ config, pkgs, lib, ... }:
 
 {
   services.qemuGuest.enable = true;
@@ -14,7 +10,7 @@
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "yes";
-      StreamLocalBindUnlink = "yes"; 
+      StreamLocalBindUnlink = "yes";
     };
     #extraConfig = ''
     #    Match User test

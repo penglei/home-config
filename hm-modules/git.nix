@@ -1,16 +1,18 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     userEmail = "penglei@ybyte.org";
     userName = "penglei";
     aliases = {
       # Prettier `git log` https://git-scm.com/docs/pretty-formats
-      lg = "log --color --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      lg =
+        "log --color --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       # `git checkout` with fuzzy matching
-      co = "!git for-each-ref --format='%(refname:short)' refs/heads | ${pkgs.fzf}/bin/fzf -0 | xargs git checkout";
+      co =
+        "!git for-each-ref --format='%(refname:short)' refs/heads | ${pkgs.fzf}/bin/fzf -0 | xargs git checkout";
       # `git restore --staged` with fuzzy matching
-      rs = "!git diff --name-only --cached | ${pkgs.fzf}/bin/fzf -0 --multi | xargs git restore --staged";
+      rs =
+        "!git diff --name-only --cached | ${pkgs.fzf}/bin/fzf -0 --multi | xargs git restore --staged";
       # Fetch a branch from a remote and rebase it on the current branch
       frb = "!git fetch $1 && git rebase $1/$2 && :";
 
@@ -27,7 +29,9 @@
       fp = "push --force";
       track = "checkout --track";
       cliff = "!${pkgs.git-cliff}/bin/git-cliff";
-      whois = ''!sh -c 'git log -i -1 --pretty="format:%an <%ae>''\n" --author="$1"' -'';
+      whois = ''
+        !sh -c 'git log -i -1 --pretty="format:%an <%ae>
+        " --author="$1"' -'';
       whatis = "show -s --pretty='tformat:%h (%s, %ad)' --date=short";
     };
     signing = {
@@ -58,15 +62,33 @@
     };
 
     ignores = [
-      "go.work" "go.work.sum"
-      ".envrc" ".direnv"
+      "go.work"
+      "go.work.sum"
+      ".envrc"
+      ".direnv"
       ".DS_Store"
       # system SWAP, TMP and BACKUP files
-      "*~" "*.swp" ".*.*.swp" "*.bak" "*.log"
+      "*~"
+      "*.swp"
+      ".*.*.swp"
+      "*.bak"
+      "*.log"
       # c/c++ object 
-      "*.o" "*.so" "*.so.[0-9]*" "*.a"
+      "*.o"
+      "*.so"
+      "*.so.[0-9]*"
+      "*.a"
       # latex
-      "*.aux" "*.bbl" "*.bcf" "*.blg" "*.nav" "*.out" "*.run.xml" "*.snm" "*.toc" "*.vrb"
+      "*.aux"
+      "*.bbl"
+      "*.bcf"
+      "*.blg"
+      "*.nav"
+      "*.out"
+      "*.run.xml"
+      "*.snm"
+      "*.toc"
+      "*.vrb"
       #lua
       ".luarc.json"
     ];

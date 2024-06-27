@@ -13,7 +13,8 @@ let
   gpgInitStr = ''
     GPG_TTY="$(tty)"
     export GPG_TTY
-  '' + optionalString cfg.enableSshSupport "#${gpgPkg}/bin/gpg-connect-agent updatestartuptty /bye > /dev/null";
+  '' + optionalString cfg.enableSshSupport
+    "#${gpgPkg}/bin/gpg-connect-agent updatestartuptty /bye > /dev/null";
 in {
   options = {
     gpg-agent = {
@@ -194,7 +195,8 @@ in {
         enable = true;
         config = {
           RunAtLoad = true;
-          ProgramArguments = [ "/bin/zsh" "-c" "${gpgconf} --launch gpg-agent" ];
+          ProgramArguments =
+            [ "/bin/zsh" "-c" "${gpgconf} --launch gpg-agent" ];
           EnvironmentVariables = {
             "GNUPGHOME" = homedir;
             "SHELL" = "/bin/sh";

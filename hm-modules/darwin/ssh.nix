@@ -1,20 +1,15 @@
-{ pkgs
-, config
-, lib
-, ...
-}:
+{ pkgs, config, lib, ... }:
 
-let
-    key = (import ../../config.nix).ssh.authorized_key;
-in
-{
+let key = (import ../../config.nix).ssh.authorized_key;
+in {
   # home.file.".ssh/authorized_keys".text = key;
 
-  home.activation.SetupAuthorizedSSHKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.SetupAuthorizedSSHKeys =
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
 
-    $DRY_RUN_CMD  echo -n "${key}" > $HOME/.ssh/authorized_keys
+      $DRY_RUN_CMD  echo -n "${key}" > $HOME/.ssh/authorized_keys
 
-  '';
+    '';
 
   home.file.".ssh/config".text = ''
     Host *

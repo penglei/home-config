@@ -1,5 +1,4 @@
-{ createscript
-}:
+{ createscript }:
 
 createscript "concealed-pbcopy" ../../../scripts/concealed-pbcopy {
   dependencies = [ ];

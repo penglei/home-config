@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 
 {
   imports = [
@@ -14,7 +14,6 @@
     ./services.nix
     ./misc.nix
   ];
-
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 

@@ -1,15 +1,9 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 
 {
-  imports = [
-    ./all.nix
-    ./grub.nix
-  ];
+  imports = [ ./all.nix ./grub.nix ];
 
-  boot.kernelParams = [
-    "console=ttyS0,115200"
-    "console=tty1"
-  ];
+  boot.kernelParams = [ "console=ttyS0,115200" "console=tty1" ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
@@ -21,5 +15,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
 }
-
 

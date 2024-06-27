@@ -1,15 +1,9 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 
 {
-  imports = [
-    ../basic/all.nix
-    ../basic/grub.nix
-  ];
+  imports = [ ../basic/all.nix ../basic/grub.nix ];
 
-  boot.kernelParams = [
-    "console=ttyS0,115200"
-    "console=tty1"
-  ];
+  boot.kernelParams = [ "console=ttyS0,115200" "console=tty1" ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
@@ -20,6 +14,7 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
 

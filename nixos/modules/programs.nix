@@ -1,5 +1,5 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [git ripgrep]; #merge syntatics
+  environment.systemPackages = with pkgs; [ git ripgrep ]; # merge syntatics
 }

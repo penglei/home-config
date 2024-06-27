@@ -1,4 +1,4 @@
-{lib, hostname, ...}:
+{ lib, hostname, ... }:
 
 {
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -11,8 +11,6 @@
     hostName = hostname;
     firewall.enable = false;
     nat.enable = false;
-    nftables = {
-      enable = true;
-    };
+    nftables = { enable = true; };
   };
 }

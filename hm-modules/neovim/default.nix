@@ -1,9 +1,4 @@
-{ config
-, lib
-, pkgs
-, wayland
-, ...
-}:
+{ config, lib, pkgs, wayland, ... }:
 
 {
   imports = [

@@ -1,9 +1,4 @@
-{
-  kubectx,
-  stdenvNoCC,
-  bash,
-  fetchFromGitHub
-}:
+{ kubectx, stdenvNoCC, bash, fetchFromGitHub }:
 stdenvNoCC.mkDerivation rec {
   pname = "kubectl-node-shell";
   version = "1.6.0";

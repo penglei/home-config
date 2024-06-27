@@ -1,10 +1,6 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 
-let
-  lib = pkgs.lib;
+let lib = pkgs.lib;
 in {
   programs.starship = {
     enable = true;
@@ -36,11 +32,13 @@ in {
       git_status = {
         disabled = false;
         untracked = "";
-        format = "([\\[$conflicted$deleted$renamed$modified$staged$behind\\]]($style) )";
+        format =
+          "([\\[$conflicted$deleted$renamed$modified$staged$behind\\]]($style) )";
         modified = "*";
       };
       status = {
-        format = "[\\($symbol$common_meaning$signal_name$maybe_int\\)]($style) ";
+        format =
+          "[\\($symbol$common_meaning$signal_name$maybe_int\\)]($style) ";
         disabled = false;
         style = "red";
       };

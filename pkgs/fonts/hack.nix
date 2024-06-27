@@ -1,11 +1,12 @@
-{lib, nerd-font-patcher, stdenvNoCC, fetchzip }:
+{ lib, nerd-font-patcher, stdenvNoCC, fetchzip }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "hack-font";
   version = "v3.003";
 
   src = fetchzip {
-    url = "https://github.com/source-foundry/Hack/releases/download/${version}/Hack-${version}-ttf.zip";
+    url =
+      "https://github.com/source-foundry/Hack/releases/download/${version}/Hack-${version}-ttf.zip";
     sha256 = "sha256-SxF4kYp9aL/9L9EUniquFadzWt/+PcvhUQOIOvCrFRM=";
   };
 
@@ -33,7 +34,7 @@ stdenvNoCC.mkDerivation rec {
         -out $out/tmp
       mv $out/tmp/*.ttf $out/share/fonts/truetype/$f
     done
-    
+
     rm -rf $out/tmp
 
     runHook postInstall

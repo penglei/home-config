@@ -1,14 +1,12 @@
-{ lib
-, fetchzip
-, stdenvNoCC
-}:
+{ lib, fetchzip, stdenvNoCC }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "keycastr";
   version = "0.9.13";
 
   src = fetchzip {
-    url = "https://github.com/keycastr/keycastr/releases/download/v${version}/KeyCastr.app.zip";
+    url =
+      "https://github.com/keycastr/keycastr/releases/download/v${version}/KeyCastr.app.zip";
     sha256 = "sha256-MuImZXfy2By+JyRbGZDegzKpxu21D/4ATgKs+wK3uRQ=";
     stripRoot = false;
   };

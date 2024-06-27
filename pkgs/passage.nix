@@ -1,31 +1,19 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, makeBinaryWrapper
-, age
-, qrencode
-, git
+{ lib, stdenv, fetchFromGitHub, makeBinaryWrapper, age, qrencode, git
 # Used to pretty-print list of all stored passwords, but is not needed to fetch
 # or store password by its name. Most users would want this dependency.
-, tree
-, getopt
-, concealed-pbcopy
-}:
+, tree, getopt, concealed-pbcopy }:
 
-let 
-  srcDownloads = lib.listToAttrs [
-    {
-      name = "aarch64-darwin";
-      value = fetchFromGitHub {
-        owner = "penglei";
-        repo = "passage";
-        rev = "a08ef1fefb1616bab3c4bea2991bb5acafe0f0f7";
-        sha256 = "sha256-xD8/VrBsFreVW2a1P2pZt6e+TTg0z8GnwGb5J3ffF04=";
-      };
-    }
-  ];
-in
-stdenv.mkDerivation {
+let
+  srcDownloads = lib.listToAttrs [{
+    name = "aarch64-darwin";
+    value = fetchFromGitHub {
+      owner = "penglei";
+      repo = "passage";
+      rev = "a08ef1fefb1616bab3c4bea2991bb5acafe0f0f7";
+      sha256 = "sha256-xD8/VrBsFreVW2a1P2pZt6e+TTg0z8GnwGb5J3ffF04=";
+    };
+  }];
+in stdenv.mkDerivation {
   pname = "passage";
   version = "master-2022-12-31";
 
@@ -45,10 +33,11 @@ stdenv.mkDerivation {
   installFlags = [ "PREFIX=$(out)" "WITH_ALLCOMP=yes" ];
 
   meta = with lib; {
-    description = "Stores, retrieves, generates, and synchronizes passwords securely";
-    homepage    = "https://github.com/FiloSottile/passage";
-    license     = licenses.gpl2Plus;
-    platforms   = platforms.unix;
+    description =
+      "Stores, retrieves, generates, and synchronizes passwords securely";
+    homepage = "https://github.com/FiloSottile/passage";
+    license = licenses.gpl2Plus;
+    platforms = platforms.unix;
 
     longDescription = ''
       passage is a fork of password-store (https://www.passwordstore.org) that uses

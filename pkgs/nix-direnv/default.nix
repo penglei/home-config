@@ -1,9 +1,4 @@
-{ lib
-, stdenv
-, gnugrep
-, jq
-, nix
-}:
+{ lib, stdenv, gnugrep, jq, nix }:
 stdenv.mkDerivation rec {
   pname = "nix-direnv";
   version = "2.2.0";
@@ -36,9 +31,9 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "A fast, persistent use_nix implementation for direnv";
-    homepage    = "https://github.com/nix-community/nix-direnv";
-    license     = licenses.mit;
-    platforms   = platforms.unix;
+    homepage = "https://github.com/nix-community/nix-direnv";
+    license = licenses.mit;
+    platforms = platforms.unix;
     maintainers = with maintainers; [ mic92 bbenne10 ];
   };
 }

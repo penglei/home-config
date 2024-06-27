@@ -1,15 +1,12 @@
-{ lib
-, fetchurl
-, stdenvNoCC
-, undmg
-}:
+{ lib, fetchurl, stdenvNoCC, undmg }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "koodo-reader";
   version = "1.6.0";
 
   src = fetchurl {
-    url = "https://github.com/troyeguo/koodo-reader/releases/download/v${version}/Koodo-Reader-${version}-arm64.dmg";
+    url =
+      "https://github.com/troyeguo/koodo-reader/releases/download/v${version}/Koodo-Reader-${version}-arm64.dmg";
     sha256 = "sha256-94IqXWnusGfntfWxX7vqwQpF4Yos5MAEwNsjpVJI+AI=";
   };
 

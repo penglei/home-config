@@ -1,5 +1,6 @@
 {
   home.sessionVariables = {
-    CHEZSCHEMELIBDIRS = "$HOME/.local/share/scheme-lib:$HOME/Data/workroom/chez-scheme/lib";
+    CHEZSCHEMELIBDIRS =
+      "$HOME/.local/share/scheme-lib:$HOME/Data/workroom/chez-scheme/lib";
   };
 }

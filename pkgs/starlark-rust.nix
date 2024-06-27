@@ -1,9 +1,4 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, rustPlatform
-, libiconv
-}:
+{ stdenv, lib, fetchFromGitHub, rustPlatform, libiconv }:
 
 rustPlatform.buildRustPackage rec {
   pname = "startlark-rust";
@@ -17,7 +12,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-iJLL2FTSa/ur5jwc9PgZThJhnyRxUf225DeWFcQHQQU=";
   };
 
-  buildInputs = [] ++ lib.optionals stdenv.isDarwin [libiconv];
+  buildInputs = [ ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
   meta = with lib; {
     description = "Rust implementation of the Starlark language";

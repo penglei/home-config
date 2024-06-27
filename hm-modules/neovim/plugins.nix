@@ -1,14 +1,10 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 
-let
-  inherit (import ./util.nix) mkLua mkLuaFile;
-in
-{
+let inherit (import ./util.nix) mkLua mkLuaFile;
+in {
   programs.neovim = {
-    withNodeJs = false; # Provide an older version manually, Github Copilot does not support the latest
+    withNodeJs =
+      false; # Provide an older version manually, Github Copilot does not support the latest
 
     extraPackages = with pkgs; [
       nodejs-16_x # For Github Copilot
@@ -125,16 +121,17 @@ in
       nvim-treesitter-textobjects
       {
         # Better syntax highlighting and automatic indentation
-        plugin = with pkgs.tree-sitter-grammars; (nvim-treesitter.withPlugins (plugins: [
-          tree-sitter-json
-          tree-sitter-rust
-          tree-sitter-python
-          tree-sitter-nix
-          tree-sitter-cmake
-          tree-sitter-cpp
-          tree-sitter-c
-          tree-sitter-lua
-        ]));
+        plugin = with pkgs.tree-sitter-grammars;
+          (nvim-treesitter.withPlugins (plugins: [
+            tree-sitter-json
+            tree-sitter-rust
+            tree-sitter-python
+            tree-sitter-nix
+            tree-sitter-cmake
+            tree-sitter-cpp
+            tree-sitter-c
+            tree-sitter-lua
+          ]));
 
         config = mkLuaFile ./scripts/plugins/treesitter.lua;
       }

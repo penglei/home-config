@@ -1,10 +1,4 @@
-{ config
-, pkgs
-, lib
-, nixpkgs
-, username
-, ...
-}:
+{ config, pkgs, lib, nixpkgs, username, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -20,9 +14,8 @@
       use-cgroups = true;
       warn-dirty = false;
       auto-allocate-uids = true;
-      experimental-features = [
-        "nix-command" "flakes" "auto-allocate-uids" "cgroups"
-      ];
+      experimental-features =
+        [ "nix-command" "flakes" "auto-allocate-uids" "cgroups" ];
       extra-experimental-features = [ "ca-derivations" ];
       trusted-users = [ "@wheel" username ];
       allowed-users = trusted-users;

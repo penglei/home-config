@@ -1,13 +1,8 @@
-{ pkgs
-, lib
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
 #https://github.com/jeffreytse/zsh-vi-mode#lazy-keybindings
 with lib;
 let cfg = config.zsh-vi-mode;
-in
-{
+in {
   options.zsh-vi-mode = {
     enable = mkEnableOption "zsh vi mode plugin";
     package = mkOption {
@@ -51,7 +46,6 @@ in
     '';
   };
 }
-
 
 # function zvm_forward_blank_word() {
 #   zle vi-forward-word #zle vi-forward-blank-word

@@ -1,18 +1,14 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 
-let 
+let
   keyfileInHome = ".config/sops/age/keys.txt";
   keyfile = "${config.home.homeDirectory}/${keyfileInHome}";
-in
-{
+in {
 
   # home.sessionVariables = {
   #   SOPS_AGE_KEY_FILE = "$HOME/${keyfileInHome}";
   # };
-  sops =  {
+  sops = {
     age.keyFile = keyfile;
     defaultSopsFile = ../../secrets/basic.yaml;
 

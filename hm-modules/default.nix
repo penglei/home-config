@@ -1,6 +1,4 @@
-{ config
-, ...
-}:
+{ config, ... }:
 
 {
   # **************************installation****************************#
@@ -10,7 +8,7 @@
   #                                                                   #
   #   legacy solution.  `nix-shell -p 'home-manager'`                 #
   # let Home Manager manage itself.                                   #
-  programs.home-manager.enable = true;                                #
+  programs.home-manager.enable = true;
   #####################################################################
 
   # This value determines the Home Manager release that your

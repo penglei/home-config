@@ -1,7 +1,5 @@
-{
-  callPackage, ...
-}:
+{ callPackage, ... }:
 
 {
-  make-vm-disk = callPackage ./make-vm-disk.nix {};
+  make-vm-disk = callPackage ./make-vm-disk.nix { };
 }

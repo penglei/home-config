@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 
 let
   homeProfilePath = path: "${config.home.homeDirectory}/${path}";
@@ -19,7 +16,9 @@ in {
       ProgramArguments = [ skhd ];
       EnvironmentVariables = {
         # "PATH" = "${homeProfilePath ".nix-profile/bin"}:${homeProfilePath ".local/bin"}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
-        "PATH" = "${homeProfilePath ".local/bin"}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
+        "PATH" = "${
+            homeProfilePath ".local/bin"
+          }:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:";
         "SHELL" = "/bin/sh";
       };
       KeepAlive = true;

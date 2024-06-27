@@ -1,15 +1,12 @@
-{ lib
-, fetchzip
-, stdenvNoCC
-, undmg
-}:
+{ lib, fetchzip, stdenvNoCC, undmg }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "netnewswire";
   version = "6.1.2";
 
   src = fetchzip {
-    url = "https://github.com/Ranchero-Software/NetNewsWire/releases/download/mac-${version}/NetNewsWire${version}.zip";
+    url =
+      "https://github.com/Ranchero-Software/NetNewsWire/releases/download/mac-${version}/NetNewsWire${version}.zip";
     stripRoot = false;
     sha256 = "sha256-0+hFZd499LXc9Zlh/hbh/uNiF9llJUzaNIJ4Muqg9Pc=";
   };

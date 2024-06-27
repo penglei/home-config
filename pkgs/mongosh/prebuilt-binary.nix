@@ -1,11 +1,4 @@
-{
-  lib,
-  stdenvNoCC,
-  bash,
-  fetchurl,
-  fetchzip
-}:
-
+{ lib, stdenvNoCC, bash, fetchurl, fetchzip }:
 
 let
 
@@ -15,7 +8,8 @@ let
     {
       name = "aarch64-darwin";
       value = fetchzip {
-        url = "https://downloads.mongodb.com/compass/mongosh-${version}-darwin-arm64.zip";
+        url =
+          "https://downloads.mongodb.com/compass/mongosh-${version}-darwin-arm64.zip";
         sha256 = "sha256-BraBqclwpzYXbt9WyJeLaJX/lshpIkvuZRwGHaRivvc=";
       };
     }
@@ -23,7 +17,8 @@ let
     {
       name = "x86_64-darwin";
       value = fetchzip {
-        url = "https://downloads.mongodb.com/compass/mongosh-${version}-darwin-x64.zip";
+        url =
+          "https://downloads.mongodb.com/compass/mongosh-${version}-darwin-x64.zip";
         sha256 = "";
       };
     }
@@ -31,7 +26,8 @@ let
     {
       name = "aarch64-linux";
       value = fetchurl {
-        url = "https://downloads.mongodb.com/compass/mongosh-${version}-linux-arm64.tgz";
+        url =
+          "https://downloads.mongodb.com/compass/mongosh-${version}-linux-arm64.tgz";
         sha256 = "sha256-48DaHH/79+hdqJrCuQNjUbcCw0yl3OGbJha6ikboOf4=";
       };
     }
@@ -39,14 +35,14 @@ let
     {
       name = "x86_64-linux";
       value = fetchurl {
-        url = "https://downloads.mongodb.com/compass/mongosh-${version}-linux-x64.tgz";
+        url =
+          "https://downloads.mongodb.com/compass/mongosh-${version}-linux-x64.tgz";
         sha256 = "";
       };
     }
   ];
 
-in
-stdenvNoCC.mkDerivation {
+in stdenvNoCC.mkDerivation {
   pname = "mongosh-prebuilt";
   version = version;
 
@@ -65,7 +61,5 @@ stdenvNoCC.mkDerivation {
 
     runHook postInstall
   '';
-  meta = with lib;{
-    platforms = platforms.darwin;
-  };
+  meta = with lib; { platforms = platforms.darwin; };
 }

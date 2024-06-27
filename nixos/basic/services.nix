@@ -1,9 +1,5 @@
 # List services that you want to enable:
-{ config
-, pkgs
-, lib
-, ...
-}:
+{ config, pkgs, lib, ... }:
 
 {
   services.openssh.enable = true;

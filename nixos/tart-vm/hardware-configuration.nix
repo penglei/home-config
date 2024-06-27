@@ -3,7 +3,8 @@
 
 {
 
-  boot.initrd.availableKernelModules = [ "nvme" "virtio_pci" "xhci_pci" "usbhid" "virtiofs" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "virtio_pci" "xhci_pci" "usbhid" "virtiofs" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -14,21 +15,20 @@
 
   boot.loader.timeout = 1;
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/nixos";
-      fsType = "btrfs";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "btrfs";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
+  };
 
-  fileSystems."/run/data" =
-    { device = "com.apple.virtio-fs.automount";
-      fsType = "virtiofs";
-    };
+  fileSystems."/run/data" = {
+    device = "com.apple.virtio-fs.automount";
+    fsType = "virtiofs";
+  };
 
   swapDevices = [ ];
 }

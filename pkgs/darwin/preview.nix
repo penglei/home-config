@@ -1,5 +1,4 @@
-
-{writeShellApplication}: 
+{ writeShellApplication }:
 
 writeShellApplication {
   name = "preview";
@@ -9,20 +8,18 @@ writeShellApplication {
 }
 
 #https://ss64.com/bash/exec.html
-/*
-exec
-Execute a command
+/* exec
+   Execute a command
 
-Syntax
-      exec [-cl] [-a name] [command [arguments]]
+   Syntax
+         exec [-cl] [-a name] [command [arguments]]
 
-Options
-      -c   Causes command to be executed with an empty environment.
+   Options
+         -c   Causes command to be executed with an empty environment.
 
-      -l   Place a dash at the beginning of the zeroth arg passed to command.
-           (This is what the login program does.)
+         -l   Place a dash at the beginning of the zeroth arg passed to command.
+              (This is what the login program does.)
 
-      -a   The shell passes name as the zeroth argument to command.
-
+         -a   The shell passes name as the zeroth argument to command.
 */
 

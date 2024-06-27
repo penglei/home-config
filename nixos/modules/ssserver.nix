@@ -1,15 +1,9 @@
-{
-    pkgs,
-    lib,
-    config,
-    ...
-}:
+{ pkgs, lib, config, ... }:
 
 let
   #configFile = config.sops.templates.ssserver.path;
   configFile = config.sops.secrets."ssserver.json".path;
-in
-{
+in {
   systemd.services.ssserver = {
     description = "ssserver daemon";
     after = [ "network.target" ];
@@ -18,8 +12,6 @@ in
     script = ''
       exec ssserver -c ${configFile}
     '';
-    serviceConfig = {
-        WorkingDirectory = "/tmp";
-    };
+    serviceConfig = { WorkingDirectory = "/tmp"; };
   };
 }

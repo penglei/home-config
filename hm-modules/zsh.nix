@@ -1,19 +1,16 @@
-{ pkgs
-, config
-, ...
-}:
-let 
+{ pkgs, config, ... }:
+let
   lib = pkgs.lib;
   cfg = config.programs.zsh;
-  zshcfg =
-    let
-      relToDotDir = file: (lib.optionalString (cfg.dotDir != null) (cfg.dotDir + "/")) + file;
-    in {
-      pluginsDir = if cfg.dotDir != null then relToDotDir "plugins" else ".zsh/plugins";
-      plugins = cfg.plugins;
-    };
-in
-{
+  zshcfg = let
+    relToDotDir = file:
+      (lib.optionalString (cfg.dotDir != null) (cfg.dotDir + "/")) + file;
+  in {
+    pluginsDir =
+      if cfg.dotDir != null then relToDotDir "plugins" else ".zsh/plugins";
+    plugins = cfg.plugins;
+  };
+in {
   home.packages = [ pkgs.nix-zsh-completions ];
 
   programs.zsh = {
@@ -49,7 +46,7 @@ in
         };
       }
     ];
-    envExtra = '''';
+    envExtra = "";
     initExtra = ''
       bindkey "^U" backward-kill-line
       bindkey -M menuselect '^[[Z' reverse-menu-complete
