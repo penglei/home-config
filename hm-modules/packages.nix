@@ -101,6 +101,7 @@
       trash-cli
 
     ] ++ lib.optionals stdenvNoCC.isDarwin [
+      bash
       git-cliff
       gnupg # full with gui
       passage
@@ -122,7 +123,7 @@
       isabelle_app
       koodo-reader
       #adobe-reader
-      bitwarden-desktop
+      #bitwarden-desktop
       p7zip
       libarchive # for decompress .pkg installer
       duti # set default applications in alfred
@@ -130,7 +131,13 @@
       alttab
       parinfer-rust # vim plugin for lisp brackets
       typst-prebuilt
+
+      #neovim lsp requirements
+      protobuf
       #gotools #these plugins are managed by neovim ray-x/go.vim plugin.
+
+      #rar #NIXPKGS_ALLOW_UNFREE=1 nix profile install nixpkgs#rar --impure
+
       k9s
     ] ++ lib.optionals stdenvNoCC.isLinux [
       #binutils #`ld` is not recommended installing globally.
