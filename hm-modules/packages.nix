@@ -53,7 +53,7 @@
       hyperfine # performance test
       #ghostscript
       hexyl
-      neofetch
+      fastfetch # neofetch
       screenfetch # Information Tool
       #rar
       #! rar is an unfree software, but we can't set allowunfree at this moment(2022-11-08)
