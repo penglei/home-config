@@ -23,7 +23,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager , sops-nix, nil-language-server, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgsForNixOS, flake-utils, home-manager
+    , sops-nix, nil-language-server, ... }@inputs:
     let
       inherit (nixpkgs) lib;
 
@@ -33,7 +34,6 @@
         arch = [ "aarch64" "x86_64" ];
       });
       eachSystem = f: (flake-utils.lib.eachSystem systems f);
-
 
     in eachSystem (system:
       let
@@ -46,7 +46,9 @@
         pkgs = nixpkgs.legacyPackages.${system}.appendOverlays pkgOverlays;
         #pkgs = import nixpkgs { inherit system; overlays = pkgOverlays; }; 
 
-        profiles = import ./profiles.nix { inherit self pkgs system home-manager sops-nix; };
+        profiles = import ./profiles.nix {
+          inherit self pkgs system home-manager sops-nix;
+        };
       in {
         # debug overrided nixpkgs, e.g.: nix build .#nixpkgs.passage
         packages.nixpkgs = pkgs;
@@ -56,28 +58,30 @@
         # home-manager bootstrap: `nix shell nixpkgs#git; nix develop; home-manager switch --flake .#penglei`
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            home-manager.defaultPackage.${system} #home-manager command
-            ssh-to-pgp ssh-to-age
+            home-manager.defaultPackage.${system} # home-manager command
+            ssh-to-pgp
+            ssh-to-age
           ];
           shellHook = ''
-            export PATH=$(pwd)/result/bin:''$PATH
+            export PATH=$(pwd)/result/bin:$PATH
           '';
         };
 
-        # *home-manaer* has 3 scenarios:
+        ##*home-manager* is used in 3 scenarios:
         ##  1. macOS only -- has launchd service
         ##  2. some others Linux distribution
         ##  3. as a nixos module
-        #1,2: #packages.${system}.homeConfigurations = self.homeConfigurations;
-        #3: {home-manager.users.${username}.imports = hm-modules}
+        ##
+        ##config:
+        ##  1,2: #packages.${system}.homeConfigurations = self.homeConfigurations;
+        ##    3: {home-manager.users.${username}.imports = hm-modules}
 
-        packages.homeConfigurations =
-            profiles.hm-creator.standalone "penglei" //
-            profiles.hm-creator.standalone "ubuntu";
+        packages.homeConfigurations = profiles.hm-creator.standalone "penglei"
+          // profiles.hm-creator.standalone "ubuntu";
 
         ## nixos linux only
         packages.nixosConfigurations = import ./machines.nix {
-            inherit system profiles nixpkgs pkgOverlays;
+          inherit system profiles nixpkgs pkgOverlays;
         };
         #packages.darwin-rootkit = ./
       }); # each system
