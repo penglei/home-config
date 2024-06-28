@@ -73,8 +73,6 @@
 
       watchexec
 
-      # starlark-rust
-
       luarocks
 
       python3 # (python3.withPackages (ps: [ ps.numpy ps.pygments]))
@@ -140,10 +138,9 @@
 
       k9s
 
-      ##editor plugin
+      ##editor (lsp, dap, linter, formatter)
       yaml-language-server
       lua-language-server
-      python3Packages.python-lsp-server
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver-bin
@@ -154,9 +151,14 @@
       yamlfmt
       shfmt
 
-      #python formatter
+      #python
+      python3Packages.python-lsp-server
       isort
       black
+
+      #starlark
+      # starlark-rust
+      buildifier
 
     ] ++ lib.optionals stdenvNoCC.isLinux [
       #binutils #`ld` is not recommended installing globally.
