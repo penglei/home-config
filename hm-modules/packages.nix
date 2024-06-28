@@ -139,6 +139,25 @@
       #rar #NIXPKGS_ALLOW_UNFREE=1 nix profile install nixpkgs#rar --impure
 
       k9s
+
+      ##editor plugin
+      yaml-language-server
+      lua-language-server
+      python3Packages.python-lsp-server
+      nodePackages.bash-language-server
+      nodePackages.typescript-language-server
+      nodePackages.vscode-json-languageserver-bin
+      nodePackages.vscode-html-languageserver-bin
+      nodePackages.prettier
+      prettierd
+      stylua
+      yamlfmt
+      shfmt
+
+      #python formatter
+      isort
+      black
+
     ] ++ lib.optionals stdenvNoCC.isLinux [
       #binutils #`ld` is not recommended installing globally.
 
