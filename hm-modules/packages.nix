@@ -73,10 +73,6 @@
 
       watchexec
 
-      luarocks
-
-      python3 # (python3.withPackages (ps: [ ps.numpy ps.pygments]))
-
       sqlite.out # for neovim telescope plugin
 
       nodejs_latest
@@ -140,21 +136,25 @@
 
       ##editor (lsp, dap, linter, formatter)
       yaml-language-server
-      lua-language-server
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver-bin
       nodePackages.vscode-html-languageserver-bin
       nodePackages.prettier
       prettierd
-      stylua
       yamlfmt
       shfmt
 
       #python
+      python3 # (python3.withPackages (ps: [ ps.numpy ps.pygments]))
       python3Packages.python-lsp-server
       isort
       black
+
+      lua5_1
+      luarocks
+      stylua
+      lua-language-server
 
       #starlark
       # starlark-rust
