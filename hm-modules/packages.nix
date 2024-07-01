@@ -124,7 +124,6 @@
       chez-racket
       alttab
       parinfer-rust # vim plugin for lisp brackets
-      typst-prebuilt
 
       #neovim lsp requirements
       protobuf
@@ -159,6 +158,10 @@
       #starlark
       # starlark-rust
       buildifier
+
+      typst-prebuilt
+      typstyle
+      typst-lsp
 
     ] ++ lib.optionals stdenvNoCC.isLinux [
       #binutils #`ld` is not recommended installing globally.
