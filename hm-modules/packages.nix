@@ -53,46 +53,24 @@
       hyperfine # performance test
       #ghostscript
       hexyl
-      fastfetch # neofetch
-      screenfetch # Information Tool
+
+      fastfetch # neofetch screenfetch
       #rar
       #! rar is an unfree software, but we can't set allowunfree at this moment(2022-11-08)
       #! if we enable it, tedious commond `NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure`
       #! must be executed to switch home configuration.
 
-      emacs-nox
+      wireguard-tools
+
+      #emacs-nox
       helix # modern editor
 
       #tree-sitter #generic ast parser
-      nixfmt-classic # nixfmt was renamed to nixfmt-classic. The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
-      nil-language-server
       # koka
-      go_1_22
-      #bear #Tool that generates a compilation database for clang tooling
-      #ocaml opam ocamlPackages.sexp
 
       watchexec
 
-      sqlite.out # for neovim telescope plugin
-
-      nodejs_latest
-
-      kustomize
-      kubectl
-      krew
-      kubectl-kubectx
-      kubectl-kubecm
-      kubectl-nodeshell
-
       mynixcleaner
-
-      #mongosh
-
-      wireguard-tools
-
-      shiori
-
-      trash-cli
 
     ] ++ lib.optionals stdenvNoCC.isDarwin [
       bash
@@ -118,22 +96,36 @@
       koodo-reader
       #adobe-reader
       #bitwarden-desktop
+      #rar #NIXPKGS_ALLOW_UNFREE=1 nix profile install nixpkgs#rar --impure
       p7zip
       libarchive # for decompress .pkg installer
       duti # set default applications in alfred
       chez-racket
       alttab
-      parinfer-rust # vim plugin for lisp brackets
+      shiori # web bookmarks
 
-      #neovim lsp requirements
-      protobuf
+      trash-cli
+
+      go_1_22
       #gotools #these plugins are managed by neovim ray-x/go.vim plugin.
+      nodejs_latest
 
-      #rar #NIXPKGS_ALLOW_UNFREE=1 nix profile install nixpkgs#rar --impure
+      typos # source code typo checking
 
       k9s
+      kustomize
+      kubectl
+      krew
+      kubectl-kubectx
+      kubectl-kubecm
+      kubectl-nodeshell
+
+      sqlite.out # for neovim telescope plugin
 
       ##editor (lsp, dap, linter, formatter)
+      nixfmt-classic # nixfmt was renamed to nixfmt-classic. The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
+      nil-language-server
+
       yaml-language-server
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
@@ -143,6 +135,12 @@
       prettierd
       yamlfmt
       shfmt
+
+      #pbls requirements
+      protobuf
+
+      #lisp
+      parinfer-rust # vim plugin for lisp brackets
 
       #python
       python3 # (python3.withPackages (ps: [ ps.numpy ps.pygments]))
@@ -159,7 +157,7 @@
       # starlark-rust
       buildifier
 
-      typst-prebuilt
+      typst
       typstyle
       typst-lsp
 
