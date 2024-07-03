@@ -138,6 +138,7 @@
 
       #pbls requirements
       protobuf
+      buf # buf contains format tool
 
       #lisp
       parinfer-rust # vim plugin for lisp brackets
