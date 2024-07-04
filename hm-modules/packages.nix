@@ -62,6 +62,8 @@
 
       wireguard-tools
 
+      difftastic
+
       #emacs-nox
       helix # modern editor
 
