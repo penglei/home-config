@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   pname = "presentation";
-  version = "3.2.0";
+  version = "3.3.0";
 
   src = fetchurl {
     url =
       "http://iihm.imag.fr/blanch/software/osx-presentation/releases/osx-presentation-${version}.pkg";
-    sha256 = "sha256-ff9Si2DdfKkan5L1u2T4BKvqleTw22hmgXtGdLrLsY8=";
+    sha256 = "sha256-7BaP5OoyaFc5IHkrcMwvqnZmjgyhHBgO1AaJlPyI/2U=";
   };
 
   dontBuild = true;
