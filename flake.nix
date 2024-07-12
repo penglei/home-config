@@ -29,7 +29,7 @@
       inherit (nixpkgs) lib;
 
       #systems = [ "aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux" ]
-      systems = map (x: "${x.arch}-${x.os}") (lib.cartesianProductOfSets {
+      systems = map (x: "${x.arch}-${x.os}") (lib.cartesianProduct {
         os = [ "darwin" "linux" ];
         arch = [ "aarch64" "x86_64" ];
       });
