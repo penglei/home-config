@@ -131,8 +131,7 @@
       yaml-language-server
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
-      nodePackages.vscode-json-languageserver-bin
-      nodePackages.vscode-html-languageserver-bin
+      nodePackages.vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from
       nodePackages.prettier
       prettierd
       yamlfmt
