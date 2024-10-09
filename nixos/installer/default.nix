@@ -38,10 +38,6 @@
         options = [ "fmask=0077" "dmask=0077" ];
       };
 
-      #fileSystems."/boot" = {
-      #  device = "/dev/disk/by-label/boot";
-      #  fsType = "vfat";
-      #};
     })
   ];
 

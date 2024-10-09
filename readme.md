@@ -32,23 +32,28 @@ $ sudo nixos-rebuild switch --flake .#tart-vm
 ## install
 
 ### new disk installation
-
 ### in-place installation by copytoram
 
-### lustrate installation
+### 基于flake 采用 lustrate 方式安装nixos
 
+0. 安装nix
 
-```
-$ bash <(curl -L https://nixos.org/nix/install) --daemon
-# cat <<EOF >>/etc/nix/nix.conf
-experimental-features = nix-command flakes
-keep-outputs = true
-keep-derivations = true
-max-jobs = auto
-EOF
-```
+    使用普通用户执行安装
 
-root 用户执行
+    ```
+    $ bash <(curl -L https://nixos.org/nix/install) --daemon
+    ```
+
+    配置全局nix (使用root用户)
+
+    ```
+    # cat <<EOF >>/etc/nix/nix.conf
+    experimental-features = nix-command flakes
+    keep-outputs = true
+    keep-derivations = true
+    max-jobs = auto
+    EOF
+    ```
 
 1. 准备环境
 
@@ -69,6 +74,7 @@ root 用户执行
 
     ```
     # nix profile install --profile /nix/var/nix/profiles/system github:penglei/nix-configs#nixosConfigurations.installer.config.system.build.toplevel
+    # nix profile wipe-history --profile /nix/var/nix/profiles/system
     ```
 
     多次执行命令会提醒profile中已经存在该package。使用执行如下命令进行删除：
@@ -76,6 +82,8 @@ root 用户执行
     ```
     # nix profile remove toplevel --profile /nix/var/nix/profiles/system
     ```
+
+    配置文件系统
 
 
     ```
