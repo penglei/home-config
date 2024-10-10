@@ -57,8 +57,24 @@ $ sudo nixos-rebuild switch --flake .#tart-vm
 
 1. 准备环境
 
+    给主分区打label，这样才能更加通用
+
+    * 传统 ext2/3/4 类型的分区使用 `e2label` 修改label
+
+        ```
+        # e2label /dev/vda1 nixos
+        ```
+
+    * vfat(fat16) 类型的分区使用 `dosfslabel` ，一般使用efi启动的系统都会有这样的分区
+
+        ```
+        # dosfslabel /dev/nvme0n1p1 boot
+        ```
+
+    * btrfs 使用 `btrfs filesystem label <device/mountpoint> <label>`
+
+
     ```
-    # e2label /dev/vda1 nixos
     # chown -R 0:0 /nix
     # touch /etc/NIXOS
     # touch /etc/NIXOS_LUSTRATE
