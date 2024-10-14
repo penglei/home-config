@@ -29,29 +29,6 @@ $ nix run nixpkgs#home-manager switch -- --flake .
 $ sudo nixos-rebuild switch --flake .#tart-vm
 ```
 
-## install
-
-### new disk installation
-### in-place installation by copytoram
-
-### 基于flake 采用 lustrate 方式安装nixos
-
-0. 安装nix
-
-    ```
-    # curl -L https://nixos.org/nix/install | sh
-    ```
-
-    全局配置nix (使用root用户)
-
-    ```
-    # cat <<EOF >>/etc/nix/nix.conf
-    experimental-features = nix-command flakes
-    keep-outputs = true
-    keep-derivations = true
-    max-jobs = auto
-    EOF
-    ```
 
 1. 准备环境
 
